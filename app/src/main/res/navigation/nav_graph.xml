@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mobileFragment">
+
+    <fragment
+        android:id="@+id/mobileFragment"
+        android:name="com.chillarcards.britto.ui.register.MobileFragment"
+        android:label="MobileFragment"
+        tools:layout="@layout/fragment_mobile">
+        <action
+            android:id="@+id/action_mobileFragment_to_OTPFragment"
+            app:destination="@id/OTPFragment" />
+        <argument
+            android:name="isVerifyTrm"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="mobileNo"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/OTPFragment"
+        android:name="com.chillarcards.britto.ui.register.OTPFragment"
+        android:label="OTPFragment"
+        tools:layout="@layout/fragment_otp">
+        <action
+            android:id="@+id/action_otpFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
+
+        <argument
+            android:name="mobile"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/MapFragment"
+        android:name="com.chillarcards.britto.ui.register.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_MapFragment_to_SavedFragment"
+            app:destination="@id/SavedLocFragment" />
+        <argument
+            android:name="mobile"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/SavedLocFragment"
+        android:name="com.chillarcards.britto.ui.register.SavedLocationFragment"
+        android:label="SavedLocFragment"
+        tools:layout="@layout/fragment_saved_loc">
+        <action
+            android:id="@+id/action_SavedFragment_to_genhomeFragment"
+            app:destination="@id/GeneralHomeFragment" />
+        <argument
+            android:name="mobile"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/GeneralHomeFragment"
+        android:name="com.chillarcards.britto.ui.register.GeneralHomeFragment"
+        android:label="GeneralHomeFragment"
+        tools:layout="@layout/fragment_general_home">
+        <action
+            android:id="@+id/action_genhomeFragment_to_homeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_genhomeFragment_to_bphomeFragment"
+            app:destination="@id/BusinessFragment" />
+        <argument
+            android:name="mobile"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.chillarcards.britto.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_menuFragment"
+            app:destination="@id/MenuFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allpharmFragment"
+            app:destination="@id/AllPharmacyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_alldocFragment"
+            app:destination="@id/AllDoctorFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allhospitalFragment"
+            app:destination="@id/AllHospitalsFragment" />
+        <action
+            android:id="@+id/action_allpharmcy_to_itemPharmFragment"
+            app:destination="@id/ItemPharmacyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_hospitalFragment"
+            app:destination="@id/HospitalFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_DetailsFragment"
+            app:destination="@id/DoctorDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
+        <action
+            android:id="@+id/action_genhomeFragment_to_bphomeFragment"
+            app:destination="@id/BusinessFragment" />
+        <argument
+            android:name="mobile"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/MenuFragment"
+        android:name="com.chillarcards.britto.ui.home.MenuFragment"
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_main_inner">
+
+        <argument
+            android:name="mobile"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/AllPharmacyFragment"
+        android:name="com.chillarcards.britto.ui.pharmacis.AllPharmacyFragment"
+        android:label="AllPharmacyFragment"
+        tools:layout="@layout/fragment_main_inner">
+        <action
+            android:id="@+id/action_allpharmcy_to_itemPharmFragment"
+            app:destination="@id/ItemPharmacyFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/ItemPharmacyFragment"
+        android:name="com.chillarcards.britto.ui.pharmacis.PharmacyFragment"
+        android:label="AllPharmacyFragment"
+        tools:layout="@layout/fragment_main_inner">
+        <action
+            android:id="@+id/action_itemPharmFragment_to_cartFragment"
+            app:destination="@id/CartPharmacyFragment" />
+
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/CartPharmacyFragment"
+        android:name="com.chillarcards.britto.ui.pharmacis.CartFragment"
+        android:label="CartPharmacyFragment"
+        tools:layout="@layout/fragment_main_inner">
+        <action
+            android:id="@+id/action_cartFragment_to_estimateFragment"
+            app:destination="@id/EstimateFragment" />
+        <argument
+            android:name="mobile"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/EstimateFragment"
+        android:name="com.chillarcards.britto.ui.pharmacis.EstimateFragment"
+        android:label="EstimateFragment"
+        tools:layout="@layout/fragment_estimate">
+        <action
+            android:id="@+id/action_estimateFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+        <argument
+            android:name="mobile"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.chillarcards.britto.ui.pharmacis.SuccessFragment"
+        android:label="SuccessFragment"
+        tools:layout="@layout/fragment_success">
+        <action
+            android:id="@+id/action_successFragment_to_homeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_successFragment_to_bphomeFragment"
+            app:destination="@id/BusinessFragment" />
+        <argument
+            android:name="page"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AllHospitalsFragment"
+        android:name="com.chillarcards.britto.ui.hospital.AllHospitalsFragment"
+        android:label="AllHospitalsFragment"
+        tools:layout="@layout/fragment_main_inner">
+        <action
+            android:id="@+id/action_allhospFragment_to_DetailsFragment"
+            app:destination="@id/HospitalFragment" />
+
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/HospitalFragment"
+        android:name="com.chillarcards.britto.ui.hospital.HospitalFragment"
+        android:label="AllHospitalsFragment"
+        tools:layout="@layout/fragment_hospital">
+        <action
+            android:id="@+id/action_hospFragment_to_DetailsFragment"
+            app:destination="@id/HospitalDocFragment" />
+        <action
+            android:id="@+id/action_hospitalFragment_to_DocDetailsFragment"
+            app:destination="@id/DoctorDetailFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/HospitalDocFragment"
+        android:name="com.chillarcards.britto.ui.hospital.HospitalDocFragment"
+        android:label="HospitalDocFragment"
+        tools:layout="@layout/fragment_hospital_doc">
+        <action
+            android:id="@+id/action_allhospFragment_to_DetailsFragment"
+            app:destination="@id/HospitalDocFragment" />
+        <action
+            android:id="@+id/action_hospitalFragment_to_DetailsFragment"
+            app:destination="@id/DoctorDetailFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/AllDoctorFragment"
+        android:name="com.chillarcards.britto.ui.doctor.AllDoctorFragment"
+        android:label="AllDoctorFragment"
+        tools:layout="@layout/fragment_main_inner">
+        <action
+            android:id="@+id/action_alldocFragment_to_DetailsFragment"
+            app:destination="@id/DoctorDetailFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/DoctorDetailFragment"
+        android:name="com.chillarcards.britto.ui.doctor.DocDetailFragment"
+        android:label="HospitalDocFragment"
+        tools:layout="@layout/fragment_doctor_detail">
+
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/SearchFragment"
+        android:name="com.chillarcards.britto.ui.home.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_SearchFragment_to_allpharmFragment"
+            app:destination="@id/AllPharmacyFragment" />
+        <action
+            android:id="@+id/action_SearchFragment_to_alldocFragment"
+            app:destination="@id/AllDoctorFragment" />
+        <action
+            android:id="@+id/action_SearchFragment_to_allhospitalFragment"
+            app:destination="@id/AllHospitalsFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/BusinessFragment"
+        android:name="com.chillarcards.britto.ui.home.BusinessPartnerHomeFragment"
+        android:label="BusinessPartnerHomeFragment"
+        tools:layout="@layout/fragment_home_bp">
+        <action
+            android:id="@+id/action_partnerFragment_to_orderFragment"
+            app:destination="@id/OrderFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_orderviewFragment"
+            app:destination="@id/OrderViewFragment" />
+        <action
+            android:id="@+id/action_bphomeFragment_to_itemFragment"
+            app:destination="@id/StockFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/StockFragment"
+        android:name="com.chillarcards.britto.ui.item.ItemFragment"
+        android:label="StockFragment"
+        tools:layout="@layout/fragment_main_inner">
+        <action
+            android:id="@+id/action_orderFragment_to_orderviewFragment"
+            app:destination="@id/OrderViewFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/OrderFragment"
+        android:name="com.chillarcards.britto.ui.partners.AllOrderFragment"
+        android:label="OrderFragment"
+        tools:layout="@layout/fragment_home_bp">
+        <action
+            android:id="@+id/action_orderFragment_to_orderviewFragment"
+            app:destination="@id/OrderViewFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/OrderViewFragment"
+        android:name="com.chillarcards.britto.ui.partners.OrderDetailFragment"
+        android:label="OrderViewFragment"
+        tools:layout="@layout/fragment_order_inner">
+        <action
+            android:id="@+id/action_orderViewFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+</navigation>

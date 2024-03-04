@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Britto</string>
+    <string name="app_heading">Welcome User !</string>
+    <string name="compy">Chillar Payments Solutions Pvt ltd</string>
+    <string name="currency">₹</string>
+    <string name="head">Welcome User</string>
+    <string name="sub_title">Sign up to get started by verify your mobile number!</string>
+    <string name="ver">"Ver\u0020"</string>
+    <string name="rupee">ر.ع.</string>
+
+    <!--  INPUT-->
+    <string name="enter_display_name">Enter display name</string>
+    <string name="enter_mobile_number">Enter phone number</string>
+    <string name="search">Find a  medicine or product ...</string>
+
+    <!--  HEADING-->
+    <string name="version">"Version\u0020"</string>
+    <string name="map">Select Location</string>
+    <string name="cart">Cart</string>
+    <string name="stock">Stock</string>
+    <string name="service">Popular Services</string>
+    <string name="pharm">Pharmacies</string>
+    <string name="hospi">Hospitals</string>
+    <string name="doc">Doctors</string>
+    <string name="ord">Order History</string>
+    <string name="agree_tnc_one">By continuing,you agree to our </string>
+    <string name="opt_message">We have send a 6 digit OTP to the WhatsApp number xxxxxx6378</string>
+    <string name="alert_heading">Are you sure?</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="otp_expired">OTP expired</string>
+    <string name="otp_head">Verify mobile number</string>
+    <string name="general_head">Choose your role to continue</string>
+    <string name="note">Note</string>
+    <string name="subttl">Subtotal</string>
+
+    <!--  BUTTON-->
+    <string name="otp_mob">Get verification code</string>
+    <string name="contpay">Proceed to chekout</string>
+    <string name="order">Confirm Order</string>
+    <string name="retry">try again</string>
+    <string name="no_net">No Internet Connection</string>
+
+    <string name="contin">Continue</string>
+    <string name="book">View Booking</string>
+    <string name="wait">Please Wait For Otp</string>
+    <string name="register">Register</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="close">Close</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="print_bill">Print bill</string>
+    <string name="bck_home">Back to home</string>
+    <string name="bill">Generate bill</string>
+    <string name="conti_loc">Generate bill</string>
+    <string name="add_loc">Add new location</string>
+    <string name="confrm_loc">Confirm Location</string>
+    <string name="menu_one">Centralized Medical Solutions</string>
+    <string name="menu_two">Register You business</string>
+
+    <!--  Validation-->
+    <string name="mob_validation">Enter Valid Mobile Number</string>
+    <string name="name_validation">Enter Full Name</string>
+    <!--  MESSAGE-->
+    <string name="logout_alert_message">Are you sure you want to logout?</string>
+    <string name="pop_alert_message">Are you sure you want to go back?</string>
+    <string name="type_alert_message">Abstract: Welcome to our platform! Whether you\'re a valued customer seeking quality products or a business partner eager to showcase your offerings, we provide a seamless experience tailored to your needs.</string>
+    <string name="type_esti_message">Prescription Medications: For prescription items, you may be required to sign a pickup form or provide additional information as per regulatory requirements. Our staff will guide you through the necessary steps.</string>
+    <string name="esti_head">Add delivery instruction:</string>
+    <string name="esti_message">Please collect your medical items from the designated pickup area during operational hours. Kindly present your order number for efficient processing. Thank you.</string>
+
+</resources>

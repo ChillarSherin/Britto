@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_theme"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/theme"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:background="@drawable/ic_top"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_logo"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_15ssp"
+                        android:contentDescription="TODO"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:visibility="visible"
+                        android:id="@+id/version"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textAlignment="textEnd"
+                        android:textSize="@dimen/_7ssp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.65"
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:text="@string/head"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_18ssp"
+                            android:layout_marginHorizontal="@dimen/_18sdp"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:text="@string/sub_title"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:layout_marginHorizontal="@dimen/_18sdp"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/name"
+                            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_18sdp"
+                            android:layout_marginVertical="@dimen/_18sdp"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            android:elevation="@dimen/_5sdp"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                            app:boxStrokeColor="@color/color_pri_v"
+                            app:boxStrokeErrorColor="@color/primary_peach"
+                            app:boxStrokeWidth="0.2dp"
+                            app:endIconDrawable="@drawable/ic_close"
+                            app:endIconMode="clear_text"
+                            app:errorTextColor="@color/text_black"
+                            app:hintEnabled="false"
+                            app:layout_constraintBottom_toTopOf="@+id/terms"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/version"
+                            app:layout_constraintVertical_bias="0.1"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/name_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/enter_display_name"
+                                android:inputType="text"
+                                android:paddingVertical="@dimen/_11sdp"
+                                android:textSize="@dimen/_12ssp"
+                                android:maxLength="30"
+                                android:imeOptions="actionDone"
+                                tools:ignore="RtlSymmetry" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/mobile"
+                            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_18sdp"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            android:elevation="@dimen/_5sdp"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                            app:boxStrokeColor="@color/color_pri_v"
+                            app:boxStrokeErrorColor="@color/primary_peach"
+                            app:boxStrokeWidth="0.1dp"
+                            app:endIconDrawable="@drawable/ic_close"
+                            app:endIconMode="clear_text"
+                            app:errorTextColor="@color/text_black"
+                            app:hintEnabled="false"
+                            app:layout_constraintBottom_toTopOf="@+id/terms"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/version"
+                            app:layout_constraintVertical_bias="0.1"
+                            app:prefixText="+91"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/mobile_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/enter_mobile_number"
+                                android:inputType="phone"
+                                android:paddingVertical="@dimen/_11sdp"
+                                android:textSize="@dimen/_12ssp"
+                                android:maxLength="10"
+                                android:imeOptions="actionDone"
+                                tools:ignore="RtlSymmetry" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/login_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_18sdp"
+                            android:layout_marginBottom="@dimen/_12sdp"
+                            android:layout_marginTop="@dimen/_50sdp"
+                            android:alpha="0.55"
+                            android:background="@drawable/button_gradient"
+                            android:enabled="false"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:text="@string/otp_mob"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold"
+                            app:backgroundTint="@null"
+                            app:layout_constraintTop_toBottomOf="@id/mobile" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/waiting_btn"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_18sdp"
+                            android:layout_marginBottom="@dimen/_12sdp"
+                            android:layout_marginTop="@dimen/_50sdp"
+                            android:alpha="0.55"
+                            android:background="@drawable/button_gradient"
+                            android:enabled="false"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:text="@string/wait"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold"
+                            app:backgroundTint="@null"
+                            app:layout_constraintTop_toBottomOf="@id/mobile" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/terms"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_25sdp"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_9ssp"
+                                android:text="@string/agree_tnc_one"
+                                android:paddingStart="@dimen/_5sdp"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:layout_constraintTop_toBottomOf="@id/login_btn"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/terms1"
+                                />
+
+                            <TextView
+                                android:id="@+id/terms1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_25sdp"
+
+                                android:gravity="center"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_9ssp"
+                                android:paddingStart="@dimen/_5sdp"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:layout_constraintTop_toBottomOf="@id/login_btn"
+                                app:layout_constraintStart_toEndOf="@id/terms"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                />
+
+                            <ProgressBar
+                                android:id="@+id/login_progress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:indeterminate="true"
+                                android:indeterminateTint="@color/primary_peach"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="@id/login_btn"
+                                app:layout_constraintEnd_toEndOf="@id/login_btn"
+                                app:layout_constraintStart_toStartOf="@id/login_btn"
+                                app:layout_constraintTop_toTopOf="@id/login_btn" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.05"
+                    android:background="@drawable/ic_footer">
+                    <TextView
+                        android:id="@+id/bottom_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:ellipsize="marquee"
+                        android:singleLine="true"
+                        android:text="@string/compy"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_8ssp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</layout>
