@@ -1,4 +1,4 @@
-package com.chillarcards.britto.ui.pharmacis
+package com.chillarcards.britto.ui.item
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,9 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentMainInnerBinding
 import com.chillarcards.britto.ui.adapter.CartItemAdapter
-import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.ui.interfaces.OnCallBackListner
-import com.chillarcards.britto.utills.CommonDBaseModel
+import com.chillarcards.britto.ui.pharmacis.PharmacyFragmentArgs
 import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.PrefManager
 

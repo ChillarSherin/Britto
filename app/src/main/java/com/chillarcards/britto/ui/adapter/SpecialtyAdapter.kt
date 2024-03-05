@@ -24,7 +24,6 @@ class SpecialtyAdapter (private val specialties: List<String>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val specialty = specialties[position]
         holder.textView.text = specialty
-
         holder.textView.setOnClickListener {
             val commonDObj = CommonDBaseModel()
             commonDObj.mastIDs = position.toString()
@@ -41,5 +40,6 @@ class SpecialtyAdapter (private val specialties: List<String>,
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView = itemView.findViewById(R.id.textView)
+
     }
 }

@@ -1,4 +1,4 @@
-package com.chillarcards.britto.ui.pharmacis
+package com.chillarcards.britto.ui.item
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentEstimateBinding
 import com.chillarcards.britto.ui.adapter.EstimateAdapter
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
+import com.chillarcards.britto.ui.pharmacis.AllPharmacyFragmentDirections
 import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.PrefManager
@@ -62,7 +63,8 @@ open class EstimateFragment : Fragment(), IAdapterViewUtills {
     ) {
         if(Mode.equals("VIEW")) {
             findNavController().navigate(
-                AllPharmacyFragmentDirections.actionAllpharmcyToItemPharmFragment("id"
+                AllPharmacyFragmentDirections.actionAllpharmcyToItemPharmFragment(
+                    "id"
                 )
             )
         }

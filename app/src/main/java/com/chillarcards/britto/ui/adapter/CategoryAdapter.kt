@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.chillarcards.britto.R
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
@@ -24,7 +25,6 @@ class CategoryAdapter (private val specialties: List<String>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val specialty = specialties[position]
         holder.textView.text = specialty
-
         holder.textView.setOnClickListener {
             val commonDObj = CommonDBaseModel()
             commonDObj.mastIDs = position.toString()
@@ -42,5 +42,6 @@ class CategoryAdapter (private val specialties: List<String>,
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView = itemView.findViewById(R.id.textView)
+
     }
 }

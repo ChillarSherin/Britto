@@ -52,14 +52,15 @@ class SuccessFragment : Fragment(){
     }
 
     private fun redirect(){
-        if(args.page.equals("BP"))
+        if(args.page.equals("BP")){
         findNavController().navigate(
             SuccessFragmentDirections.actionSuccessFragmentToBphomeFragment()
-        )
-        if(args.page.equals("CP"))
+        )}
+        if(args.page.equals("CM")){
         findNavController().navigate(
             SuccessFragmentDirections.actionSuccessFragmentToHomeFragment()
         )
+        }
     }
 
     override fun onStop() {

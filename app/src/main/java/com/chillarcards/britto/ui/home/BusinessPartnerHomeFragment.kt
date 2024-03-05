@@ -46,6 +46,12 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
             )
         }
 
+        binding.idOrder.setOnClickListener{
+            findNavController().navigate(
+                BusinessPartnerHomeFragmentDirections.actionPartnerFragmentToOrderFragment(
+                )
+            )
+        }
         binding.viewMore.setOnClickListener{
             findNavController().navigate(
                 BusinessPartnerHomeFragmentDirections.actionPartnerFragmentToOrderFragment(

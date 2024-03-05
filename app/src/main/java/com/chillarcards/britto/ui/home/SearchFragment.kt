@@ -133,7 +133,7 @@ open class SearchFragment : Fragment(), IAdapterViewUtills, OnCallBackListner {
             }
 
         }else{
-            Const.shortToast(requireContext(),"dsfsdf")
+            Const.shortToast(requireContext(),"Wait")
         }
 
     }

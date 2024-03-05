@@ -220,7 +220,7 @@
                                             android:layout_width="@dimen/_40sdp"
                                             android:layout_height="@dimen/_40sdp"
                                             android:padding="@dimen/_8ssp"
-                                            android:src="@drawable/ic_cart" />
+                                            android:src="@drawable/ic_cart_theme" />
                                     </RelativeLayout>
 
                                     <TextView
@@ -262,7 +262,7 @@
                                             android:layout_width="@dimen/_40sdp"
                                             android:layout_height="@dimen/_40sdp"
                                             android:padding="@dimen/_8ssp"
-                                            android:src="@drawable/ic_doctor" />
+                                            android:src="@drawable/ic_job_theme" />
                                     </RelativeLayout>
 
                                     <TextView

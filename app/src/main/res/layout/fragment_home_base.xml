@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomeBaseFragment">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/inner_host_nav"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            android:layout_marginBottom="65dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/inner_nav_graph"  />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:visibility="gone"
+            android:id="@+id/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/ic_botton_top"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/ic_botton_top"
+                android:backgroundTint="@color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_home"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:drawableTop="@drawable/ic_home"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:textSize="@dimen/_10ssp"
+                        android:textAllCaps="false"
+                        android:textColor="#000000">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tv_profile"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:drawableTop="@drawable/ic_profile"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:textSize="@dimen/_10ssp"
+                        android:textAllCaps="false"
+                        android:textColor="#000000">
+
+                    </TextView>
+
+
+                    <TextView
+                        android:id="@+id/tv_cart"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:drawableTop="@drawable/ic_cart"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:textSize="@dimen/_10ssp"
+                        android:textAllCaps="false"
+                        android:textColor="#000000">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tv_job"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:drawableTop="@drawable/ic_job"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:textSize="@dimen/_10ssp"
+                        android:textAllCaps="false"
+                        android:textColor="#000000">
+
+                    </TextView>
+
+                </LinearLayout>
+
+            </com.google.android.material.bottomappbar.BottomAppBar>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

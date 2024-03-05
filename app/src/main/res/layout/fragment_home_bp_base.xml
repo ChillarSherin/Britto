@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".BpHomeBaseFragment">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/bp_inner_host_nav"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/bp_inner_nav_graph"  />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_botton_top"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/bottom_menu"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom">
+
+                <com.google.android.material.bottomappbar.BottomAppBar
+                    android:id="@+id/bottomAppBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_gravity="bottom"
+                    android:backgroundTint="@color/app_theme">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/add_profile"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:drawableTop="@drawable/ic_profile"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:textSize="@dimen/_10ssp"
+                            android:textAllCaps="false"
+                            android:textColor="#000000">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/report"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:drawableTop="@drawable/ic_hospital"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:textSize="@dimen/_10ssp"
+                            android:textAllCaps="false"
+                            android:textColor="#000000">
+
+                        </TextView>
+
+
+
+
+                        <TextView
+                            android:id="@+id/setting"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:drawableTop="@drawable/ic_cart"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:textSize="@dimen/_10ssp"
+                            android:textAllCaps="false"
+                            android:textColor="#000000">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/logout"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:drawableTop="@drawable/ic_logout"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:textSize="@dimen/_10ssp"
+                            android:textAllCaps="false"
+                            android:textColor="#000000">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                </com.google.android.material.bottomappbar.BottomAppBar>
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -38,7 +38,7 @@
                 android:id="@+id/search_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/button_white"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_10sdp"
                 app:closeIcon="@color/primary_red"

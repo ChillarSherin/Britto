@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -60,6 +61,9 @@ open class DocDetailFragment : Fragment(), IAdapterViewUtills {
             } else {
                 binding.tvAboutUsMessage.text = truncatedMessage
             }
+        }
+        binding.toolbarBack.setOnClickListener{
+            findNavController().popBackStack()
         }
     }
 

@@ -16,103 +16,392 @@
         app:cardBackgroundColor="@color/white"
         android:layout_gravity="center"
         android:padding="8dp">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/tvMainName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5ssp"
-                android:textSize="@dimen/_10ssp"
-                android:textStyle="bold"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center"
-                android:weightSum="1"
-                android:layout_margin="@dimen/_5ssp"
-                android:layout_gravity="center"
-                android:baselineAligned="false">
+                android:gravity="end">
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/item_status"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    app:trackTint="@color/switch_track_selector"
+                    app:thumbTint="@color/switch_thumb_selector"/>
+                <ImageView
+                    android:id="@+id/im_edit"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:padding="@dimen/_10sdp"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/app_name" />
+            </LinearLayout>
+            <!--Listing-->
+            <LinearLayout
+                android:id="@+id/item_view_frm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvMainName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5ssp"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvDistri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5ssp"
+                    android:textSize="@dimen/_9ssp"
+                    android:textColor="@color/button_theme_ix"/>
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.7"
-                    android:orientation="vertical"
-                    android:gravity="center|center_vertical"
-                    android:layout_gravity="center">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="start"
+                    android:weightSum="1"
+                    android:layout_margin="@dimen/_5ssp"
+                    android:layout_gravity="center"
+                    android:baselineAligned="false">
+
+                    <TextView
+                        android:id="@+id/tvRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textDirection="ltr"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_margin="@dimen/_5sdp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvOffers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textDirection="ltr"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="@color/black"
+                        android:layout_margin="@dimen/_5sdp"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+            <!--editing-->
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/item_edit_frm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextColor="@color/secondary_peach"
+                    android:textColorHint="@color/text_black"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    app:boxStrokeWidth="1dp"
+                    app:boxBackgroundColor="@color/theme_bg"
+                    app:boxStrokeColor="@color/black"
+                    app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+                    app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+                    app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+                    app:boxCornerRadiusTopStart="@dimen/_8sdp"
+                    app:counterTextColor="@color/white"
+                    app:hintTextColor="@color/white"
+                    >
+
+                    <EditText
+                        android:id="@+id/p_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:text="Enter Item Name"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColorHighlight="@color/white"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/white"
+                        android:importantForAutofill="no" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="1"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_gravity="center"
+                    android:baselineAligned="false">
 
                     <LinearLayout
-                        android:id="@+id/cartItem"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:gravity="start"
+                        android:layout_weight="0.5"
                         android:orientation="vertical"
-                        tools:ignore="UselessParent">
-
-
-                        <TextView
-                            android:id="@+id/tvDistri"
-                            android:layout_width="wrap_content"
+                        android:gravity="center|center_vertical"
+                        android:layout_gravity="center">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_9ssp"
-                            android:textColor="@color/button_theme_ix"/>
+                            app:errorTextColor="@color/secondary_red"
+                            android:textColorHint="@color/text_black"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            app:boxStrokeWidth="1dp"
+                            app:boxBackgroundColor="@color/theme_bg"
+                            app:boxStrokeColor="@color/black"
+                            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+                            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+                            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+                            app:boxCornerRadiusTopStart="@dimen/_8sdp"
+                            app:counterTextColor="@color/white"
+                            app:hintTextColor="@color/text_black"
+                            >
 
-                        <TextView
-                            android:id="@+id/tvOffers"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_9ssp"
-                            android:textColor="@color/black"
-                            android:layout_marginTop="4dp"/>
+                            <EditText
+                                android:id="@+id/et_brand"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:text="Enter brand"
+                                android:textSize="@dimen/_9ssp"
+                                android:textColorHighlight="@color/white"
+                                android:textColor="@color/text_black"
+                                android:textColorHint="@color/text_black"
+                                android:importantForAutofill="no" />
 
-                        <TextView
-                            android:id="@+id/tvRate"
-                            android:layout_width="wrap_content"
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textDirection="ltr"
-                            android:textSize="@dimen/_13ssp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_marginTop="@dimen/_4ssp"
-                            android:layout_marginBottom="@dimen/_4ssp"/>
+                            app:errorTextColor="@color/secondary_red"
+                            android:textColorHint="@color/text_black"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            app:boxStrokeWidth="1dp"
+                            app:boxBackgroundColor="@color/theme_bg"
+                            app:boxStrokeColor="@color/black"
+                            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+                            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+                            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+                            app:boxCornerRadiusTopStart="@dimen/_8sdp"
+                            app:counterTextColor="@color/white"
+                            app:hintTextColor="@color/white"
+                            >
+
+                            <EditText
+                                android:id="@+id/et_categroy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:text="Enter category"
+                                android:textSize="@dimen/_9ssp"
+                                android:textColorHighlight="@color/text_black"
+                                android:textColor="@color/text_black"
+                                android:textColorHint="@color/text_black"
+                                android:importantForAutofill="no" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
                 </LinearLayout>
-
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:gravity="center"
-                    android:layout_gravity="center">
+                    android:weightSum="1"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_gravity="center"
+                    android:baselineAligned="false">
 
-                    <com.chillarcards.britto.utills.NumberCounterView
-                        android:id="@+id/QtyEBTN"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_8ssp"/>
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
+                        android:gravity="center|center_vertical"
+                        android:layout_gravity="center">
 
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorTextColor="@color/secondary_red"
+                            android:textColorHint="@color/text_black"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            app:boxStrokeWidth="1dp"
+                            app:boxBackgroundColor="@color/theme_bg"
+                            app:boxStrokeColor="@color/black"
+                            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+                            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+                            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+                            app:boxCornerRadiusTopStart="@dimen/_8sdp"
+                            app:counterTextColor="@color/white"
+                            app:hintTextColor="@color/white"
+                            >
 
-                    <TextView
-                        android:id="@+id/add_to_cart"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_28sdp"
-                        android:background="@drawable/bg_border_btn"
+                            <EditText
+                                android:id="@+id/et_rate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:text="Enter mrp"
+                                android:textSize="@dimen/_9ssp"
+                                android:textColorHighlight="@color/text_black"
+                                android:textColor="@color/text_black"
+                                android:textColorHint="@color/text_black"
+                                android:importantForAutofill="no" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
                         android:gravity="center"
-                        android:text="Add to cart"
-                        android:textSize="@dimen/_9ssp"
-                        android:textColor="@color/button_theme_ix"/>
+                        android:layout_gravity="center">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorTextColor="@color/secondary_red"
+                            android:textColorHint="@color/text_black"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            app:boxStrokeWidth="1dp"
+                            app:boxBackgroundColor="@color/theme_bg"
+                            app:boxStrokeColor="@color/black"
+                            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+                            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+                            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+                            app:boxCornerRadiusTopStart="@dimen/_8sdp"
+                            app:counterTextColor="@color/white"
+                            app:hintTextColor="@color/white"
+                            >
+
+                            <EditText
+                                android:id="@+id/et_offer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:textSize="@dimen/_9ssp"
+                                android:text="Enter discount"
+                                android:textColorHighlight="@color/text_black"
+                                android:textColor="@color/text_black"
+                                android:textColorHint="@color/text_black"
+                                android:importantForAutofill="no" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/proceed_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.4"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_gravity="center">
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_cancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/cancel"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            android:layout_margin="@dimen/_3sdp"
+                            android:background="@drawable/button_cancel"/>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_update"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/update"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            android:layout_margin="@dimen/_3sdp"
+                            android:background="@drawable/button_update"/>
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

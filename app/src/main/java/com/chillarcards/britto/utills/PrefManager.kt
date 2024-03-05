@@ -61,13 +61,7 @@ class PrefManager(_context: Context) {
         editor.putString(MOBILENO, value)
         editor.commit()
     }
-    fun getDoctorId(): Int {
-        return pref.getInt(DOCTORID, 0)
-    }
-    fun setDoctorId(value: Int) {
-        editor.putInt(DOCTORID, value)
-        editor.commit()
-    }
+
     fun getStatus(): Int {
         return pref.getInt(STATUS, 0)
     }

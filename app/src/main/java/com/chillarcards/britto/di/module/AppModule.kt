@@ -1,14 +1,11 @@
 package com.chillarcards.britto.di.module
 
 import android.content.Context
-import android.util.Log
 import com.chillarcards.britto.data.api.ApiHelper
 import com.chillarcards.britto.data.api.ApiHelperImpl
 import com.chillarcards.britto.data.api.ApiService
 import com.chillarcards.britto.utills.NetworkHelper
-import com.chillarcards.britto.utills.PrefManager
 import okhttp3.ConnectionPool
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,25 +24,23 @@ const val CONNECT_TIMEOUT: Long = 60
  */
 
 val appModule = module {
-    single { provideOkHttpClient(get()) }
+    single { provideOkHttpClient() }
     single { provideApiService(get()) }
     single { provideRetrofit(get(), ConfigBuild.BASE_URL) }
     single { provideNetworkHelper(androidContext()) }
     single<ApiHelper> {
         return@single ApiHelperImpl(get())
     }
-    single { PrefManager(androidContext()) } // Provide PrefManager instance
 
 }
 
 private fun provideNetworkHelper(context: Context) = NetworkHelper(context)
 
-private fun provideOkHttpClient(prefManager: PrefManager) = if (ConfigBuild.DEBUG) {
+private fun provideOkHttpClient() = if (ConfigBuild.DEBUG) {
     val loggingInterceptor = HttpLoggingInterceptor()
     loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
     OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
-        .addInterceptor(getHeaderInterceptor(prefManager))
         .protocols(listOf(Protocol.HTTP_1_1))
         .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
         .readTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
@@ -74,26 +69,4 @@ private fun provideRetrofit(
 private fun provideApiService(retrofit: Retrofit): ApiService =
     retrofit.create(ApiService::class.java)
 
-private fun getHeaderInterceptor(prefManager: PrefManager): Interceptor {
-    return Interceptor { chain ->
-        val token = setAuthHeader(prefManager)
-        val request = chain.request().newBuilder()
-            .header("Authorization", "Bearer $token")
-            .build()
-        chain.proceed(request)
-    }
-}
 
-// Modify setAuthHeader function to accept PrefManager instance as parameter
-fun setAuthHeader(prefManager: PrefManager): String {
-    var token=""
-    if(prefManager.getRefresh() == "0"){
-        token = prefManager.getToken()
-        Log.e("AppModelAuth token",token)
-    }else{
-        token = prefManager.getRefToken()
-        Log.e("AppModelAuth retoken",token)
-
-    }
-    return token
-}

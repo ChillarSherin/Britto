@@ -116,8 +116,8 @@ class MobileFragment : Fragment() {
                 }
                 else -> {
                     binding.loginBtn.visibility =View.GONE
-//                    binding.waitingBtn.visibility =View.VISIBLE
                     showProgress()
+                   // onLoadSMS()
                     try {
                         findNavController().navigate(
                             MobileFragmentDirections.actionMobileFragmentToOTPFragment(input
@@ -156,43 +156,93 @@ class MobileFragment : Fragment() {
 
     private fun setTextColorForTerms() {
         try {
-            val s = "Terms and Conditions"
-            val wordToSpan: Spannable = SpannableString(s)
-            val click: ClickableSpan = object : ClickableSpan() {
-                override fun onClick(widget: View) {
-                    val browserIntent =
-                        Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse("https://www.chillarpayments.com/terms-and-conditions.html")
-                        )
-                    startActivity(browserIntent)
+            val text = "Terms & conditions and Privacy Policy"
 
+            val wordToSpan: Spannable = SpannableString(text)
+
+            // Clickable span for "Terms & conditions"
+            val termsClickableSpan = object : ClickableSpan() {
+                override fun onClick(widget: View) {
+                    val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.chillarpayments.com/terms-and-conditions.html"))
+                    startActivity(browserIntent)
                 }
             }
+
+            // Clickable span for "Privacy Policy"
+            val privacyPolicyClickableSpan = object : ClickableSpan() {
+                override fun onClick(widget: View) {
+                    val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.chillarpayments.com/aboutus.html"))
+                    startActivity(browserIntent)
+                }
+            }
+
+            // Set clickable spans for "Terms & conditions"
             wordToSpan.setSpan(
-                click, s.indexOf("Terms"), s.length,
+                termsClickableSpan,
+                text.indexOf("Terms & conditions"),
+                text.indexOf("Terms & conditions") + "Terms & conditions".length,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
+
+            // Set clickable spans for "Privacy Policy"
             wordToSpan.setSpan(
-                StyleSpan(Typeface.BOLD), s.indexOf("Terms"), s.length,
+                privacyPolicyClickableSpan,
+                text.indexOf("Privacy Policy"),
+                text.indexOf("Privacy Policy") + "Privacy Policy".length,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
+
+            // Make "Terms & conditions" and "Privacy Policy" bold
             wordToSpan.setSpan(
-                ForegroundColorSpan(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.black
-                    )
-                ),
-                s.indexOf("Terms"), s.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                StyleSpan(Typeface.BOLD),
+                text.indexOf("Terms & conditions"),
+                text.indexOf("Terms & conditions") + "Terms & conditions".length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
+
+            wordToSpan.setSpan(
+                StyleSpan(Typeface.BOLD),
+                text.indexOf("Privacy Policy"),
+                text.indexOf("Privacy Policy") + "Privacy Policy".length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+
+            // Set color for both links
+            wordToSpan.setSpan(
+                ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.black)),
+                text.indexOf("Terms & conditions"),
+                text.indexOf("Terms & conditions") + "Terms & conditions".length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+
+            wordToSpan.setSpan(
+                ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.black)),
+                text.indexOf("Privacy Policy"),
+                text.indexOf("Privacy Policy") + "Privacy Policy".length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+
+            // Set the text and movement method
             binding.terms1.text = wordToSpan
             binding.terms1.movementMethod = LinkMovementMethod.getInstance()
         } catch (e: Exception) {
             Log.e("abc_mobile", "setTextColorForTerms: msg: ", e)
         }
     }
+    fun onLoadSMS(){
+        // on the below line we are creating a try and catch block
+        try {
 
+            val message ="858585 is your verification OTP for accessing the BHC. Do not share this OTP or your number with anyone.yaMqX9A+vNH"
+            val uri: Uri = Uri.parse("smsto:+919744496378")
+            val intent = Intent(Intent.ACTION_SENDTO, uri)
+            intent.putExtra("sms_body", message)
+            startActivity(intent)
+
+        } catch (e: Exception) {
+            // on catch block we are displaying toast message for error.
+        }
+    }
     override fun onStop() {
         super.onStop()
         Log.d("abc_mob", "onStop: ")

@@ -2,16 +2,14 @@
 
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.IntentSender
 import android.content.pm.ActivityInfo
-import android.net.ConnectivityManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -57,6 +55,7 @@ import java.util.concurrent.TimeUnit
          saveLoginTime()
          checkLogout()
          installSplashScreen()
+
          super.onCreate(savedInstanceState)
          binding = ActivityMainBinding.inflate(layoutInflater)
          setContentView(binding.root)
@@ -77,21 +76,21 @@ import java.util.concurrent.TimeUnit
 
          val destination =
              if (prefManager.isLoggedIn()){
-                 R.id.HomeFragment
-                // R.id.AllPharmacyFragment
+                 if (prefManager.getRefToken() == "b2c"){
+                     R.id.homeBaseFragment
+                 } else if (prefManager.getRefToken() == "b2b"){
+                     R.id.bphomeBaseFragment
+                 } else {
+                     R.id.mobileFragment
+                 }
              } else R.id.mobileFragment
+
 
          navGraph.setStartDestination(destination)
          navController.graph = navGraph
 
-         registerReceiver(
-             ConnectivityReceiver(),
-             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
-         )
-
 
          //FIREBASE CRASH
-
 //        val crashButton = Button(this)
 //        crashButton.text = "Test Crash"
 //        crashButton.setOnClickListener {
@@ -100,6 +99,7 @@ import java.util.concurrent.TimeUnit
 //        addContentView(crashButton, ViewGroup.LayoutParams(
 //            ViewGroup.LayoutParams.MATCH_PARENT,
 //            ViewGroup.LayoutParams.WRAP_CONTENT))
+
      }
 
      override fun onNetworkConnectionChanged(isConnected: Boolean) {

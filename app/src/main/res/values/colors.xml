@@ -12,6 +12,7 @@
 
     <color name="transparent">#00FFFFFF</color>
     <color name="theme_bg">#4BD9D9D9</color>
+    <color name="theme_lgt">#6F006CA2</color>
 
     <color name="text_black">#545454</color>
     <color name="text_black_m">#CB000000</color>
@@ -24,6 +25,7 @@
     <color name="button_theme_ix">#FF738F</color>
     <color name="button_theme_jx">#FED06B</color>
     <color name="button_theme_cx">#58477B</color>
+    <color name="button_theme_gx">#477B58</color>
 
     <color name="primary_red">#ab2328</color>
     <color name="primary_blue">#00426a</color>
@@ -41,5 +43,6 @@
     <color name="sub">#F4F5F7</color>
     <color name="white_x">#C3FFFFFF</color>
     <color name="translucent">#80000000</color>
+    <color name="black_lght">#20000000</color>
 
 </resources>
