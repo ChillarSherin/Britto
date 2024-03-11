@@ -49,7 +49,7 @@ open class ProfileFragment : Fragment() {
         }
         binding.jobFrm.setOnClickListener{
             findNavController().navigate(
-                ProfileFragmentDirections.actionProfileFragmentLocationFragment(
+                ProfileFragmentDirections.actionProfileFragmentJobFragment(
                 )
             )
         }

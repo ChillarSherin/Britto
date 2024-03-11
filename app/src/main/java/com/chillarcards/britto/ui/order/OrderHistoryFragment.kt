@@ -12,6 +12,7 @@ import com.chillarcards.britto.databinding.FragmentMainInnerBinding
 import com.chillarcards.britto.ui.DummyItem
 import com.chillarcards.britto.ui.adapter.OrderHistoryAdapter
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
+import com.chillarcards.britto.ui.partners.OrderDetailFragmentDirections
 import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.PrefManager
 
@@ -63,14 +64,14 @@ open class OrderHistoryFragment : Fragment(), IAdapterViewUtills {
         ValueArray: ArrayList<CommonDBaseModel>,
         Mode: String?
     ) {
-//        if(Mode.equals("VIEW")) {
+        if(Mode.equals("VIEW")) {
 //            val pharmacyId = ValueArray[0].mastIDs
 //            val pharmacyName = ValueArray[0].itmName
 //            findNavController().navigate(
-//                AllPharmacyFragmentDirections.actionAllpharmcyToItemPharmFragment(pharmacyId,pharmacyName
+//                OrderDetailFragmentDirections.ac(pharmacyId,pharmacyName
 //                )
 //            )
-//        }
+        }
     }
 
 }

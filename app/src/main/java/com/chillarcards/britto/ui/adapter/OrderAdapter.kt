@@ -57,11 +57,29 @@ class OrderAdapter (private val items: List<DummyMenu>,
         private val orderId: TextView = itemView.findViewById(R.id.ord_id)
         private val orderDate: TextView = itemView.findViewById(R.id.ord_date)
         private val orderStatus: ImageView = itemView.findViewById(R.id.order_status)
+        private val orderStatusComp: ImageView = itemView.findViewById(R.id.order_status_com)
         private val ordStsFrm: LinearLayout = itemView.findViewById(R.id.ord_sts_frm)
+        private val ordHeadDate: TextView = itemView.findViewById(R.id.ord_head_date)
 
         fun bind(item: DummyMenu) {
 //            orderName.text = item.name
 //            orderPhone.text = item.title
+            if(item.title == "head"){
+                ordHeadDate.visibility=View.VISIBLE
+                ordHeadDate.text = item.name
+            }else{
+                ordHeadDate.visibility=View.GONE
+            }
+            if(item.image == "1"){
+                //completed
+                orderStatusComp.visibility=View.VISIBLE
+                orderStatus.visibility=View.GONE
+            }else{
+                //pending
+                orderStatusComp.visibility=View.GONE
+                orderStatus.visibility=View.VISIBLE
+            }
+
             if(pageFrom == "home"){
                 ordStsFrm.visibility=View.GONE
             }else{

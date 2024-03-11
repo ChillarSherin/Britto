@@ -2,6 +2,7 @@ package com.chillarcards.britto.ui.register
 
 import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -99,6 +100,10 @@ open class OTPFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val pInfo =
+            activity?.let { activity?.packageManager!!.getPackageInfo(it.packageName, PackageManager.GET_ACTIVITIES) }
+        val versionName = pInfo?.versionName //Version Name
+        binding.version.text = "${getString(R.string.version)}" + Const.ver_title + versionName
 
         prefManager = PrefManager(requireContext())
 

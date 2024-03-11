@@ -16,6 +16,7 @@ import com.chillarcards.britto.R
 import com.chillarcards.britto.ui.DummyJob
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.utills.CommonDBaseModel
+import de.hdodenhof.circleimageview.CircleImageView
 
 class AllJobAdapter(
     private val items: List<DummyJob>,
@@ -26,7 +27,7 @@ class AllJobAdapter(
     : RecyclerView.Adapter<AllJobAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_pharmacy, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_job, parent, false)
         return ViewHolder(view)
     }
 
@@ -49,17 +50,27 @@ class AllJobAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val menuFrm: CardView = itemView.findViewById(R.id.pharm_frm)
-        private val imagePic: ImageView = itemView.findViewById(R.id.im_pic)
+        private val imagePic: CircleImageView = itemView.findViewById(R.id.im_pic)
         private val jobName: TextView = itemView.findViewById(R.id.tvMainName)
         private val jobComp: TextView = itemView.findViewById(R.id.tvComp)
         private val jobPlace: TextView = itemView.findViewById(R.id.tvplace)
+        private val jobId: TextView = itemView.findViewById(R.id.tvtype)
         private val jobDate: TextView = itemView.findViewById(R.id.job_date)
 
         fun bind(item: DummyJob) {
             jobName.text = item.jobname
             jobComp.text = item.comname
             jobPlace.text = item.jonloc
-            jobDate.text = item.posted
+            jobDate.text = "Job posted "+item.posted
+            if (item.categ == "0") {
+                jobId.text = "Job Id: 123SD2012SD"
+            }
+            if (item.categ == "1") {
+                jobId.text = "Applied 1w ago"
+            }
+            if (item.categ == "2") {
+                jobId.text = "No longer accepting application"
+            }
             val requestOptions = RequestOptions().transform(RoundedCorners(20))
             Glide.with(activity!!)
                 .load(item.image)

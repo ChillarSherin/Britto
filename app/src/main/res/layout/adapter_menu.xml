@@ -42,7 +42,7 @@
                 android:layout_marginBottom="@dimen/_8ssp"
                 android:layout_marginHorizontal="@dimen/_5ssp"
 
-                android:textColor="@color/app_theme"
+                android:textColor="@color/text_black_m"
                 android:textSize="@dimen/_10ssp"
                 android:textStyle="bold" />
         </RelativeLayout>

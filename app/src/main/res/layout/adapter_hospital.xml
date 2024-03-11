@@ -24,6 +24,8 @@
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_70sdp"
             android:src="@drawable/ic_menu"
+            android:scaleType="fitXY"
+            android:layout_margin="@dimen/_5sdp"
             android:layout_gravity="top|center"
             android:contentDescription="TODO"
             tools:ignore="MissingConstraints" />
@@ -32,28 +34,28 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="bottom"
-            android:background="@color/tertiary_green"
+            android:background="@color/theme_round"
+            android:padding="@dimen/_1sdp"
             >
             <TextView
                 android:id="@+id/item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center|center_vertical"
-                android:layout_gravity="center|center_vertical"
-                android:textSize="@dimen/_10ssp"
-                android:text="@string/menu_one"
-                android:textColor="@color/white"
+                android:gravity="start|center_vertical"
+                android:layout_gravity="start|center_vertical"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@color/app_theme_icon"
                 android:textStyle="bold"
+                android:maxLength="15"
                 />
             <TextView
                 android:id="@+id/item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center|center_vertical"
-                android:layout_gravity="center|center_vertical"
-                android:textSize="@dimen/_10ssp"
-                android:text="@string/menu_one"
-                android:textColor="@color/white"
+                android:gravity="start|center_vertical"
+                android:layout_gravity="start|center_vertical"
+                android:textSize="@dimen/_8ssp"
+                android:textColor="@color/app_theme_icon"
                 android:textStyle="bold"
                 />
         </LinearLayout>

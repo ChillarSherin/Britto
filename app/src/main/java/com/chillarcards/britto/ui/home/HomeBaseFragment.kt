@@ -39,13 +39,16 @@ class HomeBaseFragment : Fragment() {
         binding.tvCart.setOnClickListener {
             navController.navigate(R.id.CartPharmacyFragment)
         }
+        binding.tvJob.setOnClickListener {
+            navController.navigate(R.id.AlljobFragment)
+        }
 
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
                 R.id.MapFragment, R.id.OTPFragment, R.id.successFragment,
                 R.id.ProfileFragment ,R.id.SavedLocFragment ,R.id.EstimateFragment ,
-                R.id.ItemPharmacyFragment,R.id.CartPharmacyFragment  -> {
+                R.id.ItemPharmacyFragment,R.id.CartPharmacyFragment ,R.id.JobFragment  -> {
                     binding.bottomMenu.visibility = View.GONE
                 }
                 else -> {

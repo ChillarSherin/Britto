@@ -1,22 +1,37 @@
 <resources>
     <string name="app_name">Britto</string>
+    <string name="app_name_full">BRITTO’S HEALTH CARE</string>
     <string name="app_heading">Welcome User !</string>
     <string name="compy">Chillar Payments Solutions Pvt ltd</string>
     <string name="currency">₹</string>
     <string name="head">Welcome User</string>
     <string name="sub_title">Sign up to get started by verify your mobile number!</string>
     <string name="pro_msg">Menu</string>
-    <string name="ver">"Ver\u0020"</string>
+    <string name="ver">"Version\u0020"</string>
     <string name="rupee">ر.ع.</string>
+    <string name="rps">150ر.ع.  to ر.ع.100</string>
 
     <!--  INPUT-->
     <string name="enter_display_name">Enter display name</string>
     <string name="enter_mobile_number">Enter phone number</string>
+    <string name="enter_key">Job title or company name</string>
+    <string name="enter_city">City</string>
+    <string name="enter_dis">5 miles</string>
     <string name="search">Find a  medicine or product ...</string>
-
+    <string name="search_txt">Search</string>
+    <string name="profile_details">Public Profile View</string>
+    <string name="fullname"> Business Name</string>
+    <string name="degree"> Full Address</string>
+    <string name="desig"> Short Description</string>
+    <string name="worknghrs"> PostCode</string>
+    <string name="fee"> Location</string>
+    <string name="interval">Consultation Duration</string>
+    <string name="working_hrs">Working Hours Management</string>
     <!--  HEADING-->
     <string name="version">"Version\u0020"</string>
     <string name="map">Select Location</string>
+    <string name="jobhead">Job Description</string>
+    <string name="jobreghead">Requirements</string>
     <string name="cart">Cart</string>
     <string name="stock">Stock</string>
     <string name="service">Popular Services</string>
@@ -24,6 +39,7 @@
     <string name="hospi">Hospitals</string>
     <string name="doc">Doctors</string>
     <string name="ord">Order History</string>
+    <string name="job">Job Seekers</string>
     <string name="agree_tnc_one">By continuing,you agree to our </string>
     <string name="opt_message">We have send a 6 digit OTP to the WhatsApp number xxxxxx6378</string>
     <string name="alert_heading">Are you sure?</string>
@@ -33,12 +49,18 @@
     <string name="general_head">Choose your role to continue</string>
     <string name="note">Note</string>
     <string name="subttl">Subtotal</string>
+    <string name="loc">Location</string>
+    <string name="dist">Distance</string>
+    <string name="key">Keywords</string>
 
     <!--  BUTTON-->
+    <string name="book_doc">Direct Call Book</string>
+    <string name="book_doc_cst"> No Booking Fee</string>
     <string name="otp_mob">Get verification code</string>
     <string name="contpay">Proceed to chekout</string>
     <string name="order">Confirm Order</string>
     <string name="retry">try again</string>
+    <string name="applyjob">Apply this job</string>
     <string name="no_net">No Internet Connection</string>
 
     <string name="contin">Continue</string>
@@ -64,11 +86,15 @@
     <string name="mob_validation">Enter Valid Mobile Number</string>
     <string name="name_validation">Enter Full Name</string>
     <!--  MESSAGE-->
+    <string name="notify">Notification</string>
+    <string name="logout">Logout</string>
     <string name="logout_alert_message">Are you sure you want to logout?</string>
     <string name="pop_alert_message">Are you sure you want to go back?</string>
     <string name="type_alert_message">Abstract: Welcome to our platform! Whether you\'re a valued customer seeking quality products or a business partner eager to showcase your offerings, we provide a seamless experience tailored to your needs.</string>
     <string name="type_esti_message">Prescription Medications: For prescription items, you may be required to sign a pickup form or provide additional information as per regulatory requirements. Our staff will guide you through the necessary steps.</string>
     <string name="esti_head">Add delivery instruction:</string>
     <string name="esti_message">Please collect your medical items from the designated pickup area during operational hours. Kindly present your order number for efficient processing. Thank you.</string>
-
+    <string name="enter_service">Applicant Name</string>
+    <string name="enter_service_rate">Phone Number</string>
+    <string name="enter_service_min">min experience</string>
 </resources>

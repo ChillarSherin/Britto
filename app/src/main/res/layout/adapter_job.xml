@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="2dp"
     android:paddingBottom="4dp">
 
@@ -31,24 +30,21 @@
                 android:layout_weight="0.2"
                 android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/im_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_40sdp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_gravity="center"
-                    android:scaleType="fitXY"
-                    android:layout_margin="@dimen/_8ssp"
-                    android:contentDescription="TODO"
-                    tools:ignore="MissingConstraints" />
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/im_pic"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:src="@drawable/ic_logo"
+                    app:civ_border_color="@color/app_theme"
+                    app:civ_border_width="1dp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6"
+                android:layout_weight="0.8"
                 android:orientation="vertical"
                 android:gravity="center|center_vertical"
                 android:layout_gravity="center">
@@ -65,15 +61,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_5ssp"
-                        android:text="Dr. Alexa Irene"
-                        android:textSize="@dimen/_11ssp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvComp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="OMan"
                         android:textSize="@dimen/_10ssp"
                         android:textColor="@color/text_black"/>
 
@@ -81,44 +75,34 @@
                         android:id="@+id/tvplace"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Working hours: 8.00pm to 9.00am"
-                        android:textSize="@dimen/_7ssp"
+                        android:textSize="@dimen/_8ssp"
                         android:textColor="@color/theme_text"
                         android:layout_marginTop="4dp"/>
+
+                    <TextView
+                        android:id="@+id/tvtype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:text="123SD2012SD"
+                        android:textColor="@color/text_black"
+                        android:textDirection="ltr"
+                        android:textSize="@dimen/_9ssp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/job_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:textSize="@dimen/_8ssp"
+                        android:textColor="@color/app_theme" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_gravity="center">
-                <ImageView
-                    android:id="@+id/im_call"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:src="@drawable/ic_location_tm"
-                    android:layout_gravity="center"
-                    android:contentDescription="TODO"
-                    tools:ignore="MissingConstraints" />
-                <TextView
-                    android:id="@+id/job_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="24 Hrs"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/app_theme" />
-
-            </LinearLayout>
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

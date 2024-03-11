@@ -226,14 +226,6 @@
                           android:orientation="vertical"
                           android:gravity="center"
                           android:layout_gravity="center">
-                          <ImageView
-                              android:id="@+id/im_call"
-                              android:layout_width="@dimen/_20sdp"
-                              android:layout_height="@dimen/_20sdp"
-                              android:src="@drawable/ic_call"
-                              android:layout_gravity="center"
-                              android:contentDescription="TODO"
-                              tools:ignore="MissingConstraints" />
                           <TextView
                               android:id="@+id/lst_note"
                               android:layout_width="match_parent"
@@ -265,6 +257,43 @@
                           android:gravity="start"
                           android:lineSpacingExtra="4dp"
                           android:layout_marginBottom="16dp" />
+
+                      <ImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="@dimen/_120sdp"
+                          android:src="@drawable/im_map"
+                          android:layout_gravity="center"
+                          android:scaleType="fitXY"
+                          android:contentDescription="TODO"
+                          tools:ignore="MissingConstraints" />
+
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:background="@drawable/button_gradient"
+                          android:padding="@dimen/_5sdp"
+                          android:layout_marginTop="@dimen/_20sdp"
+                          >
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:textSize="@dimen/_10ssp"
+                              android:gravity="center|center_vertical"
+                              android:text="@string/book_doc"
+                              android:textColor="@color/white"
+                              android:textStyle="bold"
+                              android:lineSpacingExtra="4dp" />
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:textSize="@dimen/_7ssp"
+                              android:gravity="center|center_vertical"
+                              android:text="@string/book_doc"
+                              android:textColor="@color/white"
+                              android:lineSpacingExtra="4dp"/>
+                      </LinearLayout>
                   </LinearLayout>
 
                 </ScrollView>

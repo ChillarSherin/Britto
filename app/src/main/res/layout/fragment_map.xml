@@ -86,7 +86,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.3"
+                android:layout_weight="0.25"
                 android:orientation="vertical"
                 android:gravity="bottom"
                 android:background="@color/app_theme">

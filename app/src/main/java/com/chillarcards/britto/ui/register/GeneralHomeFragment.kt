@@ -13,7 +13,7 @@ import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.PrefManager
 
-open class GeneralHomeFragment : Fragment(), IAdapterViewUtills {
+open class GeneralHomeFragment : Fragment() {
 
     lateinit var binding: FragmentGeneralHomeBinding
     private lateinit var prefManager: PrefManager
@@ -47,17 +47,6 @@ open class GeneralHomeFragment : Fragment(), IAdapterViewUtills {
             )
         }
 
-    }
-
-
-    override fun getAdapterPosition(
-        Position: Int,
-        ValueArray: ArrayList<CommonDBaseModel>,
-        Mode: String?
-    ) {
-        if(Mode.equals("VIEW")) {
-
-        }
     }
 
 }

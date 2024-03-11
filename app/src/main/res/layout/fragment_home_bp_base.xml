@@ -25,9 +25,10 @@
             app:navGraph="@navigation/bp_inner_nav_graph"  />
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_botton_top"
+            android:background="@drawable/bg_top_app_bar"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/theme">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.12"
+            android:gravity="top"
+            android:background="@drawable/ic_top"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/toolbar_back"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/ic_back"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/app_name" />
+                    <ImageView
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/ic_logo"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:contentDescription="TODO"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/_15ssp"
+                    android:text="Al Hayat International Hospital"
+                    android:textColor="@color/white"
+                    android:textAlignment="textStart"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/_16ssp"
+                    android:layout_marginEnd="@dimen/_10ssp"
+                    android:text="Ali Shaihani Complex, Al Ghubra Roundabout, Muscat 131, Oman"
+                    android:textColor="@color/white"
+                    android:textAlignment="textStart"
+                    android:textSize="@dimen/_9ssp"
+                    android:textStyle="normal"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                android:gravity="start"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    android:overScrollMode="never"
+                    android:background="@color/theme"
+                    android:scrollbars="none">
+
+                  <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="@dimen/_13sdp"
+                    >
+
+                    <com.chillarcards.britto.utills.ViewPagerCustomDuration
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        app:layout_constraintBottom_toTopOf="@+id/main_container"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/apply_btn"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginBottom="@dimen/_12sdp"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:background="@drawable/button_gradient"
+                          android:paddingVertical="@dimen/_10sdp"
+                          android:text="@string/applyjob"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/_12ssp"
+                          android:textStyle="bold"
+                          app:backgroundTint="@null"
+                          app:layout_constraintTop_toBottomOf="@id/mobile" />
+
+                      <TextView
+                          android:id="@+id/tvAboutUsHeading"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="@string/jobhead"
+                          android:textSize="@dimen/_11ssp"
+                          android:textStyle="bold"
+                          android:gravity="center_vertical"
+                          android:layout_marginTop="@dimen/_8sdp"
+                          android:layout_marginBottom="8dp" />
+
+                      <TextView
+                          android:id="@+id/tvAboutUsMessage"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:textSize="@dimen/_10ssp"
+                          android:gravity="start"
+                          android:lineSpacingExtra="4dp"
+                          android:layout_marginBottom="16dp" />
+
+                      <TextView
+                          android:id="@+id/tvRegHeading"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="@string/jobreghead"
+                          android:textSize="@dimen/_11ssp"
+                          android:textStyle="bold"
+                          android:gravity="center_vertical"
+                          android:layout_marginTop="@dimen/_8sdp"
+                          android:layout_marginBottom="8dp" />
+                      <TextView
+                          android:id="@+id/tvreqMessage"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginHorizontal="@dimen/_10ssp"
+                          android:textSize="@dimen/_10ssp"
+                          android:gravity="start"
+                          android:lineSpacingExtra="4dp"
+                          android:layout_marginBottom="16dp" />
+
+                      <LinearLayout
+                          android:id="@+id/specialtiesLayout"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="@dimen/_8sdp"
+                          >
+                          <androidx.recyclerview.widget.RecyclerView
+                              android:id="@+id/depart_rv"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:layout_gravity="center"
+                              app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                      </LinearLayout>
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/login_btn"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginBottom="@dimen/_12sdp"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:background="@drawable/button_gradient"
+                          android:paddingVertical="@dimen/_10sdp"
+                          android:text="@string/applyjob"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/_12ssp"
+                          android:textStyle="bold"
+                          app:backgroundTint="@null"
+                          app:layout_constraintTop_toBottomOf="@id/mobile" />
+
+                  </LinearLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+</layout>

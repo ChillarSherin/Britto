@@ -18,99 +18,82 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:defaultNavHost="true"
-            android:layout_marginBottom="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
             app:navGraph="@navigation/inner_nav_graph"  />
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:visibility="gone"
             android:id="@+id/bottom_menu"
             android:layout_width="match_parent"
             android:layout_height="58dp"
+            android:layout_marginTop="60dp"
             android:layout_gravity="bottom"
-            android:background="@drawable/ic_botton_top"
             app:layout_constraintBottom_toBottomOf="parent">
+
 
             <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/bottomAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:layout_gravity="bottom"
-                android:background="@drawable/ic_botton_top"
-                android:backgroundTint="@color/transparent">
+                android:gravity="bottom|center_vertical"
+                android:layout_gravity="bottom|center_vertical"
+                android:background="@drawable/bg_top_app_bar"
+                app:backgroundTint="@color/app_theme"
+                app:fabAlignmentMode="center"
+                app:fabCradleMargin="10dp"
+                app:fabCradleRoundedCornerRadius="20dp"
+                app:fabCradleVerticalOffset="10dp"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical">
 
-                    <TextView
+                    <ImageView
                         android:id="@+id/tv_home"
-                        style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableTop="@drawable/ic_home"
+                        android:src="@drawable/ic_home"
+                        android:padding="@dimen/_10sdp"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:textSize="@dimen/_10ssp"
-                        android:textAllCaps="false"
-                        android:textColor="#000000">
+                        android:contentDescription="@string/app_name" />
 
-                    </TextView>
-
-                    <TextView
+                    <ImageView
                         android:id="@+id/tv_profile"
-                        style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableTop="@drawable/ic_profile"
+                        android:src="@drawable/ic_profile"
+                        android:padding="@dimen/_10sdp"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:textSize="@dimen/_10ssp"
-                        android:textAllCaps="false"
-                        android:textColor="#000000">
+                        android:contentDescription="@string/app_name" />
 
-                    </TextView>
-
-
-                    <TextView
+                    <ImageView
                         android:id="@+id/tv_cart"
-                        style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableTop="@drawable/ic_cart"
+                        android:src="@drawable/ic_cart"
+                        android:padding="@dimen/_10sdp"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:textSize="@dimen/_10ssp"
-                        android:textAllCaps="false"
-                        android:textColor="#000000">
+                        android:contentDescription="@string/app_name" />
 
-                    </TextView>
-
-                    <TextView
+                    <ImageView
                         android:id="@+id/tv_job"
-                        style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableTop="@drawable/ic_job"
+                        android:src="@drawable/ic_job"
+                        android:padding="@dimen/_10sdp"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:textSize="@dimen/_10ssp"
-                        android:textAllCaps="false"
-                        android:textColor="#000000">
-
-                    </TextView>
+                        android:contentDescription="@string/app_name" />
 
                 </LinearLayout>
 

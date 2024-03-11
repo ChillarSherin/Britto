@@ -1,4 +1,4 @@
-package com.chillarcards.britto.ui.home
+package com.chillarcards.britto.ui.search
 
 import PharmacyItemAdapter
 import android.os.Bundle
@@ -17,6 +17,7 @@ import com.chillarcards.britto.ui.DummyMenu
 import com.chillarcards.britto.ui.adapter.CategoryAdapter
 import com.chillarcards.britto.ui.adapter.PharmacyAdapter
 import com.chillarcards.britto.ui.adapter.SliderPagerAdapter
+import com.chillarcards.britto.ui.home.HomeFragmentDirections
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.ui.interfaces.OnCallBackListner
 import com.chillarcards.britto.utills.CommonDBaseModel
@@ -39,6 +40,7 @@ open class SearchFragment : Fragment(), IAdapterViewUtills, OnCallBackListner {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prefManager = PrefManager(requireContext())
+        binding.idPharmacy.visibility =View.VISIBLE
 
         binding.toolbarBack.setOnClickListener{
             findNavController().popBackStack()
@@ -46,7 +48,7 @@ open class SearchFragment : Fragment(), IAdapterViewUtills, OnCallBackListner {
 
         binding.viewPhar.setOnClickListener{
             findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragmentToAllpharmFragment(
+                SearchFragmentDirections.actionSearchFragmentToAllpharmFragment(
                 )
             )
         }
@@ -102,38 +104,56 @@ open class SearchFragment : Fragment(), IAdapterViewUtills, OnCallBackListner {
         ValueArray: ArrayList<CommonDBaseModel>,
         Mode: String?
     ) {
-        if(Mode.equals("CAT")) {
+        if(Mode.equals("PHAR")){
+            val pharmacyId = ValueArray[0].mastIDs
+            val pharmacyName = ValueArray[0].itmName
+            findNavController().navigate(
+                SearchFragmentDirections.actionSearchFragmentToItemPharmacyFragment(
+                    pharmacyId,
+                    pharmacyName
+                )
+            )
+        }
+        else if(Mode.equals("CAT")) {
+
             if(ValueArray[0].itmName.equals("Pharmacy")){
                 val pharmacyId = ValueArray[0].mastIDs
                 val pharmacyName = ValueArray[0].itmName
                 findNavController().navigate(
-                    SearchFragmentDirections.actionSearchFragmentToAllpharmFragment(pharmacyId,pharmacyName)
+                    SearchFragmentDirections.actionSearchFragmentToAllpharmFragment(
+                        pharmacyId,
+                        pharmacyName
+                    )
                 )
             }
             if(ValueArray[0].itmName.equals("Hospital")){
                 val mastId = ValueArray[0].mastIDs
                 val itmName = ValueArray[0].itmName
                 findNavController().navigate(
-                    SearchFragmentDirections.actionSearchFragmentToAllhospitalFragment(mastId,itmName)
+                    SearchFragmentDirections.actionSearchFragmentToAllhospitalFragment(
+                        mastId,
+                        itmName
+                    )
                 )
             }
             if(ValueArray[0].itmName.equals("Doctor")){
                 val mastId = ValueArray[0].mastIDs
                 val itmName = ValueArray[0].itmName
                 findNavController().navigate(
-                    SearchFragmentDirections.actionSearchFragmentToAlldocFragment(mastId,itmName)
+                    SearchFragmentDirections.actionSearchFragmentToAlldocFragment(mastId, itmName)
                 )
             }
             if(ValueArray[0].itmName.equals("Lab")){
                 val mastId = ValueArray[0].mastIDs
                 val itmName = ValueArray[0].itmName
                 findNavController().navigate(
-                    SearchFragmentDirections.actionSearchFragmentToAllpharmFragment(mastId,itmName)
+                    SearchFragmentDirections.actionSearchFragmentToAllpharmFragment(mastId, itmName)
                 )
             }
 
-        }else{
-            Const.shortToast(requireContext(),"Wait")
+        }
+        else{
+            Const.shortToast(requireContext(),"Coming Soon")
         }
 
     }

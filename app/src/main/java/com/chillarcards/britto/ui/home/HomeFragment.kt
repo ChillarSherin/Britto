@@ -1,9 +1,19 @@
 package com.chillarcards.britto.ui.home
 
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -12,19 +22,59 @@ import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentHomeBinding
 import com.chillarcards.britto.ui.DummyImage
 import com.chillarcards.britto.ui.DummyMenu
+import com.chillarcards.britto.ui.MainActivity
 import com.chillarcards.britto.ui.adapter.DoctorAdapter
 import com.chillarcards.britto.ui.adapter.HospitalAdapter
+import com.chillarcards.britto.ui.adapter.JobHomeAdapter
 import com.chillarcards.britto.ui.adapter.PharmacyAdapter
 import com.chillarcards.britto.ui.adapter.SliderPagerAdapter
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.utills.CommonDBaseModel
+import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.PrefManager
 
 open class HomeFragment : Fragment(), IAdapterViewUtills {
 
     lateinit var binding: FragmentHomeBinding
     private lateinit var prefManager: PrefManager
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // in here you can do logic when backPress is clicked
+                alertMsg(requireContext())
+            }
+        })
+    }
+    fun alertMsg(context: Context) {
+        try {
+            PrefManager(context)
+            val builder = AlertDialog.Builder(context)
+            // Create the AlertDialog
+
+            //set title for alert dialog
+            builder.setTitle(R.string.alert_heading)
+            //set message for alert dialog
+            builder.setMessage(R.string.pop_alert_message)
+            builder.setIcon(R.mipmap.ic_launcher)
+            builder.setCancelable(false)
+
+            //performing positive action
+            builder.setPositiveButton(context.getString(R.string.ok)) { _, _ ->
+                findNavController().popBackStack()
+            }
+            builder.setNegativeButton(context.getString(R.string.cancel)) { _, _ ->
+//                alertDialog.dismiss()
+            }
+            val alertDialog: AlertDialog = builder.create()
+
+            alertDialog.setCanceledOnTouchOutside(false)
+            alertDialog.show()
+        } catch (e: Exception) {
+            //e.printstackTrace()
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,11 +86,8 @@ open class HomeFragment : Fragment(), IAdapterViewUtills {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prefManager = PrefManager(requireContext())
-        binding.logo.setOnClickListener{
-            findNavController().navigate(
-                HomeFragmentDirections.actionGenhomeFragmentToBphomeFragment(
-                )
-            )
+        binding.menu.setOnClickListener{
+            menuOptions(it)
         }
 
         binding.idPharmacy.setOnClickListener{
@@ -93,9 +140,9 @@ open class HomeFragment : Fragment(), IAdapterViewUtills {
         }
 
         val dummyItem = listOf(
+            DummyImage(3,"https://assets.truemeds.in/Images/dwebbanner3.jpeg?tr=cm-pad_resize,bg-FFFFFF,lo-true,w-724"),
             DummyImage(1,"https://assets.truemeds.in/Images/dwebbanner2.jpeg?tr=cm-pad_resize,bg-FFFFFF,lo-true,w-724"),
             DummyImage(2,"https://assets.truemeds.in/Images/tr:orig-true/mobikwik-500cashback.jpg?tr=cm-pad_resize,bg-FFFFFF,lo-true,w-724"),
-            DummyImage(3,"https://assets.truemeds.in/Images/dwebbanner3.jpeg?tr=cm-pad_resize,bg-FFFFFF,lo-true,w-724"),
         )
         val dummyPhar = listOf(
             DummyMenu(1,"https://lh3.googleusercontent.com/p/AF1QipMRixWWkhlF-8Xgw5nE98k2h1Mds3jla2c87oWV=s1360-w1360-h1020","Mazoon Pharmacy","Oman"),
@@ -133,6 +180,59 @@ open class HomeFragment : Fragment(), IAdapterViewUtills {
         binding.topHospRv.adapter = hospTopPicAdapter
         binding.topHospRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
+        val jobTopPicAdapter = JobHomeAdapter(
+            dummyPhar, context,activity,this@HomeFragment)
+        binding.topJobRv.adapter = jobTopPicAdapter
+        binding.topJobRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+    }
+    private fun menuOptions(view: View) {
+        val popup = PopupMenu(requireContext(), view)
+        val inflater: MenuInflater = popup.menuInflater
+        inflater.inflate(R.menu.menu_top, popup.menu)
+        popup.show()
+        val pInfo =
+            activity?.let { activity?.packageManager!!.getPackageInfo(it.packageName, PackageManager.GET_ACTIVITIES) }
+        val versionName = pInfo?.versionName //Version Name
+        val ver = getString(R.string.ver) + Const.ver_title + versionName
+        popup.menu.getItem(popup.menu.size() - 1).title = ver
+
+        popup.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_logout -> showLogoutAlert()
+            }
+            true
+        }
+
+    }
+    private fun showLogoutAlert() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(R.string.logout)
+        builder.setMessage(R.string.logout_alert_message)
+        builder.setIcon(android.R.drawable.ic_lock_power_off)
+
+        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
+            val prefManager = PrefManager(requireContext())
+            prefManager.clearAll()
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            ActivityCompat.finishAffinity(requireActivity())
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
+
+        builder.setNegativeButton(getString(R.string.no)) { dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setOnShowListener {
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.primary_red
+                )
+            )
+        }
+        alertDialog.show()
     }
 
 
