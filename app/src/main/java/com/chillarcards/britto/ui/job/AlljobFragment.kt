@@ -42,7 +42,7 @@ open class AlljobFragment : Fragment(), IAdapterViewUtills {
         )
 
         val commonAdapter = AllJobAdapter(
-            dummyPhar, context,activity,this@AlljobFragment)
+            dummyPhar, context,activity)
         binding.topOptionRv.adapter = commonAdapter
         binding.topOptionRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 

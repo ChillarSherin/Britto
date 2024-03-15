@@ -89,6 +89,17 @@
                         android:text="123SD2012SD"
                         android:textDirection="ltr"
                         android:textColor="@color/text_black"/>
+
+                    <TextView
+                        android:id="@+id/tvapplied"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        android:text="Applies"
+                        android:textDirection="ltr"
+                        android:textColor="@color/text_black"/>
                     <TextView
                         android:id="@+id/job_date"
                         android:layout_width="wrap_content"

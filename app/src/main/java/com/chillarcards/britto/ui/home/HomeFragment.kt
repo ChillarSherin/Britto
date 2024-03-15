@@ -90,6 +90,13 @@ open class HomeFragment : Fragment(), IAdapterViewUtills {
             menuOptions(it)
         }
 
+        binding.location.setOnClickListener{
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToLocationFragment(
+                )
+            )
+        }
+
         binding.idPharmacy.setOnClickListener{
             findNavController().navigate(
                 HomeFragmentDirections.actionHomeFragmentToAllpharmFragment(

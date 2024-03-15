@@ -47,6 +47,9 @@ open class SavedLocationFragment : Fragment(), IAdapterViewUtills {
         binding.locRv.adapter = savedLocationAdapter
         binding.locRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
+        binding.newLocBtn.setOnClickListener{
+            SavedLocationFragmentDirections.actionSavedFragmentToMapFragment()
+        }
 
     }
 
@@ -63,6 +66,7 @@ open class SavedLocationFragment : Fragment(), IAdapterViewUtills {
         Mode: String?
     ) {
         if(Mode.equals("VIEW")) {
+
             findNavController().navigate(
                 SavedLocationFragmentDirections.actionSavedFragmentToGenhomeFragment(
                 )

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CommonHomeBaseFragment">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/common_host_nav"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
+            app:navGraph="@navigation/new_inner_nav_graph"  />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:gravity="bottom|center_vertical"
+                android:layout_gravity="bottom|center_vertical"
+                android:background="@drawable/bg_top_app_bar"
+                app:backgroundTint="@color/app_theme"
+                app:fabAlignmentMode="center"
+                app:fabCradleMargin="10dp"
+                app:fabCradleRoundedCornerRadius="20dp"
+                app:fabCradleVerticalOffset="10dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/tv_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_home"
+                        android:padding="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:contentDescription="@string/app_name" />
+
+                    <ImageView
+                        android:id="@+id/tv_profile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_profile"
+                        android:padding="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:contentDescription="@string/app_name" />
+
+                    <ImageView
+                        android:id="@+id/tv_cart"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_cart"
+                        android:padding="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:contentDescription="@string/app_name" />
+
+                    <ImageView
+                        android:id="@+id/tv_job"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_job"
+                        android:padding="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:contentDescription="@string/app_name" />
+
+                </LinearLayout>
+
+            </com.google.android.material.bottomappbar.BottomAppBar>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

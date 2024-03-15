@@ -21,8 +21,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 class AllJobAdapter(
     private val items: List<DummyJob>,
     private val context: Context?,
-    private val activity: FragmentActivity?,
-    private val getAdapterUtil: IAdapterViewUtills,
+    private val activity: FragmentActivity?
 )
     : RecyclerView.Adapter<AllJobAdapter.ViewHolder>() {
 
@@ -34,16 +33,7 @@ class AllJobAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
-        holder.menuFrm.setOnClickListener {
-            val commonDObj = CommonDBaseModel()
-            commonDObj.mastIDs = item.id.toString()
-            commonDObj.itmName = item.jobname
 
-            val sCommonDAry: ArrayList<CommonDBaseModel> = ArrayList()
-            sCommonDAry.add(commonDObj)
-            getAdapterUtil.getAdapterPosition(position, sCommonDAry, "VIEW")
-
-        }
     }
 
     override fun getItemCount() = items.size

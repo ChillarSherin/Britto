@@ -5,6 +5,44 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/BusinessFragment">
 
+    <fragment
+        android:id="@+id/BusinessFragment"
+        android:name="com.chillarcards.britto.ui.home.BusinessPartnerHomeFragment"
+        android:label="BusinessPartnerHomeFragment"
+        tools:layout="@layout/fragment_home_bp">
+        <action
+            android:id="@+id/action_partnerFragment_to_orderFragment"
+            app:destination="@id/OrderFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_orderviewFragment"
+            app:destination="@id/OrderViewFragment" />
+        <action
+            android:id="@+id/action_bphomeFragment_to_itemFragment"
+            app:destination="@id/StockFragment" />
+        <action
+            android:id="@+id/action_bphomeFragment_to_BpProfileFragment"
+            app:destination="@id/BpProfileFragment" />
+        <action
+            android:id="@+id/action_bphomeFragment_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
+        <action
+            android:id="@+id/action_bphomeFragment_to_JobView"
+            app:destination="@id/JobRequestFragment" />
+        <action
+            android:id="@+id/action_bphomeFragment_to_AddJob"
+            app:destination="@id/AddJobFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/BpProfileFragment"
@@ -18,7 +56,6 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
-
 
     <fragment
         android:id="@+id/successFragment"
@@ -55,6 +92,7 @@
         <action
             android:id="@+id/action_SearchFragment_to_ItemPharmacyFragment"
             app:destination="@id/ItemPharmacyFragment" />
+
         <argument
             android:name="id"
             android:defaultValue=""
@@ -67,41 +105,7 @@
             app:nullable="true" />
 
     </fragment>
-    <fragment
-        android:id="@+id/BusinessFragment"
-        android:name="com.chillarcards.britto.ui.home.BusinessPartnerHomeFragment"
-        android:label="BusinessPartnerHomeFragment"
-        tools:layout="@layout/fragment_home_bp">
-        <action
-            android:id="@+id/action_partnerFragment_to_orderFragment"
-            app:destination="@id/OrderFragment" />
-        <action
-            android:id="@+id/action_orderFragment_to_orderviewFragment"
-            app:destination="@id/OrderViewFragment" />
-        <action
-            android:id="@+id/action_bphomeFragment_to_itemFragment"
-            app:destination="@id/StockFragment" />
-        <action
-            android:id="@+id/action_bphomeFragment_to_BpProfileFragment"
-            app:destination="@id/BpProfileFragment" />
-        <action
-            android:id="@+id/action_bphomeFragment_to_SearchFragment"
-            app:destination="@id/SearchFragment" />
-        <action
-            android:id="@+id/action_bphomeFragment_to_JobView"
-            app:destination="@id/JobRequestFragment" />
-        <argument
-            android:name="id"
-            android:defaultValue=""
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="name"
-            android:defaultValue=""
-            app:argType="string"
-            app:nullable="true" />
 
-    </fragment>
     <fragment
         android:id="@+id/StockFragment"
         android:name="com.chillarcards.britto.ui.item.ItemFragment"
@@ -123,13 +127,71 @@
 
     </fragment>
     <fragment
+        android:id="@+id/AddJobFragment"
+        android:name="com.chillarcards.britto.ui.job.BpAddJobFragment"
+        android:label="AddJobFragment"
+        tools:layout="@layout/fragment_add_job">
+        <action
+            android:id="@+id/action_AddJobFragment_to_detailviewFragment"
+            app:destination="@id/jobDetailViewFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
         android:id="@+id/JobRequestFragment"
-        android:name="com.chillarcards.britto.ui.job.JobRequestFragment"
+        android:name="com.chillarcards.britto.ui.job.JobAppliedFragment"
         android:label="JobRequestFragment"
         tools:layout="@layout/fragment_main_inner">
         <action
-            android:id="@+id/action_JobRequestFragment_to_JobView"
-            app:destination="@id/JobIntrestedFragment" />
+            android:id="@+id/action_jobRequestFragment_to_detailviewFragment"
+            app:destination="@id/jobDetailViewFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/jobDetailViewFragment"
+        android:name="com.chillarcards.britto.ui.job.BpJobDetailFragment"
+        android:label="JobRequestFragment"
+        tools:layout="@layout/fragment_main_inner">
+        <action
+            android:id="@+id/action_jobDetailFragment_to_resumeviewFragment"
+            app:destination="@id/ResumeViewFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/ResumeViewFragment"
+        android:name="com.chillarcards.britto.ui.job.PdfViewerFragment"
+        android:label="JobRequestFragment"
+        tools:layout="@layout/fragment_pdf_viewer">
+
         <argument
             android:name="id"
             android:defaultValue=""
@@ -147,9 +209,7 @@
         android:name="com.chillarcards.britto.ui.job.ViewIntrestFragment"
         android:label="JobIntrestedFragment"
         tools:layout="@layout/fragment_main_inner">
-        <action
-            android:id="@+id/action_JobRequestFragment_to_JobView"
-            app:destination="@id/JobIntrestedFragment" />
+
         <argument
             android:name="id"
             android:defaultValue=""

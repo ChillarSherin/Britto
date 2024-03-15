@@ -10,8 +10,7 @@ import com.chillarcards.britto.R
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.utills.CommonDBaseModel
 
-class CategoryAdapter (private val specialties: List<String>,
-                       private val getAdapterUtil: IAdapterViewUtills
+class CategoryAdapter (private val specialties: List<String>
 
 ) :
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
@@ -25,15 +24,7 @@ class CategoryAdapter (private val specialties: List<String>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val specialty = specialties[position]
         holder.textView.text = specialty
-        holder.textView.setOnClickListener {
-            val commonDObj = CommonDBaseModel()
-            commonDObj.mastIDs = position.toString()
-            commonDObj.itmName = specialty
-            val sCommonDAry: ArrayList<CommonDBaseModel> = ArrayList()
-            sCommonDAry.add(commonDObj)
-            getAdapterUtil.getAdapterPosition(position, sCommonDAry, "CAT")
 
-        }
     }
 
     override fun getItemCount(): Int {

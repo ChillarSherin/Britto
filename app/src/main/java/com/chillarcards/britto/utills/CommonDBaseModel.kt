@@ -1,5 +1,6 @@
 package com.chillarcards.britto.utills
 
+import com.chillarcards.britto.ui.register.doctor.WorkSchedule
 import com.google.gson.annotations.SerializedName
 /**
  * @Author: Sherin Jaison
@@ -14,5 +15,6 @@ data class CommonDBaseModel  (
     @SerializedName("ValueStr1" ) var valueStr1 : String? = null,
     @SerializedName("ValueStr2" ) var valueStr2 : String? = null,
     @SerializedName("Position" ) var positionVal : Int? = null,
+    @SerializedName("ListData" ) var listData :  List<WorkSchedule>? = null,
 
-)
+    )

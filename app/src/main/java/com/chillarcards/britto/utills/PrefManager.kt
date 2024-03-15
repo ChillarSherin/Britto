@@ -10,7 +10,7 @@ class PrefManager(_context: Context) {
         private const val PREF_NAME = "Servicexpert"
 
         private const val IS_LOGGED_IN = "IS_LOGGED_IN"
-        private const val REFRESH = "REFRESH"
+        private const val PAGE = "PAGE"
         private const val REFRESHTOKEN = "REFRESHTOKEN"
         private const val TOKEN = "Token"
         private const val STATUS = "STATUS"
@@ -47,11 +47,11 @@ class PrefManager(_context: Context) {
         editor.putString(REFRESHTOKEN, token)
         editor.commit()
     }
-    fun getRefresh(): String {
-        return pref.getString(REFRESH, "") ?: ""
+    fun getPage(): String {
+        return pref.getString(PAGE, "") ?: ""
     }
-    fun setRefresh(token: String) {
-        editor.putString(REFRESH, token)
+    fun setPage(token: String) {
+        editor.putString(PAGE, token)
         editor.commit()
     }
     fun getMobileNo(): String {

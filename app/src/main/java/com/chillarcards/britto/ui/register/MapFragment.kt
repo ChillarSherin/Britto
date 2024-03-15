@@ -1,5 +1,6 @@
 package com.chillarcards.britto.ui.register
 
+//import kotlinx.android.synthetic.main.fragment_map.*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentMapBinding
-import com.chillarcards.britto.databinding.FragmentMobileBinding
 import com.chillarcards.britto.di.module.ConfigBuild
 import com.chillarcards.britto.utills.Const
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -25,8 +25,6 @@ import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.api.net.FetchPlaceRequest
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
 import com.google.android.libraries.places.api.net.PlacesClient
-//import kotlinx.android.synthetic.main.fragment_map.*
-import java.util.*
 
 class MapFragment : Fragment(), OnMapReadyCallback {
 
@@ -59,10 +57,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
       //            searchPlace()
 
         binding.loginBtn.setOnClickListener{
-            findNavController().navigate(
-                MapFragmentDirections.actionMapFragmentToSavedFragment(
-                )
-            )
+
         }
     }
 

@@ -9,20 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chillarcards.britto.R
-import com.chillarcards.britto.databinding.FragmentJobDetailBinding
-import com.chillarcards.britto.databinding.FragmentJobInnerBinding
 import com.chillarcards.britto.databinding.FragmentMainInnerBinding
 import com.chillarcards.britto.ui.DummyJob
-import com.chillarcards.britto.ui.DummyMenu
 import com.chillarcards.britto.ui.adapter.AllJobAdapter
-import com.chillarcards.britto.ui.adapter.AllPharmacyAdapter
 import com.chillarcards.britto.ui.adapter.CategoryAdapter
-import com.chillarcards.britto.ui.home.HomeFragmentDirections
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.PrefManager
 
-open class JobRequestFragment : Fragment(), IAdapterViewUtills {
+open class JobRequestFragment : Fragment() {
 
     lateinit var binding: FragmentMainInnerBinding
     private lateinit var prefManager: PrefManager
@@ -51,14 +46,14 @@ open class JobRequestFragment : Fragment(), IAdapterViewUtills {
        )
 
         val commonAdapter = AllJobAdapter(
-            dummyPhar, context,activity,this@JobRequestFragment)
+            dummyPhar, context,activity)
         binding.topOptionRv.adapter = commonAdapter
         binding.topOptionRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         val medicalSpecialties = listOf(
             "In Progress", "Applied"
         )
-        binding.topPicRv.adapter = CategoryAdapter(medicalSpecialties,this@JobRequestFragment)
+        binding.topPicRv.adapter = CategoryAdapter(medicalSpecialties)
 
     }
 
@@ -69,18 +64,6 @@ open class JobRequestFragment : Fragment(), IAdapterViewUtills {
         binding.toolbar.toolbarTitle.text = getString(R.string.job)
     }
 
-    override fun getAdapterPosition(
-        Position: Int,
-        ValueArray: ArrayList<CommonDBaseModel>,
-        Mode: String?
-    ) {
-        if(Mode.equals("VIEW")) {
-            val pharmacyId = ValueArray[0].mastIDs
-            findNavController().navigate(
-                JobRequestFragmentDirections.actionJobRequestFragmentToJobView(pharmacyId
-                )
-            )
-        }
-    }
+
 
 }

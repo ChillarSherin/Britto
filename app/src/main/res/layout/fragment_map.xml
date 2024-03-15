@@ -25,22 +25,26 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.95"
                 android:orientation="vertical">
-
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/toolbar" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <include
-                        android:id="@+id/toolbar"
-                        layout="@layout/toolbar" />
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/toolbar"
+                    >
+
+
 
                     <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@id/search_layout"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="8dp"/>
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@id/search_layout"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="8dp"
+                        />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/search_layout"
@@ -89,7 +93,7 @@
                 android:layout_weight="0.25"
                 android:orientation="vertical"
                 android:gravity="bottom"
-                android:background="@color/app_theme">
+                android:background="@drawable/bg_top_app_bar">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -104,6 +108,7 @@
                         android:text="Infopark Phase 2 Kakkanad, Kerala 682030"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
                         android:drawableStart="@drawable/ic_location"
                         />
                 </LinearLayout>

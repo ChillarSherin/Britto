@@ -306,10 +306,28 @@ open class OTPFragment : Fragment() {
 
 
     private fun mobileVerify() {
-        findNavController().navigate(
-            OTPFragmentDirections.actionOtpFragmentToMapFragment(
+        //1= B2C 2= B2B
+        if(args.seleId.equals("1")){
+            if (prefManager.isLoggedIn()){
+                findNavController().navigate(
+                    OTPFragmentDirections.actionOTPFragmentToHomeFragment(
+                    )
+                )
+            }else{
+                findNavController().navigate(
+                    OTPFragmentDirections.actionMapFragmentToSavedFragment(
+                    )
+                )
+            }
+
+        }else{
+            findNavController().navigate(
+                OTPFragmentDirections.actionOTPFragmentToGeneralFragment(
+                )
             )
-        )
+        }
+
+
     }
 
     private fun otpObserver() {

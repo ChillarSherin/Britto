@@ -151,210 +151,21 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <LinearLayout
-                            android:id="@+id/category_frm"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_80sdp"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_15sdp"
+                            android:id="@+id/bp_inner_pharm"
+                            android:visibility="gone"
 
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:weightSum="1">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0.25"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:id="@+id/id_stock"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:orientation="vertical"
-                                    tools:ignore="MissingConstraints">
-
-                                    <RelativeLayout
-                                        android:layout_width="@dimen/_50sdp"
-                                        android:layout_height="@dimen/_50sdp"
-                                        android:background="@drawable/round_circle"
-                                        android:gravity="center">
-
-                                        <ImageView
-                                            android:layout_width="@dimen/_40sdp"
-                                            android:layout_height="@dimen/_40sdp"
-                                            android:padding="@dimen/_8ssp"
-                                            android:src="@drawable/ic_pharmacy" />
-                                    </RelativeLayout>
-
-                                    <TextView
-                                        android:id="@+id/menu_name"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:text="Stock"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10ssp"
-                                         />
-
-
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0.25"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:id="@+id/id_order"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:orientation="vertical"
-                                    tools:ignore="MissingConstraints">
-
-                                    <RelativeLayout
-                                        android:layout_width="@dimen/_50sdp"
-                                        android:layout_height="@dimen/_50sdp"
-                                        android:background="@drawable/round_circle"
-                                        android:gravity="center">
-
-                                        <ImageView
-                                            android:layout_width="@dimen/_40sdp"
-                                            android:layout_height="@dimen/_40sdp"
-                                            android:padding="@dimen/_8ssp"
-                                            android:src="@drawable/ic_cart_theme" />
-                                    </RelativeLayout>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:text="Order History"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10ssp"
-                                         />
-
-
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0.25"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:id="@+id/id_job"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:orientation="vertical"
-                                    tools:ignore="MissingConstraints">
-
-                                    <RelativeLayout
-                                        android:layout_width="@dimen/_50sdp"
-                                        android:layout_height="@dimen/_50sdp"
-                                        android:background="@drawable/round_circle"
-                                        android:gravity="center">
-
-                                        <ImageView
-                                            android:layout_width="@dimen/_40sdp"
-                                            android:layout_height="@dimen/_40sdp"
-                                            android:padding="@dimen/_8ssp"
-                                            android:src="@drawable/ic_job_theme" />
-                                    </RelativeLayout>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:text="Job"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10ssp"/>
-
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0.25"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:id="@+id/id_profile"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:orientation="vertical"
-                                    tools:ignore="MissingConstraints">
-
-                                    <RelativeLayout
-                                        android:layout_width="@dimen/_50sdp"
-                                        android:layout_height="@dimen/_50sdp"
-                                        android:background="@drawable/round_circle"
-                                        android:gravity="center">
-
-                                        <ImageView
-                                            android:layout_width="@dimen/_40sdp"
-                                            android:layout_height="@dimen/_40sdp"
-                                            android:padding="@dimen/_8ssp"
-                                            android:src="@drawable/ic_more" />
-                                    </RelativeLayout>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:text="Profile"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10ssp"
-
-                                         />
-
-
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/menu_rv"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:visibility="gone"
-                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                app:spanCount="4" />
-
-                        </LinearLayout>
-
-                        <!--Order-->
-                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:layout_marginBottom="@dimen/_15sdp"
+                            android:orientation="vertical">
 
-                            >
                             <LinearLayout
+                                android:id="@+id/category_frm"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/_80sdp"
                                 android:layout_gravity="center"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_15sdp"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="1">
@@ -362,61 +173,414 @@
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="0.8"
+                                    android:layout_weight="0.25"
                                     android:orientation="horizontal">
-                                    <TextView
-                                        android:layout_width="wrap_content"
+
+                                    <LinearLayout
+                                        android:id="@+id/id_stock"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Recent order"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10ssp"
-                                        android:textStyle="bold"
+                                        android:orientation="vertical"
+                                        tools:ignore="MissingConstraints">
 
-                                        />
+                                        <RelativeLayout
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
+                                            android:background="@drawable/round_circle"
+                                            android:gravity="center">
+
+                                            <ImageView
+                                                android:layout_width="@dimen/_40sdp"
+                                                android:layout_height="@dimen/_40sdp"
+                                                android:padding="@dimen/_8ssp"
+                                                android:src="@drawable/ic_pharmacy" />
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:id="@+id/menu_name"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="Stock"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10ssp"
+                                             />
+
+
+                                    </LinearLayout>
+
 
                                 </LinearLayout>
 
                                 <LinearLayout
-                                    android:id="@+id/view_more"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="0.2"
+                                    android:layout_weight="0.25"
                                     android:orientation="horizontal">
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="end"
-                                        android:text="View More"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10ssp"
-                                        android:textStyle="bold"
 
-                                        />
+                                    <LinearLayout
+                                        android:id="@+id/id_order"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        tools:ignore="MissingConstraints">
+
+                                        <RelativeLayout
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
+                                            android:background="@drawable/round_circle"
+                                            android:gravity="center">
+
+                                            <ImageView
+                                                android:layout_width="@dimen/_40sdp"
+                                                android:layout_height="@dimen/_40sdp"
+                                                android:padding="@dimen/_8ssp"
+                                                android:src="@drawable/ic_cart_theme" />
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="Order History"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10ssp"
+                                             />
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.25"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:id="@+id/id_job"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        tools:ignore="MissingConstraints">
+
+                                        <RelativeLayout
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
+                                            android:background="@drawable/round_circle"
+                                            android:gravity="center">
+
+                                            <ImageView
+                                                android:layout_width="@dimen/_40sdp"
+                                                android:layout_height="@dimen/_40sdp"
+                                                android:padding="@dimen/_8ssp"
+                                                android:src="@drawable/ic_job_theme" />
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="Job"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10ssp"/>
+
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.25"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:id="@+id/id_profile"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        tools:ignore="MissingConstraints">
+
+                                        <RelativeLayout
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
+                                            android:background="@drawable/round_circle"
+                                            android:gravity="center">
+
+                                            <ImageView
+                                                android:layout_width="@dimen/_40sdp"
+                                                android:layout_height="@dimen/_40sdp"
+                                                android:padding="@dimen/_8ssp"
+                                                android:src="@drawable/ic_more" />
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="Profile"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10ssp"
+
+                                             />
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/menu_rv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    app:spanCount="4" />
+
+                            </LinearLayout>
+
+                            <!--Order-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_15sdp"
+
+                                >
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:weightSum="1">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="0.8"
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text="Recent order"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10ssp"
+                                            android:textStyle="bold"
+
+                                            />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/view_more"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="0.2"
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end"
+                                            android:text="View More"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_10ssp"
+                                            android:textStyle="bold"
+
+                                            />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:weightSum="1">
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/top_pic_rv"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        android:layout_gravity="center"
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                                 </LinearLayout>
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:weightSum="1">
-
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/top_pic_rv"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:layout_gravity="center"
-                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-                            </LinearLayout>
                         </LinearLayout>
+                       <LinearLayout
+                           android:visibility="gone"
+                           android:id="@+id/bp_inner_doc"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginHorizontal="@dimen/_18sdp"
+                           android:orientation="vertical">
 
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/portal_card"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:cardBackgroundColor="@color/secondary_green"
+                                    app:cardCornerRadius="@dimen/_10sdp"
+                                    app:cardElevation="0dp"
+                                    app:cardPreventCornerOverlap="true"
+                                    app:strokeColor="@color/white"
+                                    app:strokeWidth="0.4dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/family_img"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
+                                            android:layout_margin="@dimen/_20sdp"
+                                            android:src="@drawable/ic_recrute"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/family_members_tv"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="@dimen/_16sdp"
+                                            android:layout_marginTop="@dimen/_25sdp"
+                                            android:text="@string/post_menu"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_13ssp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/profile_card"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    app:cardBackgroundColor="@color/theme_round"
+                                    app:cardCornerRadius="@dimen/_10sdp"
+                                    app:cardElevation="0dp"
+                                    app:cardPreventCornerOverlap="true"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@id/job_card"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/portal_card"
+                                    app:layout_constraintVertical_bias="0"
+                                    app:strokeColor="@color/white"
+                                    app:strokeWidth="0.4dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/profile_img"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
+                                            android:layout_margin="@dimen/_12sdp"
+                                            android:src="@drawable/ic_profile_menu"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/profile"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/_4sdp"
+                                            android:layout_marginBottom="@dimen/_12sdp"
+                                            android:text="@string/profile_menu"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_13ssp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="@id/profile_img"
+                                            app:layout_constraintTop_toBottomOf="@id/profile_img" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/job_card"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginBottom="@dimen/_75sdp"
+                                    app:cardBackgroundColor="@color/theme_round"
+                                    app:cardCornerRadius="@dimen/_10sdp"
+                                    app:cardElevation="0dp"
+                                    app:cardPreventCornerOverlap="true"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/profile_card"
+                                    app:layout_constraintTop_toBottomOf="@id/portal_card"
+                                    app:layout_constraintVertical_bias="0"
+                                    app:strokeColor="@color/white"
+                                    app:strokeWidth="0.4dp">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/job_img"
+                                            android:layout_width="@dimen/_50sdp"
+                                            android:layout_height="@dimen/_50sdp"
+                                            android:layout_margin="@dimen/_12sdp"
+                                            android:src="@drawable/ic_job_theme"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/scheme"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/_4sdp"
+                                            android:layout_marginBottom="@dimen/_12sdp"
+                                            android:drawablePadding="@dimen/_3sdp"
+                                            android:text="@string/job_menu"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_13ssp"
+                                            android:textStyle="bold"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="@id/job_img"
+                                            app:layout_constraintTop_toBottomOf="@id/job_img" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
 
                      </LinearLayout>
 

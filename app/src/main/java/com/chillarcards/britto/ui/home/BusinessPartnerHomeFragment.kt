@@ -87,10 +87,54 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
         super.onViewCreated(view, savedInstanceState)
         prefManager = PrefManager(requireContext())
 
+        if(prefManager.getPage() == "1"){
+            binding.bpInnerPharm.visibility=View.VISIBLE
+            binding.bpInnerDoc.visibility=View.GONE
+
+        }else if(prefManager.getPage() == "2"){//DOCTOR
+            binding.bpInnerPharm.visibility=View.GONE
+            binding.bpInnerDoc.visibility=View.VISIBLE
+            binding.searchEt.visibility=View.GONE
+        }
+
+
         binding.menu.setOnClickListener{
             menuOptions(it)
         }
+        val views = listOf(
+            binding.idJob,
+            binding.jobCard
+        )
 
+        views.forEach { view ->
+            view.setOnClickListener {
+                findNavController().navigate(
+                    BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToJobView(
+                    )
+                )
+            }
+        }
+        val viewsProfile = listOf(
+            binding.idProfile,
+            binding.profileCard
+        )
+
+        viewsProfile.forEach { view ->
+            view.setOnClickListener {
+                findNavController().navigate(
+                    BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToBpProfileFragment(
+                    )
+                )
+            }
+        }
+
+
+        binding.portalCard.setOnClickListener{
+            findNavController().navigate(
+                BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToAddJob(
+                )
+            )
+        }
         binding.idStock.setOnClickListener{
             findNavController().navigate(
                 BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToItemFragment(
@@ -104,18 +148,8 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
                 )
             )
         }
-        binding.idJob.setOnClickListener{
-            findNavController().navigate(
-                BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToJobView(
-                )
-            )
-        }
-        binding.idProfile.setOnClickListener{
-            findNavController().navigate(
-                BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToBpProfileFragment(
-                )
-            )
-        }
+
+
         binding.viewMore.setOnClickListener{
             findNavController().navigate(
                 BusinessPartnerHomeFragmentDirections.actionPartnerFragmentToOrderFragment(

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/first_lod"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/image_pending_animation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_progress="0.5"
+                    app:lottie_fileName="splash_load.json"
+                    />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_location"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.95"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@id/search_layout"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="8dp"
+                        />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/search_layout"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginVertical="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_peach"
+                        app:boxStrokeWidth="0.2dp"
+                        app:endIconDrawable="@drawable/ic_close"
+                        app:endIconMode="clear_text"
+                        app:errorTextColor="@color/text_black"
+                        app:hintEnabled="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintVertical_bias="0.1"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/search_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/search"
+                            android:inputType="text"
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:maxLength="30"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:imeOptions="actionDone"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                android:background="@drawable/bg_top_app_bar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_18sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start|center_vertical"
+                        android:text="Infopark Phase 2 Kakkanad, Kerala 682030"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_location"
+                        />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/login_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_18sdp"
+                    android:layout_marginBottom="@dimen/_9sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:alpha="0.55"
+                    android:background="@drawable/button_gradient"
+                    android:enabled="false"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/confrm_loc"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null"
+                    app:layout_constraintTop_toBottomOf="@id/mobile" />
+
+                <ProgressBar
+                    android:id="@+id/login_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/primary_peach"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/login_btn"
+                    app:layout_constraintEnd_toEndOf="@id/login_btn"
+                    app:layout_constraintStart_toStartOf="@id/login_btn"
+                    app:layout_constraintTop_toTopOf="@id/login_btn" />
+
+
+                <TextView
+                    android:id="@+id/bottom_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="@string/compy"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8ssp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

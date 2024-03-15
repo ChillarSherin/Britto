@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="start">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/loc_name"
+                    style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:elevation="@dimen/_5sdp"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                    app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                    app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                    app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                    app:boxStrokeColor="@color/color_pri_v"
+                    app:boxStrokeErrorColor="@color/primary_peach"
+                    app:boxStrokeWidth="0.2dp"
+                    app:endIconDrawable="@drawable/ic_close"
+                    app:endIconMode="clear_text"
+                    app:errorTextColor="@color/secondary_peach"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@+id/employeertv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="0.1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dis_name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_name"
+                        android:inputType="text"
+                        android:paddingVertical="@dimen/_11sdp"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/loc_address"
+                    style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:elevation="@dimen/_5sdp"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                    app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                    app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                    app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                    app:boxStrokeColor="@color/color_pri_v"
+                    app:boxStrokeErrorColor="@color/primary_peach"
+                    app:boxStrokeWidth="0.2dp"
+                    app:endIconDrawable="@drawable/ic_close"
+                    app:endIconMode="clear_text"
+                    app:errorTextColor="@color/secondary_peach"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@+id/employeertv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="0.1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/loc_address_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_address"
+                        android:text="16M,P.O.Box 106, Dohat Al Adab St"
+                        android:inputType="text"
+                        android:paddingVertical="@dimen/_11sdp"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_18sdp"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:background="@drawable/bg_border_btn"
+                            android:gravity="center">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:text="109.30" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.1"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal" >
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="-" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:background="@drawable/bg_border_btn"
+                            android:gravity="center">
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="1111.30 " />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:id="@+id/new_loc_btn"
+                    android:layout_marginHorizontal="@dimen/_18sdp"
+                    android:layout_marginVertical="@dimen/_18sdp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/bottom_app_menu"
+                    android:layout_gravity="center"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|center_vertical"
+                        android:layout_gravity="center|center_vertical"
+                        android:textSize="@dimen/_10ssp"
+                        android:text="@string/add_loc"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/ic_location_yellow" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.05"
+                android:orientation="vertical"
+                android:background="@drawable/ic_footer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="@string/compy"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8ssp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

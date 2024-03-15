@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentMobileBinding
 import com.chillarcards.britto.utills.Const
@@ -33,6 +34,7 @@ class MobileFragment : Fragment() {
 
     private val mobileRegex = "^[7869]\\d{9}$".toRegex()
     private val textRegex = "^[A-Z][a-z]*$|^[a-z]*$".toRegex()
+    private val args: MobileFragmentArgs by navArgs()
 
     private var statusTrue: Boolean = false
     private var tempMobileNo: String = ""
@@ -120,7 +122,7 @@ class MobileFragment : Fragment() {
                    // onLoadSMS()
                     try {
                         findNavController().navigate(
-                            MobileFragmentDirections.actionMobileFragmentToOTPFragment(input
+                            MobileFragmentDirections.actionMobileFragmentToOTPFragment(input,args.seleId
                             )
                         )
                     } catch (e: Exception) {

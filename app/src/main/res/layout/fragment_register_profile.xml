@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center|center_horizontal">
+
+
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Upload you company logo/ firm photo"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/uploadpic"
+                    android:layout_width="@dimen/_250sdp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:background="@color/cardview_dark_background"
+                    android:src="@drawable/ic_home"
+                    android:scaleType="fitCenter"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/click_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Click here"
+                android:textColor="@color/text_black"
+                android:textColorHighlight="@color/black"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+
+        <!-- Action Buttons LinearLayout -->
+        <LinearLayout
+            android:id="@+id/action_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="1"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/fileUploadButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginVertical="@dimen/_18sdp">
+
+            <!-- Call Button -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/cancelButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_update"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/skip"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Completed Button -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:orientation="vertical"
+                android:gravity="center|center_vertical"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/completedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:background="@drawable/button_gradient"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+            </LinearLayout>
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/login_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/app_theme"
+            android:paddingVertical="@dimen/_10sdp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</layout>

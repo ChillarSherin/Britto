@@ -42,24 +42,12 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_gravity="start"
                     android:layout_marginStart="@dimen/_15ssp"
-                    android:text="Welcome back,"
+                    android:text="Welcome to BHC,"
                     android:textColor="@color/white"
                     android:textAlignment="textStart"
                     android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_18sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/_15ssp"
-                    android:text="Norton !"
-                    android:textColor="@color/white"
-                    android:textAlignment="textStart"
-                    android:textSize="@dimen/_15ssp"
-                    android:textStyle="bold"/>
+
                 <TextView
                     android:visibility="visible"
                     android:id="@+id/version"
@@ -90,7 +78,6 @@
                     android:layout_marginVertical="@dimen/_5sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/logo"
                     tools:ignore="MissingConstraints" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,7 +90,7 @@
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_120sdp"
-                            android:id="@+id/customer_frm"
+                            android:id="@+id/phar_frm"
                             android:layout_marginHorizontal="@dimen/_18sdp"
                             android:layout_marginVertical="@dimen/_18sdp"
                             app:cardCornerRadius="10dp"
@@ -119,9 +106,9 @@
                                 android:layout_gravity="center|center_vertical"
                                 android:drawableTop="@drawable/ic_menu_one"
                                 android:layout_margin="@dimen/_8ssp"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="@string/menu_one"
-                                android:textColor="@color/white"
+                                android:textSize="@dimen/_13ssp"
+                                android:text="Pharmacy"
+                                android:textColor="@color/black"
                                 android:textStyle="bold"
                                 />
 
@@ -136,7 +123,76 @@
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_120sdp"
-                            android:id="@+id/vendor_frm"
+                            android:id="@+id/hospi_frm"
+                            android:layout_marginHorizontal="@dimen/_18sdp"
+                            android:layout_marginVertical="@dimen/_18sdp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="@color/white"
+                            android:layout_gravity="center"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center|center_vertical"
+                                android:layout_gravity="center|center_vertical"
+                                android:drawableTop="@drawable/ic_menu_two"
+                                android:layout_margin="@dimen/_8ssp"
+                                android:textSize="@dimen/_13ssp"
+                                android:text="Hospital"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"/>
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:orientation="vertical">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_120sdp"
+                            android:id="@+id/doc_frm"
+                            android:layout_marginHorizontal="@dimen/_18sdp"
+                            android:layout_marginVertical="@dimen/_18sdp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="@color/white"
+                            android:layout_gravity="center"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center|center_vertical"
+                                android:layout_gravity="center|center_vertical"
+                                android:drawableTop="@drawable/ic_menu_one"
+                                android:layout_margin="@dimen/_8ssp"
+                                android:textSize="@dimen/_13ssp"
+                                android:text="Doctor"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                />
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:orientation="vertical">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_120sdp"
+                            android:id="@+id/lab_frm"
                             android:layout_marginHorizontal="@dimen/_18sdp"
                             android:layout_marginVertical="@dimen/_18sdp"
                             app:cardCornerRadius="10dp"
@@ -152,14 +208,15 @@
                                 android:layout_gravity="center|center_vertical"
                                 android:drawableTop="@drawable/ic_menu_two"
                                 android:layout_margin="@dimen/_8ssp"
-                                android:textSize="@dimen/_10ssp"
-                                android:text="@string/menu_two"
-                                android:textColor="@color/white"
+                                android:textSize="@dimen/_13ssp"
+                                android:text="Lab"
+                                android:textColor="@color/black"
                                 android:textStyle="bold"/>
 
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -29,24 +29,31 @@ open class GeneralHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prefManager = PrefManager(requireContext())
-        binding.customerFrm.setOnClickListener{
-            prefManager.setIsLoggedIn(true)
-            prefManager.setRefToken("b2c")
+
+        binding.pharFrm.setOnClickListener { navigateToRegisterFragment("1") }
+        binding.hospiFrm.setOnClickListener { navigateToRegisterFragment("2") }
+        binding.docFrm.setOnClickListener { navigateToRegisterFragment("3") }
+        binding.labFrm.setOnClickListener { navigateToRegisterFragment("4") }
+
+    }
+    private fun navigateToRegisterFragment(argument: String) {
+        if(argument == "1"){
             findNavController().navigate(
-                GeneralHomeFragmentDirections.actionGenhomeFragmentToHomeFragment(
-                )
+                GeneralHomeFragmentDirections.actionGnerlFragmentToRegisterFragment(argument)
+            )
+        } else if(argument == "2"){
+            findNavController().navigate(
+                GeneralHomeFragmentDirections.actionGnerlFragmentToRegisterFragment(argument)
+            )
+        }else if(argument == "3"){
+            findNavController().navigate(
+                GeneralHomeFragmentDirections.actionGnerlFragmentToDoctorFragment(argument)
+            )
+        }else if(argument == "4"){
+            findNavController().navigate(
+                GeneralHomeFragmentDirections.actionGnerlFragmentToRegisterFragment(argument)
             )
         }
-        binding.vendorFrm.setOnClickListener{
-            prefManager.setRefToken("b2b")
-            prefManager.setIsLoggedIn(true)
-
-            findNavController().navigate(
-                GeneralHomeFragmentDirections.actionGenhomeFragmentToBphomeFragment(
-                )
-            )
-        }
-
     }
 
 }

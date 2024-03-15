@@ -79,7 +79,7 @@ open class BpSearchFragment : Fragment(), IAdapterViewUtills, OnCallBackListner 
             "Pharmacy", "Hospital", "Doctor", "Lab"
         )
 
-        binding.departRv.adapter = CategoryAdapter(medicalSpecialties,this@BpSearchFragment)
+        binding.departRv.adapter = CategoryAdapter(medicalSpecialties)
 
         val dummySearch = listOf(
             DummyItem(1,"Acne-UV Sunscreen with Broad Spectrum UVA/UVB Protection | Oil Free & Water Resistant | Gel SPF 50","Ipca Laboratories Ltd","ر.ع.","823","757","757",  "8","0"),

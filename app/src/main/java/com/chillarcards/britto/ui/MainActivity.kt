@@ -78,12 +78,14 @@ import java.util.concurrent.TimeUnit
              if (prefManager.isLoggedIn()){
                  if (prefManager.getRefToken() == "b2c"){
                      R.id.homeBaseFragment
-                 } else if (prefManager.getRefToken() == "b2b"){
-                     R.id.bphomeBaseFragment
-                 } else {
-                     R.id.mobileFragment
                  }
-             } else R.id.mobileFragment
+                 else if (prefManager.getRefToken() == "b2b"){
+                     R.id.bphomeBaseFragment
+                 }
+                 else {
+                     R.id.CommonhomeBaseFragment
+                 }
+             } else R.id.CommonhomeBaseFragment
 
 
          navGraph.setStartDestination(destination)

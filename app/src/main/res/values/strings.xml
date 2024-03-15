@@ -11,6 +11,11 @@
     <string name="rupee">ر.ع.</string>
     <string name="rps">150ر.ع.  to ر.ع.100</string>
 
+    <!--  B2C DOCTOR-->
+    <string name="post_menu">Become a recruiter</string>
+    <string name="job_menu">Job Portal</string>
+    <string name="profile_menu">Profile</string>
+
     <!--  INPUT-->
     <string name="enter_display_name">Enter display name</string>
     <string name="enter_mobile_number">Enter phone number</string>
@@ -20,13 +25,44 @@
     <string name="search">Find a  medicine or product ...</string>
     <string name="search_txt">Search</string>
     <string name="profile_details">Public Profile View</string>
-    <string name="fullname"> Business Name</string>
-    <string name="degree"> Full Address</string>
-    <string name="desig"> Short Description</string>
+    <string name="fullname"> Full Name</string>
+    <string name="degree"> Education</string>
+    <string name="desig">Designation</string>
+    <string name="about"> Short Description</string>
     <string name="worknghrs"> PostCode</string>
-    <string name="fee"> Location</string>
+    <string name="fee"> Consultation fee</string>
+    <string name="addres"> Location</string>
     <string name="interval">Consultation Duration</string>
     <string name="working_hrs">Working Hours Management</string>
+    <string name="enter_name">Enter Full name</string>
+    <string name="enter_address">Address</string>
+    <string name="enter_shop_name">Business Registered name</string>
+    <string name="enter_shop_add">Building/House Number</string>
+    <string name="enter_shop_street">Street Name</string>
+    <string name="enter_shop_area">Area/District</string>
+    <string name="enter_shop_city">City/Town</string>
+    <string name="enter_shop_gov">Governorate</string>
+    <string name="enter_shop_pin">Postal Code</string>
+    <string name="enter_shop_proname">Contact person name</string>
+    <string name="enter_shop_email">Email address</string>
+    <string name="enter_shop_loc">Pin shop location</string>
+    <string name="enter_bank_acc">Bank account number</string>
+    <string name="enter_bank_acc_re">Re-enter bank account number</string>
+    <string name="enter_bank_ifsc">IFSC code</string>
+    <string name="enter_bank_name">Bank account holder’s name</string>
+    <string name="enter_staff_name">Staff name</string>
+    <string name="enter_staff_mob">Staff mobile number</string>
+    <string name="enter_staff_ser">Choose service</string>
+    <string name="enter_staff_rate">Service charge</string>
+    <string name="enter_staff_hours">Working hours</string>
+    <string name="monday">monday</string>
+    <string name="tuesday">tuesday</string>
+    <string name="wednesday">wednesday</string>
+    <string name="thursday">thursday</string>
+    <string name="friday">friday</string>
+    <string name="saturday">saturday</string>
+    <string name="sunday">sunday</string>
+
     <!--  HEADING-->
     <string name="version">"Version\u0020"</string>
     <string name="map">Select Location</string>
@@ -46,7 +82,7 @@
     <string name="enter_otp">Enter OTP</string>
     <string name="otp_expired">OTP expired</string>
     <string name="otp_head">Verify mobile number</string>
-    <string name="general_head">Choose your role to continue</string>
+    <string name="general_head">Choose business &amp; continue</string>
     <string name="note">Note</string>
     <string name="subttl">Subtotal</string>
     <string name="loc">Location</string>
@@ -71,16 +107,23 @@
     <string name="no">No</string>
     <string name="close">Close</string>
     <string name="ok">OK</string>
+    <string name="next">Continue</string>
+    <string name="skip">Skip</string>
     <string name="cancel">Cancel</string>
+    <string name="signup"> New or Existing User?</string>
     <string name="update">Update</string>
     <string name="print_bill">Print bill</string>
     <string name="bck_home">Back to home</string>
     <string name="bill">Generate bill</string>
     <string name="conti_loc">Generate bill</string>
-    <string name="add_loc">Add new location</string>
+    <string name="add_loc">Add location</string>
     <string name="confrm_loc">Confirm Location</string>
     <string name="menu_one">Centralized Medical Solutions</string>
     <string name="menu_two">Register You business</string>
+
+    <string name="here">Here -></string>
+    <string name="time_head">Working hours</string>
+
 
     <!--  Validation-->
     <string name="mob_validation">Enter Valid Mobile Number</string>
@@ -88,6 +131,7 @@
     <!--  MESSAGE-->
     <string name="notify">Notification</string>
     <string name="logout">Logout</string>
+    <string name="signin">Sign In</string>
     <string name="logout_alert_message">Are you sure you want to logout?</string>
     <string name="pop_alert_message">Are you sure you want to go back?</string>
     <string name="type_alert_message">Abstract: Welcome to our platform! Whether you\'re a valued customer seeking quality products or a business partner eager to showcase your offerings, we provide a seamless experience tailored to your needs.</string>

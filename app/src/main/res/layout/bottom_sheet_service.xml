@@ -121,6 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_18sdp"
         android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:elevation="@dimen/_5sdp"
         app:boxBackgroundColor="@color/white"
         app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
@@ -153,7 +154,7 @@
         android:id="@+id/fileUploadButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload File"
+        android:text="Upload Resume"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginHorizontal="@dimen/_18sdp"
         android:background="@drawable/button_light"
@@ -185,15 +186,15 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/callButton"
+                android:id="@+id/cancelButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cancel"
-                android:background="@drawable/button_gradient"
-                android:paddingVertical="@dimen/_10sdp"
+                android:background="@drawable/button_cancel"
                 android:gravity="center"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/cancel"
                 android:textAllCaps="true"
-                android:textColor="@color/primary_blue"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -217,7 +218,7 @@
                 android:paddingVertical="@dimen/_10sdp"
                 android:gravity="center"
                 android:textAllCaps="true"
-                android:textColor="@color/primary_blue"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"
                 android:textStyle="bold"
                 app:backgroundTint="@null" />

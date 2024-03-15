@@ -8,5 +8,3 @@ data class DummyJob( val id: Int,val image: String,val jobname: String,val comna
 data class DummyItem( val id: Int,val prdname: String,val prdbrand: String,val prdcrncy: String,val prdmrp: String,val prdofferrate: String,val prdsellrate: String,val prdoffer: String,var cartQty: String)
 data class DummyOrderItems(val id: Int, val prdname: String, val prdbrand: String, val prdcrncy: String, val prdmrp: String, val prdofferrate: String,val prdsellrate: String, val prdoffer: String,
                            var cartQty: String,var cartRate: String)
-
-

@@ -123,10 +123,11 @@ open class JobDetailFragment : Fragment(), IAdapterViewUtills {
         customerTV.text = "Oman International Hospital "
 
         val completeButton: TextView = bottomSheetView.findViewById(R.id.completedButton)
-
-        val callButton: TextView = bottomSheetView.findViewById(R.id.callButton)
+        completeButton.setOnClickListener {
+            bottomSheetDialog.dismiss()
+        }
+        val callButton: TextView = bottomSheetView.findViewById(R.id.cancelButton)
         callButton.setOnClickListener {
-
 
             bottomSheetDialog.dismiss()
         }
