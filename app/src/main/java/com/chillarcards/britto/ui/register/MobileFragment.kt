@@ -25,12 +25,16 @@ import androidx.navigation.fragment.navArgs
 import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentMobileBinding
 import com.chillarcards.britto.utills.Const
+import com.chillarcards.britto.utills.Status
+import com.chillarcards.britto.viewmodel.RegisterViewModel
 import com.google.firebase.FirebaseApp
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MobileFragment : Fragment() {
 
     lateinit var binding: FragmentMobileBinding
+    private val mobileViewModel by viewModel<RegisterViewModel>()
 
     private val mobileRegex = "^[7869]\\d{9}$".toRegex()
     private val textRegex = "^[A-Z][a-z]*$|^[a-z]*$".toRegex()
@@ -119,15 +123,7 @@ class MobileFragment : Fragment() {
                 else -> {
                     binding.loginBtn.visibility =View.GONE
                     showProgress()
-                   // onLoadSMS()
-                    try {
-                        findNavController().navigate(
-                            MobileFragmentDirections.actionMobileFragmentToOTPFragment(input,args.seleId
-                            )
-                        )
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+                    mobileVerify()
                 }
             }
         }
@@ -140,10 +136,60 @@ class MobileFragment : Fragment() {
 
     }
 
-
-
+    private fun mobileVerify() {
+        mobileViewModel.run {
+            mob.value = tempMobileNo
+            verifyMobile()
+        }
+    }
     private fun setUpObserver() {
+        try {
+            mobileViewModel.regData.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            hideProgress()
+                            it.data?.let { mobileData ->
+                                when (mobileData.code) {
+                                    "200" -> {
+                                        Const.shortToast(requireContext(), mobileData.create_otp)
+                                        val otpPattern = Regex("\\b\\d{6}\\b")
+                                        val matchResult = otpPattern.find(mobileData.create_otp)
 
+                                        val otp = matchResult?.value
+                                        if (otp != null) {
+                                            try {
+                                                findNavController().navigate(
+                                                    MobileFragmentDirections.actionMobileFragmentToOTPFragment(
+                                                        tempMobileNo,args.seleId,otp
+                                                    )
+                                                )
+                                            } catch (e: Exception) {
+                                                e.printStackTrace()
+                                            }
+                                        } else {
+                                            Const.shortToast(requireContext(), "OTP not found in the text.")
+                                        }
+
+                                    }
+                                    else -> Const.shortToast(requireContext(), mobileData.msg)
+                                }
+                            }
+                        }
+                        Status.LOADING -> {
+                            showProgress()
+                        }
+                        Status.ERROR -> {
+                            hideProgress()
+                            Const.shortToast(requireContext(), it.message.toString())
+                        }
+                    }
+                }
+            }
+
+        } catch (e: Exception) {
+            Log.e("abc_otp", "setUpObserver: ", e)
+        }
     }
 
     private fun showProgress() {

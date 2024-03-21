@@ -1,24 +1,17 @@
 package com.chillarcards.britto.data.model
 
+import com.google.gson.annotations.SerializedName
+
 /**
  * Created by Sherin on 07-02-2024.
  */
 
 data class RegisterModel(
-    val statusCode: String,
-    val message: String,
-    val data: Data,
-)
-
-data class Data(
-    val entity_id:  Int = 0,
-    val phone: String,
-    val access_token: String,
-    val refresh_token: String,
-    val profile_completed: Int = 0,
-    val status: Int = 0,
-    val entity_type: Any?,
+    val msg: String,
+    val create_otp: String,
+    val code: String,
+    val data: List<Any?>,
 )
 data class RegisterRequestModel(
-    val phone: String
+    val user_phone: String
 )

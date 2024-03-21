@@ -1,4 +1,4 @@
-package com.chillarcards.britto.ui.register.doctor
+package com.chillarcards.britto.ui.register.business
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentWorkHoursAllBinding
-import com.chillarcards.britto.ui.adapter.SubWorkHoursAdapter
 import com.chillarcards.britto.ui.adapter.UpdateSubWorkHoursAdapter
 import com.chillarcards.britto.ui.adapter.WorkHoursAdapter
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
@@ -44,7 +43,6 @@ class DocWorkHoursFragment : Fragment(),IAdapterViewUtills {
         prefManager = PrefManager(requireContext())
 
         Const.enableButton(binding.confirmBtn)
-        setToolbar()
 
         setUpObserver()
 
@@ -70,12 +68,7 @@ class DocWorkHoursFragment : Fragment(),IAdapterViewUtills {
 
     }
 
-    private fun setToolbar() {
-        binding.toolbar.toolbarBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-        binding.toolbar.toolbarTitle.text = getString(R.string.time_head)
-    }
+
 
     private fun setUpObserver() {
         val gson = Gson()

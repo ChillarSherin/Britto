@@ -12,11 +12,17 @@
     <string name="rps">150ر.ع.  to ر.ع.100</string>
 
     <!--  B2C DOCTOR-->
+    <string name="add_ser">Add services</string>
     <string name="post_menu">Become a recruiter</string>
     <string name="job_menu">Job Portal</string>
-    <string name="profile_menu">Profile</string>
+    <string name="profile_menu">Account</string>
 
     <!--  INPUT-->
+    <string name="enter_empty">Mandatory</string>
+    <string name="savepic"><u>Click to here to Save Picture</u></string>
+    <string name="enter_provi">Choose a province</string>
+    <string name="enter_brand">Select a brand</string>
+    <string name="enter_cat">Select a category</string>
     <string name="enter_display_name">Enter display name</string>
     <string name="enter_mobile_number">Enter phone number</string>
     <string name="enter_key">Job title or company name</string>
@@ -25,6 +31,15 @@
     <string name="search">Find a  medicine or product ...</string>
     <string name="search_txt">Search</string>
     <string name="profile_details">Public Profile View</string>
+    <string name="job_title">Job Title</string>
+    <string name="job_type"> Job Type</string>
+    <string name="salary">Maximum Salary</string>
+    <string name="exp">Experience Required</string>
+    <string name="job_desc">Job Description</string>
+    <string name="job_feature">Job key features</string>
+    <string name="no_camera">Please a phone with camera</string>
+    <string name="no_profile_pic">Please take a photo </string>
+
     <string name="fullname"> Full Name</string>
     <string name="degree"> Education</string>
     <string name="desig">Designation</string>

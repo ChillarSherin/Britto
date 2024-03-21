@@ -85,7 +85,7 @@
     </fragment>
     <fragment
         android:id="@+id/ProfileFragment"
-        android:name="com.chillarcards.britto.ui.profile.ProfileFragment"
+        android:name="com.chillarcards.britto.ui.customer.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
         <action
@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/SavedLocFragment"
-        android:name="com.chillarcards.britto.ui.register.SavedLocationFragment"
+        android:name="com.chillarcards.britto.ui.register.customer.SavedLocationFragment"
         android:label="SavedLocFragment"
         tools:layout="@layout/fragment_saved_loc">
         <action

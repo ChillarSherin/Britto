@@ -16,6 +16,6 @@ object ConfigBuild {
 
     //Need to change MainActivity  page for installation priority immediate or flexi
     // Field from build type: debug
-    const val BASE_URL = "http://35.154.16.95/api/v1/"
-
+    const val BASE_URL = "https://8bf7-59-182-188-191.ngrok-free.app/controller/"
+    //http://143.198.139.13/
 }

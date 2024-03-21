@@ -1,6 +1,5 @@
 package com.chillarcards.britto.ui.register
 
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Typeface
@@ -16,6 +15,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
@@ -31,8 +31,10 @@ import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.GenericKeyEvent
 import com.chillarcards.britto.utills.GenericTextWatcher
 import com.chillarcards.britto.utills.PrefManager
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthProvider
+import com.chillarcards.britto.utills.Status
+import com.chillarcards.britto.viewmodel.OTPViewModel
+import com.chillarcards.britto.viewmodel.RegisterViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 open class OTPFragment : Fragment() {
 
@@ -42,9 +44,8 @@ open class OTPFragment : Fragment() {
     private lateinit var timer: CountDownTimer
     private val digitRegex = "^\\d$".toRegex()
     private val args: OTPFragmentArgs by navArgs()
-    private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
-    private lateinit var smsBroadcastReceiver: BroadcastReceiver
+    private val otpViewModel by viewModel<OTPViewModel>()
+    private val mobileViewModel by viewModel<RegisterViewModel>()
 
     private var aOk = false
     private var bOk = false
@@ -129,7 +130,7 @@ open class OTPFragment : Fragment() {
                     "${binding.otpA.text.toString()}${binding.otpB.text.toString()}${binding.otpC.text.toString()}${binding.otpD.text.toString()}${binding.otpE.text.toString()}${binding.otpF.text.toString()}"
                 Log.d("abc_otp", "onViewCreated: $otp")
                 if (otp.isNotEmpty()){
-                    mobileVerify()
+                    otpVerify(otp)
                 }
                 else
                     Const.shortToast(requireContext(), getString(R.string.enter_otp))
@@ -138,9 +139,10 @@ open class OTPFragment : Fragment() {
 
         binding.resendText.setOnClickListener {
             // Const.shortToast(requireContext(), "Resending OTP. Please wait")
-//            otpViewModel.mob.value = prefManager.getUserPhoneNumber()
-//            otpViewModel.userId.value = prefManager.getUserId()
-//            otpViewModel.getOTP()
+            mobileViewModel.run {
+                mob.value = args.mobile
+                verifyMobile()
+            }
             clearOTP()
         }
 
@@ -292,9 +294,12 @@ open class OTPFragment : Fragment() {
     private fun checkValidationStatus() {
         val textName = binding.timer.text
 
-        if (aOk && bOk && cOk && dOk && eOk && fOk && !textName.equals(getString(R.string.otp_expired)))
+        if (aOk && bOk && cOk && dOk && eOk && fOk && !textName.equals(getString(R.string.otp_expired))) {
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(requireView().windowToken, 0)
             Const.enableButton(binding.confirmBtn)
-        else
+
+        }else
             Const.disableButton(binding.confirmBtn)
     }
 
@@ -304,34 +309,150 @@ open class OTPFragment : Fragment() {
         private const val TAG = "OTPFragment"
     }
 
+    private fun otpVerify(otpValue: String) {
+        otpViewModel.run {
+            mob.value = args.mobile
+            otp.value = otpValue
+            verifyOTP()
+        }
+    }
+    private fun redirectVerify(type: String, businessType: String, businessUserStatus: Int) {
 
-    private fun mobileVerify() {
         //1= B2C 2= B2B
-        if(args.seleId.equals("1")){
-            if (prefManager.isLoggedIn()){
-                findNavController().navigate(
-                    OTPFragmentDirections.actionOTPFragmentToHomeFragment(
-                    )
-                )
-            }else{
-                findNavController().navigate(
-                    OTPFragmentDirections.actionMapFragmentToSavedFragment(
-                    )
-                )
-            }
+        prefManager.setIsLoggedIn(true)
 
-        }else{
+        if(type == "Business"){
+            prefManager.setRefToken("b2b")
+            when (businessType) {
+                "Pharmacy" -> prefManager.setPage("1")
+                "Hospital" -> prefManager.setPage("2")
+                "Lab" -> prefManager.setPage("3")
+                "Doctor" -> prefManager.setPage("4")
+            }
+            when (businessUserStatus) {
+                0 -> {
+                    prefManager.setStatus(0)
+                    Const.shortToast(requireContext(), "Waiting for account approval")
+                    findNavController().navigate(
+                        OTPFragmentDirections.actionGenhomeFragmentToBphomeFragment(
+                        )
+                    )
+                }
+                1 -> {
+                    prefManager.setStatus(1)
+
+                    findNavController().navigate(
+                        OTPFragmentDirections.actionGenhomeFragmentToBphomeFragment(
+                        )
+                    )
+                }
+                2 -> {
+                    prefManager.setStatus(2)
+                    Const.shortToast(requireContext(), "Account is suspended")
+                }
+            }
+        }
+        else{
             findNavController().navigate(
-                OTPFragmentDirections.actionOTPFragmentToGeneralFragment(
+                OTPFragmentDirections.actionOTPFragmentToHomeFragment(
                 )
             )
         }
-
-
     }
 
     private fun otpObserver() {
+        try {
+            otpViewModel.otpData.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            hideProgress()
+                            it.data?.let { otpData ->
+                                when (otpData.code) {
+                                    "200" -> {
+                                        prefManager.setUuid(otpData.user_uuid)
+                                        prefManager.setMobileNo(args.mobile.toString())
 
+                                        if(otpData.data.isEmpty()){
+                                            Const.shortToast(requireContext(), otpData.verify_otp)
+                                        }
+                                        else {
+                                            if (otpData.data[0].profile_completion_status == "00") {
+                                                if(args.seleId.equals("1")){
+                                                    findNavController().navigate(
+                                                        OTPFragmentDirections.actionMapFragmentToSavedFragment(
+                                                        )
+                                                    )
+                                                }
+                                                else{
+                                                    findNavController().navigate(
+                                                        OTPFragmentDirections.actionOTPFragmentToGeneralFragment(
+                                                        )
+                                                    )
+                                                }
+                                            }
+                                            if (otpData.data[0].profile_completion_status == "01") {//success
+                                                prefManager.setBusinessID(otpData.data[0].business_user_uuid)
+
+                                                redirectVerify(otpData.data[0].Type,
+                                                    otpData.data[0].Business_Type,
+                                                    otpData.data[0].businessUserStatus)
+                                            }
+                                        }
+                                    }
+                                    else -> Const.shortToast(requireContext(), otpData.verify_otp)
+                                }
+                            }
+                        }
+                        Status.LOADING -> {
+                            showProgress()
+                        }
+                        Status.ERROR -> {
+                            hideProgress()
+                            Const.shortToast(requireContext(), it.message.toString())
+                        }
+                    }
+                }
+            }
+
+        } catch (e: Exception) {
+            Log.e("abc_otp", "setUpObserver: ", e)
+        }
+        try {
+            mobileViewModel.regData.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            hideProgress()
+                            it.data?.let { otpData ->
+                                when (otpData.code) {
+                                    "200" -> {
+                                        setTimer()
+
+                                        Const.shortToast(requireContext(), otpData.create_otp)
+                                        val otpPattern = Regex("\\b\\d{6}\\b")
+                                        val matchResult = otpPattern.find(otpData.create_otp)
+
+                                        val otp = matchResult?.value
+                                    }
+                                    else -> Const.shortToast(requireContext(), otpData.msg)
+                                }
+                            }
+                        }
+                        Status.LOADING -> {
+                            showProgress()
+                        }
+                        Status.ERROR -> {
+                            hideProgress()
+                            Const.shortToast(requireContext(), it.message.toString())
+                        }
+                    }
+                }
+            }
+
+        } catch (e: Exception) {
+            Log.e("abc_otp", "setUpObserver: ", e)
+        }
     }
 
 }

@@ -31,7 +31,6 @@ val appModule = module {
     single<ApiHelper> {
         return@single ApiHelperImpl(get())
     }
-
 }
 
 private fun provideNetworkHelper(context: Context) = NetworkHelper(context)
@@ -68,5 +67,3 @@ private fun provideRetrofit(
 
 private fun provideApiService(retrofit: Retrofit): ApiService =
     retrofit.create(ApiService::class.java)
-
-

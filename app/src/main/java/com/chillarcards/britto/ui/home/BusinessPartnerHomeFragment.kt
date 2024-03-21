@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
@@ -29,14 +30,22 @@ import com.chillarcards.britto.ui.adapter.OrderAdapter
 import com.chillarcards.britto.ui.adapter.PharmacyAdapter
 import com.chillarcards.britto.ui.adapter.SliderPagerAdapter
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
+import com.chillarcards.britto.ui.register.MobileFragmentDirections
 import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.PrefManager
+import com.chillarcards.britto.utills.Status
+import com.chillarcards.britto.viewmodel.BusinessRegisterViewModel
+import com.chillarcards.britto.viewmodel.RegisterViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
 
     lateinit var binding: FragmentHomeBpBinding
     private lateinit var prefManager: PrefManager
+    private val businessRegisterViewModel by viewModel<BusinessRegisterViewModel>()
+    private var businessId: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -86,37 +95,104 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prefManager = PrefManager(requireContext())
+        binding.nodata.setAnimation(R.raw.ic_nodata)
 
-        if(prefManager.getPage() == "1"){
+        if(prefManager.getPage() == "1"){//PHARMACY
             binding.bpInnerPharm.visibility=View.VISIBLE
             binding.bpInnerDoc.visibility=View.GONE
-
-        }else if(prefManager.getPage() == "2"){//DOCTOR
+        }
+        else if(prefManager.getPage() == "2"){//HOSPITAL
+            binding.bpInnerOther.visibility=View.VISIBLE
+            binding.searchEt.visibility=View.GONE
+        }
+        else if(prefManager.getPage() == "3"){//Lab
+            binding.bpInnerOther.visibility=View.VISIBLE
+            binding.searchEt.visibility=View.GONE
+        }
+        else if(prefManager.getPage() == "4"){//DOCTOR
             binding.bpInnerPharm.visibility=View.GONE
             binding.bpInnerDoc.visibility=View.VISIBLE
             binding.searchEt.visibility=View.GONE
         }
 
+        businessRegisterViewModel.run {
+            businessUserUuid.value = prefManager.getBusinessID()
+            regBusinessLand()
+        }
+
+        setUpObserver()
 
         binding.menu.setOnClickListener{
             menuOptions(it)
         }
-        val views = listOf(
-            binding.idJob,
-            binding.jobCard
-        )
 
-        views.forEach { view ->
-            view.setOnClickListener {
+        binding.idStock.setOnClickListener {
+            findNavController().navigate(
+                BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToItemFragment(businessId
+                )
+            )
+        }
+
+        if (prefManager.getStatus()==0){ //0 approval 1 Approved 2 suspended
+            Const.shortToast(requireContext(), "Waiting for account approval")
+            binding.newOrder.visibility= View.GONE
+            binding.nodata.visibility= View.VISIBLE
+        }
+        else {
+
+            val jobViews = listOf(
+                binding.portalCard,
+                binding.jobPortalCard
+            )
+
+            jobViews.forEach { view ->
+                view.setOnClickListener {
+                    findNavController().navigate(
+                        BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToAddJob(
+                        )
+                    )
+                }
+            }
+
+            binding.idOrder.setOnClickListener{
                 findNavController().navigate(
-                    BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToJobView(
+                    BusinessPartnerHomeFragmentDirections.actionPartnerFragmentToOrderFragment(
+                    )
+                )
+            }
+            val views = listOf(
+                binding.idJob,
+                binding.jobCard,
+                binding.otherJobCard
+            )
+
+            views.forEach { view ->
+                view.setOnClickListener {
+                    findNavController().navigate(
+                        BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToJobView(
+                        )
+                    )
+                }
+            }
+
+            binding.viewMore.setOnClickListener{
+                findNavController().navigate(
+                    BusinessPartnerHomeFragmentDirections.actionPartnerFragmentToOrderFragment(
+                    )
+                )
+            }
+
+            binding.searchEt.setOnClickListener{
+                findNavController().navigate(
+                    BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToSearchFragment(
                     )
                 )
             }
         }
+
         val viewsProfile = listOf(
             binding.idProfile,
-            binding.profileCard
+            binding.otherProfileCard,
         )
 
         viewsProfile.forEach { view ->
@@ -128,38 +204,9 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
             }
         }
 
-
-        binding.portalCard.setOnClickListener{
+        binding.profileCard.setOnClickListener {
             findNavController().navigate(
-                BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToAddJob(
-                )
-            )
-        }
-        binding.idStock.setOnClickListener{
-            findNavController().navigate(
-                BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToItemFragment(
-                )
-            )
-        }
-
-        binding.idOrder.setOnClickListener{
-            findNavController().navigate(
-                BusinessPartnerHomeFragmentDirections.actionPartnerFragmentToOrderFragment(
-                )
-            )
-        }
-
-
-        binding.viewMore.setOnClickListener{
-            findNavController().navigate(
-                BusinessPartnerHomeFragmentDirections.actionPartnerFragmentToOrderFragment(
-                )
-            )
-        }
-
-        binding.searchEt.setOnClickListener{
-            findNavController().navigate(
-                BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToSearchFragment(
+                BusinessPartnerHomeFragmentDirections.actionBphomeFragmentToBpDocProfileFragment(
                 )
             )
         }
@@ -251,6 +298,51 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
             )
         }
 
+    }
+
+    private fun setUpObserver() {
+        try {
+            businessRegisterViewModel.busLandData.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            hideProgress()
+                            it.data?.let { busslandData ->
+                                when (busslandData.code) {
+                                    "200" -> {
+                                        if (!busslandData.data.isNullOrEmpty()) {
+                                            businessId = busslandData.data[0].business_uuid
+                                        } else {
+                                            Const.shortToast(requireContext(), "No business data found")
+                                        }
+
+                                    }
+                                    else -> Const.shortToast(requireContext(), busslandData.msg)
+                                }
+                            }
+                        }
+                        Status.LOADING -> {
+                            showProgress()
+                        }
+                        Status.ERROR -> {
+                            hideProgress()
+                            Const.shortToast(requireContext(), it.message.toString())
+                        }
+                    }
+                }
+            }
+
+        } catch (e: Exception) {
+            Log.e("abc_otp", "setUpObserver: ", e)
+        }
+    }
+
+    private fun showProgress() {
+        binding.loginProgress.visibility = View.VISIBLE
+    }
+
+    private fun hideProgress() {
+        binding.loginProgress.visibility = View.GONE
     }
 
 }

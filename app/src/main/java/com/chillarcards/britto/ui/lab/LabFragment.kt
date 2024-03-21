@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentHospitalBinding
@@ -16,6 +17,7 @@ import com.chillarcards.britto.ui.adapter.HospitalDoctorAdapter
 import com.chillarcards.britto.ui.adapter.SliderPagerAdapter
 import com.chillarcards.britto.ui.adapter.SpecialtyAdapter
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
+import com.chillarcards.britto.ui.register.MobileFragmentArgs
 import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.PrefManager
 

@@ -13,12 +13,14 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.chillarcards.britto.R
+import com.chillarcards.britto.data.model.Item
 import com.chillarcards.britto.ui.DummyItem
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
+import com.chillarcards.britto.utills.Const
 
 
 class StockItemAdapter(
-    private val items: List<DummyItem>,
+    private val items: List<Item>,
     private val context: Context?,
     private val getCartUtil: IAdapterViewUtills,
 ) : RecyclerView.Adapter<StockItemAdapter.ViewHolder>() {
@@ -50,18 +52,18 @@ class StockItemAdapter(
         private val itemUpdate: TextView = itemView.findViewById(R.id.tv_update)
 
 
-        fun bind(item: DummyItem) {
-            itemName.text = item.prdname
-            itemBrand.text = item.prdbrand
-            if (item.prdofferrate == "") {
+        fun bind(item: Item) {
+            itemName.text = item.item_name
+            itemBrand.text = item.item_brand
+            if (item.item_discount == 0.0) {
                 itemOffer.visibility = View.GONE
-                itemRate.text = item.prdcrncy + item.prdmrp
+                itemRate.text = Const.currency + item.item_price
             }
             else {
                 itemOffer.visibility = View.VISIBLE
-                itemRate.text = item.prdcrncy + item.prdofferrate
-                val mrpText = "MRP ${item.prdmrp}${item.prdcrncy}"
-                val offerText = "${item.prdoffer}% off"
+                itemRate.text = Const.currency  + item.item_discount
+                val mrpText = "MRP ${item.item_price}${Const.currency}"
+                val offerText = "${1111}% off"
                 val spannableString = SpannableString("$mrpText $offerText")
 
                 spannableString.setSpan(

@@ -11,6 +11,7 @@ class Const {
 
 
         const val ver_title = ":  " //Client
+        const val currency = ":  " //Client
         private lateinit var prefManager: PrefManager
         var cartItems: MutableList<DummyOrderItems> = mutableListOf()
 

@@ -1,18 +1,24 @@
 package com.chillarcards.britto.ui.register
 
 //import kotlinx.android.synthetic.main.fragment_map.*
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import android.Manifest
 import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentLandmapBinding
 import com.chillarcards.britto.di.module.ConfigBuild
 import com.chillarcards.britto.utills.Const
+import com.chillarcards.britto.utills.PrefManager
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -32,6 +38,8 @@ class LandMapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var placesClient: PlacesClient
     lateinit var binding: FragmentLandmapBinding
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var prefManager: PrefManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +52,8 @@ class LandMapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        prefManager = PrefManager(requireContext())
+
         binding.imagePendingAnimation.setAnimation(R.raw.splash_load)
 
         binding.firstLod.visibility = View.VISIBLE
@@ -61,7 +71,7 @@ class LandMapFragment : Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
 
-      //            searchPlace()
+        // searchPlace()
 
         binding.loginBtn.setOnClickListener{
             findNavController().navigate(
@@ -69,16 +79,57 @@ class LandMapFragment : Fragment(), OnMapReadyCallback {
                 )
             )
         }
+
+        // Initialize fused location client
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+
+        // Check location permission
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // Request the missing permissions
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                PERMISSIONS_REQUEST_ACCESS_LOCATION
+            )
+            return
+        }
+
         mMap = googleMap
 
-        val defaultLocation = LatLng(10.001850, 76.361320)
+        // Get current location
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location ->
+                // Got last known location. In some rare situations, this can be null.
+                if (location != null) {
+                  val  latitude = location.latitude
+                    val  longitude = location.longitude
+
+                    prefManager.setCrntLat(latitude.toString())
+                    prefManager.setCrntLong(longitude.toString())
+
+                }
+            }
+        //val defaultLocation = LatLng(10.001850, 76.361320)
+        val defaultLocation = LatLng(prefManager.getCrntLat().toDouble(),prefManager.getCrntLong().toDouble() )
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12f))
 
         // Enable user interaction with the map
         mMap.uiSettings.isZoomControlsEnabled = true
+
     }
 
     private fun searchPlace() {
@@ -116,6 +167,8 @@ class LandMapFragment : Fragment(), OnMapReadyCallback {
             exception.printStackTrace()
         }
     }
-
+    companion object {
+        private const val PERMISSIONS_REQUEST_ACCESS_LOCATION = 1
+    }
 
 }

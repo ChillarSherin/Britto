@@ -1,4 +1,4 @@
-package com.chillarcards.britto.ui.profile
+package com.chillarcards.britto.ui.customer
 
 import android.os.Bundle
 import android.view.LayoutInflater

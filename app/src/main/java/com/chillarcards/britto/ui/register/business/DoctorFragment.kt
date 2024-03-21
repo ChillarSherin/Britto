@@ -1,4 +1,4 @@
-package com.chillarcards.britto.ui.register.doctor
+package com.chillarcards.britto.ui.register.business
 
 
 import android.content.Context
@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.chillarcards.britto.R
 import com.chillarcards.britto.databinding.FragmentAddDoctorBinding
-import com.chillarcards.britto.databinding.FragmentRegisterBinding
 import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.PrefManager
 

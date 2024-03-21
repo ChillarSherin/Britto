@@ -24,7 +24,6 @@ class RegisterViewModel(
     private val _regData = MutableLiveData<Resource<RegisterModel>?>()
     val regData: LiveData<Resource<RegisterModel>?> get() = _regData
     private val _tokenData = MutableLiveData<Resource<RegisterModel>?>()
-    val tokenData: LiveData<Resource<RegisterModel>?> get() = _tokenData
 
     var mob = MutableLiveData<String>()
 

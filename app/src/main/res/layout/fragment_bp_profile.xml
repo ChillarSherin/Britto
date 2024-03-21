@@ -14,62 +14,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:gravity="start"
-            android:background="@drawable/ic_top"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-
-                android:orientation="horizontal"
-                tools:ignore="MissingConstraints">
-
-                <ImageView
-                    android:id="@+id/toolbar_back"
-                    android:layout_width="@dimen/_35sdp"
-                    android:layout_height="@dimen/_35sdp"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:padding="@dimen/_10sdp"
-                    android:src="@drawable/ic_back"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/white"
-                    android:contentDescription="@string/app_name" />
-
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="@dimen/_45sdp"
-                    android:layout_height="@dimen/_45sdp"
-                    android:src="@drawable/ic_logo"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/_15ssp"
-                    android:contentDescription="TODO"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_gravity="start"
-                android:layout_marginStart="@dimen/_15ssp"
-                android:text="Welcome Norton !"
-                android:textColor="@color/white"
-                android:textAlignment="textStart"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="bold"/>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
             android:layout_weight="0.6"
             android:orientation="vertical"
             android:layout_marginVertical="@dimen/_5sdp"
@@ -77,255 +21,428 @@
 
 
             <ScrollView
-                android:id="@+id/scrolView_account"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:background="@color/theme"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-                <RelativeLayout
-                    android:id="@+id/linear_account"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="@dimen/_20sdp"
+                    >
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="80dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:padding="@dimen/_2sdp"
-                                android:layout_marginBottom="@dimen/_10sdp"
-                                android:textColor="@color/text_black"
-                                android:textSize="@dimen/_13ssp"
-                                android:textStyle="bold" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorTextColor="@color/secondary_peach"
-                                android:textColorHint="@color/text_black"
-                                android:layout_marginBottom="@dimen/_8sdp"
-                                app:boxStrokeWidth="1dp"
-                                app:boxBackgroundColor="@color/theme_bg"
-                                app:boxStrokeColor="@color/select"
-                                app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                                app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                app:counterTextColor="@color/text_black"
-                                app:hintTextColor="@color/text_black"
-                                >
-
-                                <EditText
-                                    android:id="@+id/p_name"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/fullname"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="text"
-                                    android:textColorHighlight="@color/text_black"
-                                    android:textColor="@color/text_black"
-                                    android:textColorHint="@color/text_black"
-                                    android:importantForAutofill="no" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorTextColor="@color/secondary_peach"
-                                android:textColorHint="@color/text_black"
-                                android:layout_marginBottom="@dimen/_8sdp"
-
-                                app:boxStrokeWidth="1dp"
-                                app:boxBackgroundColor="@color/theme_bg"
-                                app:boxStrokeColor="@color/select"
-                                app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                                app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                app:counterTextColor="@color/text_black"
-                                app:hintTextColor="@color/text_black">
-
-                                <EditText
-                                    android:id="@+id/p_qualifi"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/degree"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="textMultiLine"
-                                    android:textColor="@color/text_black"
-                                    android:textColorHint="@color/text_black"
-                                    android:importantForAutofill="no" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorTextColor="@color/secondary_peach"
-                                android:textColorHint="@color/text_black"
-                                android:layout_marginBottom="@dimen/_8sdp"
-                                app:boxStrokeWidth="1dp"
-                                app:boxBackgroundColor="@color/theme_bg"
-                                app:boxStrokeColor="@color/select"
-                                app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                                app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                app:counterTextColor="@color/text_black"
-                                app:hintTextColor="@color/text_black">
-
-                                <EditText
-                                    android:id="@+id/p_desi"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/worknghrs"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="textMultiLine"
-                                    android:textColor="@color/text_black"
-                                    android:textColorHint="@color/text_black"
-                                    android:importantForAutofill="no" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorTextColor="@color/secondary_peach"
-                                android:textColorHint="@color/text_black"
-                                android:layout_marginBottom="@dimen/_8sdp"
-                                app:boxStrokeWidth="1dp"
-                                app:boxBackgroundColor="@color/theme_bg"
-                                app:boxStrokeColor="@color/select"
-                                app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                                app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                app:counterTextColor="@color/text_black"
-                                app:hintTextColor="@color/text_black">
-
-                                <EditText
-                                    android:id="@+id/p_detail"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/desig"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="none"
-                                    android:focusable="false"
-                                    android:textColor="@color/text_black"
-                                    android:textColorHint="@color/text_black"
-                                    android:importantForAutofill="no" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorTextColor="@color/secondary_peach"
-                                android:textColorHint="@color/text_black"
-                                app:boxStrokeWidth="1dp"
-                                app:boxBackgroundColor="@color/theme_bg"
-                                app:boxStrokeColor="@color/select"
-                                app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                                app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                                app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                app:counterTextColor="@color/text_black"
-                                app:hintTextColor="@color/text_black">
-
-                                <EditText
-                                    android:id="@+id/p_fee"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/fee"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="none"
-                                    android:focusable="false"
-                                    android:ems="4"
-                                    android:textColor="@color/text_black"
-                                    android:textColorHint="@color/text_black"
-                                    android:importantForAutofill="no" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/confirm_btn"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="@dimen/_18sdp"
-                                android:layout_marginTop="@dimen/_50sdp"
-                                android:layout_marginBottom="@dimen/_12sdp"
-                                android:alpha="0.55"
-                                android:background="@drawable/button_gradient"
-                                android:enabled="false"
-                                android:paddingVertical="@dimen/_10sdp"
-                                android:text="@string/contin"
-                                android:textAllCaps="true"
-                                android:textColor="@color/primary_blue"
-                                android:textSize="@dimen/_12ssp"
-                                android:textStyle="bold"
-                                app:backgroundTint="@null"/>
-                            <ProgressBar
-                                android:id="@+id/otp_progress"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:indeterminate="true"
-                                android:indeterminateTint="@color/primary_peach"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="@id/confirm_btn"
-                                app:layout_constraintEnd_toEndOf="@id/confirm_btn"
-                                app:layout_constraintStart_toStartOf="@id/confirm_btn"
-                                app:layout_constraintTop_toTopOf="@id/confirm_btn" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <RelativeLayout
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_name"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true">
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_red"
+                        app:boxStrokeWidth="0.2dp"
+                        app:errorTextColor="@color/secondary_peach"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/text_black_m"
+                        app:layout_constraintVertical_bias="0.6"
+                        tools:ignore="MissingConstraints"
+                        app:layout_constraintStart_toStartOf="parent">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/im_profile"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_centerHorizontal="true"
-                            android:src="@drawable/ic_logo"
-                            android:background="@color/text_black"
-                            app:civ_border_color="#FFFFFF"
-                            app:civ_border_width="2dp" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shop_name_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_shop_name"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="RtlSymmetry" />
 
-                        <ImageView
-                            android:visibility="gone"
-                            android:layout_width="@dimen/_30sdp"
-                            android:layout_height="@dimen/_30sdp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignEnd="@+id/im_profile"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/ic_edit"
-                            android:id="@+id/floatingActionButton" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    </RelativeLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_address"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_peach"
+                        app:boxStrokeWidth="0.2dp"
+                        app:errorTextColor="@color/secondary_peach"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/text_black_m"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shop_name"
+                        app:layout_constraintVertical_bias="0.6"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shop_address_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_shop_add"
+                            android:inputType="text"
+                            android:maxLength="50"
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_street"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_peach"
+                        app:boxStrokeWidth="0.2dp"
+                        app:hintTextColor="@color/text_black_m"
+                        app:errorTextColor="@color/secondary_peach"
+                        app:hintEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shop_address"
+                        app:layout_constraintVertical_bias="0.6"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shop_street_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_shop_street"
+                            android:inputType="text"
+                            android:maxLength="50"
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_city"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_peach"
+                        app:boxStrokeWidth="0.2dp"
+                        android:hint="@string/enter_shop_city"
+                        app:errorTextColor="@color/secondary_peach"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/text_black_m"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shop_street"
+                        app:layout_constraintVertical_bias="0.6"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shop_city_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_shop_city"
+                            android:inputType="text"
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
-                </RelativeLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_gov"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:hint="@string/enter_provi"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/text_black_m"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        app:layout_constraintTop_toBottomOf="@id/shop_city">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:boxBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_22sdp">
+
+                            <Spinner
+                                android:id="@+id/shop_gov_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/primary_red"
+                                android:overlapAnchor="false"
+                                android:prompt="@string/enter_provi"
+                                android:popupBackground="@color/white"
+                                android:spinnerMode="dropdown" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_pin"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_peach"
+                        app:boxStrokeWidth="0.2dp"
+
+
+                        app:errorTextColor="@color/secondary_peach"
+                        app:hintEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shop_gov"
+                        app:layout_constraintVertical_bias="0.6"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shop_pin_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_shop_pin"
+                            android:inputType="number"
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_pro"
+                        android:visibility="gone"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_peach"
+                        app:boxStrokeWidth="0.2dp"
+
+
+                        app:errorTextColor="@color/secondary_peach"
+                        app:hintEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shop_pin"
+                        app:layout_constraintVertical_bias="0.6">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shop_pro_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_shop_proname"
+                            android:inputType="textCapSentences"
+                            android:maxLength="10"
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_email"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_peach"
+                        app:boxStrokeWidth="0.2dp"
+                        app:hintTextColor="@color/text_black_m"
+                        app:errorTextColor="@color/secondary_peach"
+                        app:hintEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shop_pro"
+                        app:layout_constraintVertical_bias="0.6">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shop_email_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_shop_email"
+                            android:inputType="textEmailAddress"
+                            android:maxLength="30"
+                            android:imeOptions="actionDone"
+
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/shop_mobile"
+                        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+
+                        android:elevation="@dimen/_5sdp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusBottomStart="@dimen/_22sdp"
+                        app:boxCornerRadiusTopEnd="@dimen/_22sdp"
+                        app:boxCornerRadiusTopStart="@dimen/_22sdp"
+                        app:boxStrokeColor="@color/color_pri_v"
+                        app:boxStrokeErrorColor="@color/primary_peach"
+                        app:boxStrokeWidth="0.2dp"
+
+
+                        app:errorTextColor="@color/secondary_peach"
+                        app:hintEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shop_email"
+                        app:layout_constraintVertical_bias="0.6"
+                        app:prefixText="+91">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/shop_mobile_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="9999999999"
+                            android:inputType="none"
+                            android:maxLength="10"
+                            android:imeOptions="actionDone"
+                            android:paddingVertical="@dimen/_11sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColorHint="@color/black"
+                            android:focusable="false"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ProgressBar
+                        android:id="@+id/ld_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/primary_peach"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/confirm_btn"
+                        app:layout_constraintEnd_toEndOf="@id/confirm_btn"
+                        app:layout_constraintStart_toStartOf="@id/confirm_btn"
+                        app:layout_constraintTop_toTopOf="@id/confirm_btn" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/confirm_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:alpha="0.55"
+                        android:background="@drawable/button_gradient"
+                        android:enabled="false"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:text="@string/contin"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shop_mobile"
+
+                        app:layout_constraintBottom_toTopOf="@+id/bottom_text"/>
+
+
+                    <ProgressBar
+                        android:id="@+id/otp_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/primary_peach"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/bottom_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:ellipsize="marquee"
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11ssp"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </ScrollView>
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

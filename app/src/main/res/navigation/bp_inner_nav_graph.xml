@@ -21,7 +21,10 @@
             app:destination="@id/StockFragment" />
         <action
             android:id="@+id/action_bphomeFragment_to_BpProfileFragment"
-            app:destination="@id/BpProfileFragment" />
+            app:destination="@id/BpAccountFragment" />
+        <action
+            android:id="@+id/action_bphomeFragment_to_BpDocProfileFragment"
+            app:destination="@id/BpDocProfileFragment" />
         <action
             android:id="@+id/action_bphomeFragment_to_SearchFragment"
             app:destination="@id/SearchFragment" />
@@ -31,6 +34,7 @@
         <action
             android:id="@+id/action_bphomeFragment_to_AddJob"
             app:destination="@id/AddJobFragment" />
+
         <argument
             android:name="id"
             android:defaultValue=""
@@ -45,11 +49,49 @@
     </fragment>
 
     <fragment
+        android:id="@+id/BpDocProfileFragment"
+        android:name="com.chillarcards.britto.ui.business.BpDocProfileFragment"
+        android:label="BpProfileFragment"
+        tools:layout="@layout/fragment_bp_docprofile">
+        <action
+            android:id="@+id/action_profileFragment_to_worKFragment"
+            app:destination="@id/bpWorkFragment" />
+        <argument
+            android:name="page"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/BpAccountFragment"
+        android:name="com.chillarcards.britto.ui.business.BpAccountFragment"
+        android:label="BpAccountFragment"
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_bpAccountFragment_to_BpProfileFragment"
+            app:destination="@id/BpProfileFragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_bpAccountFragment_to_worKFragment"-->
+<!--            app:destination="@id/bpWorkFragment" /> -->
+        <action
+            android:id="@+id/action_bpAccountFragment_to_worKFragment"
+            app:destination="@id/bpWorkFragment" />
+        <argument
+            android:name="page"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
         android:id="@+id/BpProfileFragment"
-        android:name="com.chillarcards.britto.ui.profile.BpProfileFragment"
+        android:name="com.chillarcards.britto.ui.business.BpProfileFragment"
         android:label="BpProfileFragment"
         tools:layout="@layout/fragment_bp_profile">
-
+        <action
+            android:id="@+id/action_profileFragment_to_worKFragment"
+            app:destination="@id/bpWorkFragment" />
         <argument
             android:name="page"
             android:defaultValue=""
@@ -257,6 +299,25 @@
             app:nullable="true" />
         <argument
             android:name="name"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/bpWorkFragment"
+        android:name="com.chillarcards.britto.ui.business.BpWorkHoursFragment"
+        android:label="PhotoFragment"
+        tools:layout="@layout/fragment_work_hours">
+
+        <argument
+            android:name="type"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="seleId"
             android:defaultValue=""
             app:argType="string"
             app:nullable="true" />

@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.chillarcards.britto.R
-import com.chillarcards.britto.ui.register.doctor.WorkSchedule
+import com.chillarcards.britto.ui.register.business.WorkSchedule
 
 class UpdateSubWorkHoursAdapter(
     private val context: Context,

@@ -1,6 +1,6 @@
 package com.chillarcards.britto.di.module
 
-import com.chillarcards.britto.viewmodel.RegisterViewModel
+import com.chillarcards.britto.viewmodel.*
 import org.koin.dsl.module
 
 
@@ -12,6 +12,21 @@ import org.koin.dsl.module
 val viewModelModule = module {
     single {
         RegisterViewModel(get(), get())
+    }
+    single {
+        OTPViewModel(get(), get())
+    }
+    single {
+        BusinessViewModel(get(), get())
+    }
+    single {
+        ProvinceViewModel(get(), get())
+    }
+    single {
+        BusinessRegisterViewModel(get(), get())
+    }
+    single {
+        ItemViewModel(get(), get())
     }
 
 }

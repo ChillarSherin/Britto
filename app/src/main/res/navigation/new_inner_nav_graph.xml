@@ -114,11 +114,16 @@
             android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="otp"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
 
     </fragment>
     <fragment
         android:id="@+id/DoctorFragment"
-        android:name="com.chillarcards.britto.ui.register.doctor.DoctorFragment"
+        android:name="com.chillarcards.britto.ui.register.business.DoctorFragment"
         android:label="DoctorFragment"
         tools:layout="@layout/fragment_add_doctor">
         <action
@@ -140,9 +145,16 @@
     </fragment>
     <fragment
         android:id="@+id/RegisterFragment"
-        android:name="com.chillarcards.britto.ui.register.RegisterFragment"
+        android:name="com.chillarcards.britto.ui.register.business.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register">
+
+        <action
+            android:id="@+id/action_RegisterFragment_to_bphomeFragment"
+            app:destination="@id/bphomeBaseFragment"
+            app:popUpTo="@id/action_RegisterFragment_to_bphomeFragment"
+            app:popUpToInclusive="true" />
+
         <action
             android:id="@+id/action_regiFragment_to_photoFragment"
             app:destination="@id/PhotoFragment" />
@@ -162,7 +174,7 @@
     </fragment>
     <fragment
         android:id="@+id/PhotoFragment"
-        android:name="com.chillarcards.britto.ui.register.PhotoFragment"
+        android:name="com.chillarcards.britto.ui.register.business.PhotoFragment"
         android:label="PhotoFragment"
         tools:layout="@layout/fragment_register_profile">
 
@@ -185,7 +197,7 @@
     </fragment>
     <fragment
         android:id="@+id/workFragment"
-        android:name="com.chillarcards.britto.ui.register.WorkHoursFragment"
+        android:name="com.chillarcards.britto.ui.register.business.WorkHoursFragment"
         android:label="PhotoFragment"
         tools:layout="@layout/fragment_work_hours">
 
@@ -204,7 +216,7 @@
     </fragment>
   <fragment
         android:id="@+id/docWorkFragment"
-        android:name="com.chillarcards.britto.ui.register.doctor.DocWorkHoursFragment"
+        android:name="com.chillarcards.britto.ui.register.business.DocWorkHoursFragment"
         android:label="PhotoFragment"
         tools:layout="@layout/fragment_work_hours">
       <action
@@ -228,7 +240,7 @@
 
     <fragment
         android:id="@+id/AddFragment"
-        android:name="com.chillarcards.britto.ui.register.AddLocationFragment"
+        android:name="com.chillarcards.britto.ui.register.customer.AddLocationFragment"
         android:label="AddFragment"
         tools:layout="@layout/fragment_add_location">
         <action
@@ -246,7 +258,7 @@
 
     <fragment
         android:id="@+id/GeneralHomeFragment"
-        android:name="com.chillarcards.britto.ui.register.GeneralHomeFragment"
+        android:name="com.chillarcards.britto.ui.register.business.GeneralHomeFragment"
         android:label="GeneralHomeFragment"
         tools:layout="@layout/fragment_general_home">
         <action

@@ -38,7 +38,6 @@
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
                     app:lottie_progress="0.5"
-                    app:lottie_fileName="splash_load.json"
                     />
 
                 <ImageView

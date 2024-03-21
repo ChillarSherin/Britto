@@ -2,6 +2,7 @@ package com.chillarcards.britto.utills
 
 import android.content.Context
 import android.content.SharedPreferences
+import kotlin.math.roundToLong
 
 class PrefManager(_context: Context) {
 
@@ -11,11 +12,14 @@ class PrefManager(_context: Context) {
 
         private const val IS_LOGGED_IN = "IS_LOGGED_IN"
         private const val PAGE = "PAGE"
-        private const val REFRESHTOKEN = "REFRESHTOKEN"
-        private const val TOKEN = "Token"
+        private const val USERTYPE = "USERTYPE"
+        private const val UUID = "uuid"
         private const val STATUS = "STATUS"
         private const val MOBILENO = "MOBILENO"
+        private const val BUSID = "BUSID"
         private const val DOCTORID = "DOCTORID"
+        private const val CURRENT_LAT = "CURRENT_LAT"
+        private const val CURRENT_LONG = "CURRENT_LONG"
 
         // shared pref mode
         private const val PRIVATE_MODE = Context.MODE_PRIVATE
@@ -33,18 +37,18 @@ class PrefManager(_context: Context) {
         editor.commit()
     }
 
-    fun getToken(): String {
-        return pref.getString(TOKEN, "") ?: ""
+    fun getUuid(): String {
+        return pref.getString(UUID, "") ?: ""
     }
-    fun setToken(token: String) {
-        editor.putString(TOKEN, token)
+    fun setUuid(token: String) {
+        editor.putString(UUID, token)
         editor.commit()
     }
     fun getRefToken(): String {
-        return pref.getString(REFRESHTOKEN, "") ?: ""
+        return pref.getString(USERTYPE, "") ?: ""
     }
     fun setRefToken(token: String) {
-        editor.putString(REFRESHTOKEN, token)
+        editor.putString(USERTYPE, token)
         editor.commit()
     }
     fun getPage(): String {
@@ -61,12 +65,36 @@ class PrefManager(_context: Context) {
         editor.putString(MOBILENO, value)
         editor.commit()
     }
+    fun getBusinessID(): String {
+        return pref.getString(BUSID, "") ?: ""
+    }
+    fun setBusinessID(value: String) {
+        editor.putString(BUSID, value)
+        editor.commit()
+    }
 
     fun getStatus(): Int {
         return pref.getInt(STATUS, 0)
     }
     fun setStatus(value: Int) {
         editor.putInt(STATUS, value)
+        editor.commit()
+    }
+    fun getCrntLat(): String {
+        return pref.getString(CURRENT_LAT, "0.0") ?: ""
+    }
+
+    fun setCrntLat(lat: String) {
+        editor.putString(CURRENT_LAT, lat)
+        editor.commit()
+    }
+
+    fun getCrntLong(): String {
+        return pref.getString(CURRENT_LONG, "0.0") ?: ""
+    }
+
+    fun setCrntLong(long: String) {
+        editor.putString(CURRENT_LONG, long)
         editor.commit()
     }
 

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chillarcards.britto.R
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
-import com.chillarcards.britto.ui.register.doctor.DaySchedule
+import com.chillarcards.britto.ui.register.business.DaySchedule
 import com.chillarcards.britto.utills.CommonDBaseModel
 import java.text.SimpleDateFormat
 import java.util.Date
