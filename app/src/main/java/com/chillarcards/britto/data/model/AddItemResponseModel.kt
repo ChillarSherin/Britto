@@ -26,3 +26,19 @@ val category_uuid: String,
 val item_price: String,
 val item_discount: String,
 )
+data class UpdateItemRequestModel(
+    val item_uuid: String,
+    val item_name: String,
+    val brand_uuid: String,
+    val category_uuid: String,
+    val item_price: String,
+    val item_discount: String,
+)
+data class StatusItemResponseModel(
+    val msg: String,
+    val item_status_check: String,
+    val code: String,
+)
+data class StatusItemRequestModel(
+    val item_uuid: String
+)

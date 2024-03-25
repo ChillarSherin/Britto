@@ -17,8 +17,6 @@ import com.chillarcards.britto.ui.interfaces.OnCallBackListner
 import com.chillarcards.britto.ui.interfaces.OnIncrementListener
 import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.NumberCounterView
-
-
 class PharmacyItemAdapter(
     private val items: List<DummyItem>,
     private val context: Context?,
@@ -33,161 +31,11 @@ class PharmacyItemAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
-
-//        holder.itemQty.setCount(holder.itemQty.getCount())
-
-        holder.addCart.setOnClickListener {
-            holder.addCart.visibility = View.GONE
-            holder.itemQty.visibility = View.VISIBLE
-            holder.itemQty.setCount(holder.itemQty.getCount())
-            addToCart(item, holder.itemQty.getCount())
-        }
-
-        holder.itemQty.setIncrementListener(object : OnIncrementListener {
-            override fun onIncrement(count: Int) {
-                holder.itemQty.setCount(count)
-                item.cartQty = count.toString()
-
-                val index = Const.cartItems.indexOfFirst { it.id == item.id }
-                if (index != -1) {
-                    val sellRate = (item.prdsellrate.toFloat() * count).toString()
-                    Const.cartItems[index] = DummyOrderItems(
-                        item.id,
-                        item.prdname,
-                        item.prdbrand,
-                        item.prdcrncy,
-                        item.prdmrp,
-                        item.prdofferrate,
-                        item.prdsellrate,
-                        item.prdoffer,
-                        count.toString(),
-                        sellRate
-                    )
-                }
-                else {
-                    val sellRate = (item.prdsellrate.toFloat() * count).toString()
-                    val cartItem = DummyOrderItems(
-                        item.id,
-                        item.prdname,
-                        item.prdbrand,
-                        item.prdcrncy,
-                        item.prdmrp,
-                        item.prdofferrate,
-                        item.prdsellrate,
-                        item.prdoffer,
-                        count.toString(),
-                        sellRate
-                    )
-                    Const.cartItems.add(cartItem)
-                }
-
-            }
-
-            override fun onDecrement(count: Int) {
-                val index = Const.cartItems.indexOfFirst { it.id == item.id  }
-                if (index != -1) {
-                    val updatedQuantity = Const.cartItems[index].cartQty.toInt() - 1
-
-                    if (updatedQuantity > 0) {
-                        Const.cartItems[index] = Const.cartItems[index].copy(cartQty = updatedQuantity.toString())
-                    } else {
-                        Const.cartItems.removeAt(index)
-                        holder.addCart.visibility = View.VISIBLE
-                        holder.itemQty.visibility = View.GONE
-                    }
-                }
-
-            }
-        })
-
-        holder.itemQty.getCount()
     }
-
-    private fun addToCart(item: DummyItem, quantity: Int) {
-
-        val index = Const.cartItems.indexOfFirst { it.id == item.id }
-        if (index != -1) {
-            val sellRate = (item.prdsellrate.toFloat() * quantity).toString()
-            Const.cartItems[index] = DummyOrderItems(
-                item.id,
-                item.prdname,
-                item.prdbrand,
-                item.prdcrncy,
-                item.prdmrp,
-                item.prdofferrate,
-                item.prdsellrate,
-                item.prdoffer,
-                quantity.toString(),
-                sellRate
-            )
-        }
-        else {
-            val sellRate = (item.prdsellrate.toFloat() * quantity).toString()
-            val cartItem = DummyOrderItems(
-                item.id,
-                item.prdname,
-                item.prdbrand,
-                item.prdcrncy,
-                item.prdmrp,
-                item.prdofferrate,
-                item.prdsellrate,
-                item.prdoffer,
-                quantity.toString(),
-                sellRate
-            )
-            Const.cartItems.add(cartItem)
-        }
-
-        notifyDataSetChanged()
-        getCartUtil.onAddtocartCallback()
-
-
-//        var itemFound = false
-//        for (i in 0 until Const.cartItems.size) {
-//            if (Const.cartItems[i].id == item.id) {
-//                Const.cartItems[i] = DummyOrderItems(
-//                    item.id,
-//                    item.prdname,
-//                    item.prdbrand,
-//                    item.prdcrncy,
-//                    item.prdmrp,
-//                    item.prdofferrate,
-//                    item.prdsellrate,
-//                    item.prdoffer,
-//                    quantity.toString(),
-//                    (item.prdsellrate.toFloat() * quantity).toString()
-//                )
-//                itemFound = true
-//                break // Exit the loop once the item is found and updated
-//            }
-//        }
-//
-//        // If the item was not found in the cart, add it to the cartItems list
-//        if (!itemFound) {
-//            val cartItem = DummyOrderItems(
-//                item.id,
-//                item.prdname,
-//                item.prdbrand,
-//                item.prdcrncy,
-//                item.prdmrp,
-//                item.prdofferrate,
-//                item.prdsellrate,
-//                item.prdoffer,
-//                quantity.toString(),
-//                (item.prdsellrate.toFloat() * quantity).toString()
-//            )
-//            Const.cartItems.add(cartItem)
-//        }
-//        notifyDataSetChanged()
-//
-//        getCartUtil.onAddtocartCallback(true)
-    }
-
 
     override fun getItemCount() = items.size
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val menuFrm: CardView = itemView.findViewById(R.id.pharm_frm)
         private val itemName: TextView = itemView.findViewById(R.id.tvMainName)
         private val itemBrand: TextView = itemView.findViewById(R.id.tvDistri)
         private val itemOffer: TextView = itemView.findViewById(R.id.tvOffers)
@@ -195,24 +43,89 @@ class PharmacyItemAdapter(
         val addCart: TextView = itemView.findViewById(R.id.add_to_cart)
         val itemQty: NumberCounterView = itemView.findViewById(R.id.QtyEBTN)
 
-
         fun bind(item: DummyItem) {
             itemName.text = item.prdname
             itemBrand.text = item.prdbrand
-            if (Const.cartItems.size == 0) {
+
+            val correspondingCartItem = Const.cartItems.find { it.id == item.id }
+
+            if (correspondingCartItem != null) {
+                // Item exists in the cart
+                addCart.visibility = View.GONE
+                itemQty.visibility = View.VISIBLE
+                // Set the count of NumberCounterView to the quantity in the cart
+                itemQty.setCount(correspondingCartItem.cartQty.toInt())
+            } else {
+                // Item does not exist in the cart
                 addCart.visibility = View.VISIBLE
                 itemQty.visibility = View.GONE
-            }else{
-                val correspondingCartItem = Const.cartItems.find { it.id == item.id }
-                if (correspondingCartItem != null && item.cartQty != correspondingCartItem.cartQty) {
-                    addCart.visibility = View.GONE
-                    itemQty.visibility = View.VISIBLE
+            }
+
+            // Handle the visibility of offer TextView and set its text
+            handleOfferTextView(item)
+
+            // Set click listener for adding to cart
+            addCart.setOnClickListener {
+                addCart.visibility = View.GONE
+                itemQty.visibility = View.VISIBLE
+                // Update the cart
+                addToCart(item, 1)
+            }
+
+            // Set increment listener for item quantity
+            itemQty.setIncrementListener(object : OnIncrementListener {
+                override fun onIncrement(count: Int) {
+                    // Update the cart when quantity is incremented
+                    addToCart(item, count)
+                    getCartUtil.onAddtocartCallback()
+                    notifyDataSetChanged()
+                }
+
+                override fun onDecrement(count: Int) {
+                    // Decrement quantity or remove from cart if count is 0
+                    addToCart(item, count)
+                    getCartUtil.onAddtocartCallback()
+                    notifyDataSetChanged()
+                }
+            })
+        }
+
+        private fun addToCart(item: DummyItem, quantity: Int) {
+            val index = Const.cartItems.indexOfFirst { it.id == item.id }
+            if (index != -1) {
+                if (quantity > 0) {
+                    // Update existing item quantity in the cart
+                    Const.cartItems[index].cartQty = quantity.toString()
+                    // Update sell rate based on the updated quantity
+                    Const.cartItems[index].cartRate = (item.prdsellrate.toFloat() * quantity).toString()
                 } else {
+                    // Remove item from cart if quantity is 0
+                    Const.cartItems.removeAt(index)
                     addCart.visibility = View.VISIBLE
                     itemQty.visibility = View.GONE
                 }
+            } else {
+                // Add item to cart if it doesn't exist
+                Const.cartItems.add(
+                    DummyOrderItems(
+                        item.id,
+                        item.prdname,
+                        item.prdbrand,
+                        item.prdcrncy,
+                        item.prdmrp,
+                        item.prdofferrate,
+                        item.prdsellrate,
+                        item.prdoffer,
+                        quantity.toString(),
+                        (item.prdsellrate.toFloat() * quantity).toString()
+                    )
+                )
             }
+            getCartUtil.onAddtocartCallback()
+            notifyDataSetChanged()
+        }
 
+        private fun handleOfferTextView(item: DummyItem) {
             if (item.prdofferrate == "") {
                 itemOffer.visibility = View.GONE
                 itemRate.text = item.prdcrncy + item.prdmrp
@@ -222,7 +135,6 @@ class PharmacyItemAdapter(
                 val mrpText = "MRP ${item.prdmrp}${item.prdcrncy}"
                 val offerText = "${item.prdoffer}% off"
                 val spannableString = SpannableString("$mrpText $offerText")
-
                 spannableString.setSpan(
                     StrikethroughSpan(),
                     0,  // Start index of MRP text
@@ -239,5 +151,4 @@ class PharmacyItemAdapter(
             }
         }
     }
-
 }

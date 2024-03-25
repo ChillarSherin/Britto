@@ -25,7 +25,6 @@ class OTPViewModel(
     private val _otpData = MutableLiveData<Resource<OTPModel>?>()
     val otpData: LiveData<Resource<OTPModel>?> get() = _otpData
     private val _reOtpData = MutableLiveData<Resource<RegisterModel>?>()
-    val reOtpData: LiveData<Resource<RegisterModel>?> get() = _reOtpData
 
     var mob = MutableLiveData<String>()
     var otp = MutableLiveData<String>()

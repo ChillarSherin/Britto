@@ -93,7 +93,9 @@ open class CartFragment : Fragment(), OnCallBackListner {
                 total_Price += Const.cartItems[i].cartRate.toFloat()
                 total_Count += i
             }
-            binding.subTtl.text = "Subtotal : " +total_Price.toString() +" "+ resources.getString(R.string.rupee)
+           // binding.subTtl.text = "Subtotal : " +total_Price.toString() +" "+ resources.getString(R.string.rupee)
+            binding.subTtl.text ="Subtotal : " + String.format("%.2f %s", total_Price, resources.getString(R.string.rupee))
+
         }else{
             binding.cartFrm.visibility = View.GONE
             findNavController().popBackStack()

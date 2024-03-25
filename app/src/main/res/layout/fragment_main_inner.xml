@@ -25,7 +25,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.google.android.material.button.MaterialButton
+                android:visibility="gone"
+                android:id="@+id/add_item_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:alpha="0.55"
+                android:background="@drawable/button_gradient"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/add_item"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/add_phar_frm"
@@ -65,8 +83,8 @@
                             app:boxCornerRadiusBottomStart="@dimen/_8sdp"
                             app:boxCornerRadiusTopEnd="@dimen/_8sdp"
                             app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                            app:counterTextColor="@color/white"
-                            app:hintTextColor="@color/white"
+                            app:counterTextColor="@color/text_black"
+                            app:hintTextColor="@color/text_black"
                             >
 
                             <EditText
@@ -86,114 +104,74 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center"
+                            android:layout_height="match_parent"
                             android:weightSum="1"
-                            android:layout_marginHorizontal="@dimen/_8sdp"
+                            android:orientation="horizontal"
+                            android:gravity="center|center_vertical"
                             android:layout_gravity="center"
-                            android:baselineAligned="false">
-
-                            <LinearLayout
+                            android:layout_marginTop="5dp"
+                            android:layout_marginHorizontal="@dimen/_8sdp"
+                            android:background="@drawable/custom_spinner_background"
+                            >
+                            <Spinner
+                                android:id="@+id/et_brand"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.5"
+                                android:layout_weight="0.8"
+                                android:overlapAnchor="false"
+                                android:prompt="@string/enter_brand"
+                                android:padding="@dimen/_10sdp"
+                                android:backgroundTint="@color/app_theme_icon"
+                                android:popupBackground="@color/white"
+                                android:spinnerMode="dropdown" />
+
+                            <LinearLayout
+                                android:id="@+id/im_edit"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
                                 android:orientation="vertical"
                                 android:gravity="center|center_vertical"
-                                android:layout_gravity="center">
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:errorTextColor="@color/secondary_red"
-                                    android:textColorHint="@color/text_black"
-                                    android:layout_marginStart="@dimen/_2sdp"
-                                    android:layout_marginEnd="@dimen/_2sdp"
-                                    app:boxStrokeWidth="1dp"
-                                    app:boxBackgroundColor="@color/theme_bg"
-                                    app:boxStrokeColor="@color/black"
-                                    app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                                    app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                                    app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                                    app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                    app:counterTextColor="@color/white"
-                                    app:hintTextColor="@color/text_black"
-                                    >
-
-                                    <androidx.cardview.widget.CardView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        app:boxBackgroundColor="@color/theme_bg"
-                                        app:cardCornerRadius="@dimen/_22sdp"
-                                        >
-
-                                        <Spinner
-                                            android:id="@+id/et_brand"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:backgroundTint="@color/primary_red"
-                                            android:overlapAnchor="false"
-                                            android:padding="@dimen/_10sdp"
-                                            android:layout_marginStart="@dimen/_20sdp"
-                                            android:prompt="@string/enter_brand"
-                                            android:popupBackground="@color/white"
-                                            android:spinnerMode="dropdown" />
-
-                                    </androidx.cardview.widget.CardView>
-
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0.5"
-                                android:orientation="vertical"
-                                android:gravity="center"
-                                android:layout_gravity="center">
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:errorTextColor="@color/secondary_red"
-                                    android:textColorHint="@color/text_black"
-                                    android:layout_marginStart="@dimen/_2sdp"
-                                    android:layout_marginEnd="@dimen/_2sdp"
-                                    app:boxStrokeWidth="1dp"
-                                    app:boxBackgroundColor="@color/theme_bg"
-                                    app:boxStrokeColor="@color/black"
-                                    app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                                    app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                                    app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                                    app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                    app:counterTextColor="@color/white"
-                                    app:hintTextColor="@color/text_black"
-                                    >
-
-                                    <androidx.cardview.widget.CardView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        app:boxBackgroundColor="@color/theme_bg"
-                                        app:cardCornerRadius="@dimen/_22sdp"
-                                        >
-
-                                        <Spinner
-                                            android:id="@+id/et_categroy"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:backgroundTint="@color/primary_red"
-                                            android:overlapAnchor="false"
-                                            android:padding="@dimen/_10sdp"
-                                            android:layout_marginStart="@dimen/_20sdp"
-                                            android:prompt="@string/enter_cat"
-                                            android:popupBackground="@color/theme_bg"
-                                            android:spinnerMode="dropdown" />
-
-                                    </androidx.cardview.widget.CardView>
-
-                                </com.google.android.material.textfield.TextInputLayout>
-
+                                android:layout_gravity="center"
+                                android:background="@drawable/button_add"
+                                >
+                                <ImageView
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:padding="@dimen/_10sdp"
+                                    android:src="@drawable/ic_plus"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    android:contentDescription="@string/app_name" />
                             </LinearLayout>
 
                         </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginHorizontal="@dimen/_8sdp"
+                            android:background="@drawable/custom_spinner_background"
+                            android:gravity="center"
+                            android:layout_gravity="center">
+
+                            <Spinner
+                                android:id="@+id/et_categroy"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/app_theme_icon"
+                                android:overlapAnchor="false"
+                                android:padding="@dimen/_10sdp"
+                                android:prompt="@string/enter_cat"
+                                android:popupBackground="@color/white"
+                                android:spinnerMode="dropdown" />
+
+                        </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -226,8 +204,8 @@
                                     app:boxCornerRadiusBottomStart="@dimen/_8sdp"
                                     app:boxCornerRadiusTopEnd="@dimen/_8sdp"
                                     app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                    app:counterTextColor="@color/white"
-                                    app:hintTextColor="@color/white"
+                                    app:counterTextColor="@color/text_black"
+                                    app:hintTextColor="@color/text_black"
                                     >
 
                                     <EditText
@@ -235,7 +213,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:imeOptions="actionNext"
-                                        android:inputType="text"
+                                        android:inputType="numberDecimal"
                                         android:hint="Enter mrp"
                                         android:textSize="@dimen/_9ssp"
                                         android:textColorHighlight="@color/text_black"
@@ -268,8 +246,8 @@
                                     app:boxCornerRadiusBottomStart="@dimen/_8sdp"
                                     app:boxCornerRadiusTopEnd="@dimen/_8sdp"
                                     app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                                    app:counterTextColor="@color/white"
-                                    app:hintTextColor="@color/white"
+                                    app:counterTextColor="@color/text_black"
+                                    app:hintTextColor="@color/text_black"
                                     >
 
                                     <EditText
@@ -277,7 +255,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:imeOptions="actionNext"
-                                        android:inputType="text"
+                                        android:inputType="numberDecimal"
                                         android:textSize="@dimen/_9ssp"
                                         android:hint="Enter discount"
                                         android:textColorHighlight="@color/text_black"
@@ -312,6 +290,8 @@
                                 android:layout_gravity="center">
                             </LinearLayout>
                             <LinearLayout
+                                android:id="@+id/tv_cancel"
+
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.3"
@@ -320,7 +300,6 @@
                                 android:layout_gravity="center">
 
                                 <TextView
-                                    android:id="@+id/tv_cancel"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
@@ -489,11 +468,11 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:padding="5dp"
-                android:drawablePadding="@dimen/_3ssp"
+                android:padding="2dp"
+                android:drawablePadding="@dimen/_2ssp"
                 android:text="1"
                 android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
                 app:drawableStartCompat="@drawable/ic_cart" />
 
@@ -501,7 +480,6 @@
                 android:id="@+id/CartproceedTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_18sdp"
                 android:text="@string/contpay"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"

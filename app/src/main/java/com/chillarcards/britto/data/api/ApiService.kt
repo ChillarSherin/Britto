@@ -63,5 +63,27 @@ interface ApiService {
     suspend fun getAddItemList(
         @Body reqModel: AddItemRequestModel
     ): Response<AddItemResponseModel>
+    @POST("business/edit_pharmacy_item")
+    suspend fun getUpdateItemList(
+        @Body reqModel: UpdateItemRequestModel
+    ): Response<AddItemResponseModel>
+    @POST("business/delete_pharmacy_item")
+    suspend fun updateItem(
+        @Body reqModel: StatusItemRequestModel
+    ): Response<StatusItemResponseModel>
+    @POST("business/get_working_hours")
+    suspend fun getWorkHrs(
+        @Body reqModel: WorkHrsRequestModel
+    ): Response<WorkHrsResponseModel>
+
+    //JSON PARAMETER FORM
+    @POST("business/working_hours")
+    suspend fun addWorkHrs(
+        @Body jsonString: String
+    ): Response<WorkHrsResponseModel>
+    @POST("business/add_item_brand")
+    suspend fun addBrand(
+        @Body reqModel: AddItemBrandRequest
+    ): Response<AddItemBrandResponse>
 
 }

@@ -80,6 +80,7 @@ import java.util.concurrent.TimeUnit
                      R.id.homeBaseFragment
                  }
                  else if (prefManager.getRefToken() == "b2b"){
+//                     R.id.homeBaseFragment
                      R.id.bphomeBaseFragment
                  }
                  else {

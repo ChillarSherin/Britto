@@ -128,5 +128,9 @@ open class GeneralHomeFragment : Fragment(),IAdapterViewUtills {
         }
 
     }
-
+    override fun onStop() {
+        super.onStop()
+        Log.d("abc_mob", "onStop: ")
+        businessViewModel.clear()
+    }
 }

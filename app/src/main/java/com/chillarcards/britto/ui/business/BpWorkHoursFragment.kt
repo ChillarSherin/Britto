@@ -1,9 +1,11 @@
 package com.chillarcards.britto.ui.business
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
@@ -12,17 +14,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chillarcards.britto.R
+import com.chillarcards.britto.data.model.WorkHour
+import com.chillarcards.britto.data.model.WorkHoursRequest
+import com.chillarcards.britto.data.model.WorkSchedule
 import com.chillarcards.britto.databinding.FragmentWorkHoursAllBinding
 import com.chillarcards.britto.ui.adapter.UpdateSubWorkHoursAdapter
 import com.chillarcards.britto.ui.adapter.WorkHoursAdapter
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
-import com.chillarcards.britto.ui.register.business.WorkResponseModel
-import com.chillarcards.britto.ui.register.business.WorkSchedule
 import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.PrefManager
+import com.chillarcards.britto.utills.Status
+import com.chillarcards.britto.viewmodel.BusinessViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.gson.Gson
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class BpWorkHoursFragment : Fragment(),IAdapterViewUtills {
@@ -30,7 +35,11 @@ class BpWorkHoursFragment : Fragment(),IAdapterViewUtills {
     lateinit var binding: FragmentWorkHoursAllBinding
     lateinit var workHoursAdapter: WorkHoursAdapter
     private lateinit var prefManager: PrefManager
-
+    private val businessViewModel by viewModel<BusinessViewModel>()
+    private var day ="Select a day"
+    private var session ="Session"
+    var previousDayPosition = 0
+    var previousSessionPosition = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +52,11 @@ class BpWorkHoursFragment : Fragment(),IAdapterViewUtills {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prefManager = PrefManager(requireContext())
-
+        businessViewModel.run {
+//            businessUuid.value = prefManager.getBusUUID()
+            businessUuid.value = "04f2af0a8c3f4ce8af72babba63ef1e2"
+            getWorkHours()
+        }
         Const.enableButton(binding.confirmBtn)
 
         setUpObserver()
@@ -51,26 +64,121 @@ class BpWorkHoursFragment : Fragment(),IAdapterViewUtills {
         binding.confirmBtn.setOnClickListener {
             findNavController().popBackStack()
         }
-
-        val daysOfWeek = arrayOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+        val daysOfWeek = arrayOf("Select a day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, daysOfWeek)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.daySpinner.adapter = adapter
-        val sessionOfDay = arrayOf("AM", "PM")
+
+        val sessionOfDay = arrayOf("Session", "AM", "PM")
         val adapterSession = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, sessionOfDay)
         adapterSession.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.sessionSpinner.adapter = adapterSession
 
+        binding.daySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (position != previousDayPosition) { // Check if selection has changed
+                    previousDayPosition = position // Update previous position
+                    val selectedDay = daysOfWeek[position]
+                    Log.d("SelectedDay", "Selected day: $selectedDay")
+                    if (selectedDay == "Select a day") {
+                        Const.shortToast(requireContext(), "Select a day")
+                    } else {
+                        day = selectedDay
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Do nothing
+            }
+        }
+
+        binding.sessionSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (position != previousSessionPosition) { // Check if selection has changed
+                    previousSessionPosition = position // Update previous position
+                    val selectedSession = sessionOfDay[position]
+                    Log.d("Select session", "Selected session: $selectedSession")
+                    if (selectedSession == "Session") {
+                        Const.shortToast(requireContext(), "Select session")
+                    } else {
+                        session = selectedSession
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Do nothing
+            }
+        }
+
+        binding.addData.setOnClickListener {
+         when {
+                day == "Select a day" -> {
+                    Const.shortToast(requireContext(), "Select a day")
+                }
+                session == "Session" -> {
+                    Const.shortToast(requireContext(), "Select session")
+                }
+
+                else -> {
+                    businessViewModel.run {
+                        businessUuid.value = prefManager.getBusUUID().trim()
+                        wrkHrsDay.value = day.trim()
+                        wrkHrsStartTime.value = binding.startTime.text.toString().trim()
+                        wrkHrsEndTime.value = binding.endTime.text.toString().trim()
+                        wrkHrsSession.value = session.trim()
+                        addWorkHours()
+                    }
+                }
+            }
+
+
+        }
+
     }
 
     private fun setUpObserver() {
-        val gson = Gson()
-//        val daySchedules = response.data.result.flatMap { it.workSchedule }
-        val response = gson.fromJson(json, WorkResponseModel::class.java)
-        val daySchedules = response.data.result
-        workHoursAdapter = WorkHoursAdapter(requireContext(),this@BpWorkHoursFragment, daySchedules)
-        binding.recycler.adapter = workHoursAdapter
-        binding.recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        try {
+            businessViewModel.workHrsData.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            hideProgress()
+                            it.data?.let { workData ->
+                                when (workData.code) {
+                                    200 -> {
+                                        if (workData.data.isNotEmpty()) {
+                                            binding.nodata.visibility=View.GONE
+                                            binding.confirmBtn.visibility=View.VISIBLE
+                                            binding.recycler.visibility=View.VISIBLE
+                                            workHoursAdapter = WorkHoursAdapter(requireContext(), this@BpWorkHoursFragment,workData.data)
+                                            binding.recycler.adapter = workHoursAdapter
+                                            binding.recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                                        }
+                                        else {
+                                            binding.nodata.visibility=View.VISIBLE
+                                            binding.confirmBtn.visibility=View.GONE
+                                            binding.recycler.visibility=View.GONE
+                                        }
+                                    }
+                                    else -> Const.shortToast(requireContext(), workData.get_working_hours)
+                                }
+                            }
+                        }
+                        Status.LOADING -> {
+                            showProgress()
+                        }
+                        Status.ERROR -> {
+                            hideProgress()
+                        }
+                    }
+                }
+            }
+
+        } catch (e: Exception) {
+            Log.e("abc_otp", "setUpObserver: ", e)
+        }
     }
 
 
@@ -316,5 +424,9 @@ class BpWorkHoursFragment : Fragment(),IAdapterViewUtills {
         bottomSheetDialog.show()
 
     }
-
+    override fun onStop() {
+        super.onStop()
+        Log.d("abc_mob", "onStop: ")
+        businessViewModel.clear()
+    }
 }

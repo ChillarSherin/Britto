@@ -5,13 +5,14 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import com.chillarcards.britto.R
 import com.chillarcards.britto.ui.DummyOrderItems
+import java.io.File
 
 class Const {
     companion object {
 
 
         const val ver_title = ":  " //Client
-        const val currency = ":  " //Client
+        const val currency = "ر.ع." //Client
         private lateinit var prefManager: PrefManager
         var cartItems: MutableList<DummyOrderItems> = mutableListOf()
 
@@ -45,6 +46,20 @@ class Const {
             }
             alertDialog.setCanceledOnTouchOutside(false)
             alertDialog.show()
+        }
+
+        // Function to clear cache
+        fun clearCache(context: Context) {
+            try {
+                val cacheDir = context.cacheDir
+                if (cacheDir.exists()) {
+                    cacheDir.listFiles()?.forEach { file ->
+                        file.delete()
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
 
     }

@@ -3,7 +3,7 @@ package com.chillarcards.britto.utills
 import com.chillarcards.britto.data.model.PharmacyItemBrand
 import com.chillarcards.britto.data.model.PharmacyItemCategory
 import com.chillarcards.britto.data.model.ProvinceData
-import com.chillarcards.britto.ui.register.business.WorkSchedule
+import com.chillarcards.britto.data.model.WorkSchedule
 import com.google.gson.annotations.SerializedName
 /**
  * @Author: Sherin Jaison
@@ -17,6 +17,8 @@ data class CommonDBaseModel  (
     @SerializedName("Mobile" ) var mobile : String? = null,
     @SerializedName("ValueStr1" ) var valueStr1 : String? = null,
     @SerializedName("ValueStr2" ) var valueStr2 : String? = null,
+    @SerializedName("ValueStr3" ) var valueStr3 : String? = null,
+    @SerializedName("ValueStr4" ) var valueStr4 : String? = null,
     @SerializedName("Position" ) var positionVal : Int? = null,
     @SerializedName("ListData" ) var listData :  List<WorkSchedule>? = null,
     @SerializedName("UuMastIDs"   ) var uuidMastIDs   : Long?    = null,

@@ -96,7 +96,14 @@
                         android:textColor="@color/black"
                         android:layout_margin="@dimen/_5sdp"
                         />
-
+                    <TextView
+                        android:id="@+id/tvOffers_per"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="@color/primary_green"
+                        android:layout_margin="@dimen/_5sdp"
+                        />
                 </LinearLayout>
             </LinearLayout>
             <!--editing-->
@@ -139,99 +146,50 @@
                         android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center|center_vertical"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:background="@drawable/custom_spinner_background"
+
+                    >
+                    <Spinner
+                        android:id="@+id/et_brand"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:overlapAnchor="false"
+                        android:prompt="@string/enter_brand"
+                        android:padding="@dimen/_10sdp"
+                        android:backgroundTint="@color/app_theme_icon"
+                        android:popupBackground="@color/white"
+                        android:spinnerMode="dropdown" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:weightSum="1"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
                     android:layout_marginHorizontal="@dimen/_8sdp"
-                    android:layout_gravity="center"
-                    android:baselineAligned="false">
+                    android:background="@drawable/custom_spinner_background"
+                    android:gravity="center"
+                    android:layout_gravity="center">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <Spinner
+                        android:id="@+id/et_categroy"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:orientation="vertical"
-                        android:gravity="center|center_vertical"
-                        android:layout_gravity="center">
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:errorTextColor="@color/secondary_red"
-                            android:textColorHint="@color/text_black"
-                            android:layout_marginStart="@dimen/_2sdp"
-                            android:layout_marginEnd="@dimen/_2sdp"
-                            app:boxStrokeWidth="1dp"
-                            app:boxBackgroundColor="@color/theme_bg"
-                            app:boxStrokeColor="@color/black"
-                            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                            app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                            app:counterTextColor="@color/white"
-                            app:hintTextColor="@color/text_black"
-                            >
-
-                            <EditText
-                                android:id="@+id/et_brand"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:imeOptions="actionNext"
-                                android:inputType="text"
-                                android:text="Enter brand"
-                                android:textSize="@dimen/_9ssp"
-                                android:textColorHighlight="@color/white"
-                                android:textColor="@color/text_black"
-                                android:textColorHint="@color/text_black"
-                                android:importantForAutofill="no" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_gravity="center">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:errorTextColor="@color/secondary_red"
-                            android:textColorHint="@color/text_black"
-                            android:layout_marginStart="@dimen/_2sdp"
-                            android:layout_marginEnd="@dimen/_2sdp"
-                            app:boxStrokeWidth="1dp"
-                            app:boxBackgroundColor="@color/theme_bg"
-                            app:boxStrokeColor="@color/black"
-                            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-                            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-                            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-                            app:boxCornerRadiusTopStart="@dimen/_8sdp"
-                            app:counterTextColor="@color/white"
-                            app:hintTextColor="@color/white"
-                            >
-
-                            <EditText
-                                android:id="@+id/et_categroy"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:imeOptions="actionNext"
-                                android:inputType="text"
-                                android:text="Enter category"
-                                android:textSize="@dimen/_9ssp"
-                                android:textColorHighlight="@color/text_black"
-                                android:textColor="@color/text_black"
-                                android:textColorHint="@color/text_black"
-                                android:importantForAutofill="no" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
+                        android:backgroundTint="@color/app_theme_icon"
+                        android:overlapAnchor="false"
+                        android:padding="@dimen/_10sdp"
+                        android:prompt="@string/enter_cat"
+                        android:popupBackground="@color/white"
+                        android:spinnerMode="dropdown" />
 
                 </LinearLayout>
                 <LinearLayout

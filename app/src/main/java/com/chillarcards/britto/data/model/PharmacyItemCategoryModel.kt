@@ -33,3 +33,19 @@ data class PharmacyItemBrand(
     val brand_status: Int
 )
 
+data class AddItemBrandResponse(
+    val msg: String,
+    val add_item_brand: String,
+    val code: String,
+    val data: BrandData
+)
+
+data class BrandData(
+    val brand_uuid: String,
+    val brand_name: String,
+    val brand_status: Int
+)
+data class AddItemBrandRequest(
+    val business_uuid: String,
+    val brand_name: String
+)

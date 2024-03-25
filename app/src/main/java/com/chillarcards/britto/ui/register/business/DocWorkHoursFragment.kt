@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chillarcards.britto.R
+import com.chillarcards.britto.data.model.WorkHrsResponseModel
+import com.chillarcards.britto.data.model.WorkSchedule
 import com.chillarcards.britto.databinding.FragmentWorkHoursAllBinding
 import com.chillarcards.britto.ui.adapter.UpdateSubWorkHoursAdapter
 import com.chillarcards.britto.ui.adapter.WorkHoursAdapter
@@ -73,8 +75,8 @@ class DocWorkHoursFragment : Fragment(),IAdapterViewUtills {
     private fun setUpObserver() {
         val gson = Gson()
 //        val daySchedules = response.data.result.flatMap { it.workSchedule }
-        val response = gson.fromJson(json, WorkResponseModel::class.java)
-        val daySchedules = response.data.result
+        val response = gson.fromJson(json, WorkHrsResponseModel::class.java)
+        val daySchedules = response.data
         workHoursAdapter = WorkHoursAdapter(requireContext(),this@DocWorkHoursFragment, daySchedules)
         binding.recycler.adapter = workHoursAdapter
         binding.recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

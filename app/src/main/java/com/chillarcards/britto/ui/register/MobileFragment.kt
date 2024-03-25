@@ -40,9 +40,7 @@ class MobileFragment : Fragment() {
     private val textRegex = "^[A-Z][a-z]*$|^[a-z]*$".toRegex()
     private val args: MobileFragmentArgs by navArgs()
 
-    private var statusTrue: Boolean = false
     private var tempMobileNo: String = ""
-    private var selectedItemId: Int = -1
 
 
     override fun onCreateView(
@@ -294,7 +292,7 @@ class MobileFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         Log.d("abc_mob", "onStop: ")
-        // mobileViewModel.clear()
+         mobileViewModel.clear()
     }
 
     override fun onDestroy() {

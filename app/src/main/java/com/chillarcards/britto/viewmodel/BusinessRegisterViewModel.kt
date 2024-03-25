@@ -127,8 +127,9 @@ class BusinessRegisterViewModel(
             }
         }
     }
-
     fun clear() {
         _busRegData.value = null
+        _busPicData.value = null
+        _busLandData.value = null
     }
 }

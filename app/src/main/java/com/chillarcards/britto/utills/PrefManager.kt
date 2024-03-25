@@ -17,6 +17,7 @@ class PrefManager(_context: Context) {
         private const val STATUS = "STATUS"
         private const val MOBILENO = "MOBILENO"
         private const val BUSID = "BUSID"
+        private const val BUSUUID = "BUSINESSUUID"
         private const val DOCTORID = "DOCTORID"
         private const val CURRENT_LAT = "CURRENT_LAT"
         private const val CURRENT_LONG = "CURRENT_LONG"
@@ -70,6 +71,13 @@ class PrefManager(_context: Context) {
     }
     fun setBusinessID(value: String) {
         editor.putString(BUSID, value)
+        editor.commit()
+    }
+    fun getBusUUID(): String {
+        return pref.getString(BUSUUID, "") ?: ""
+    }
+    fun setBusUUID(value: String) {
+        editor.putString(BUSUUID, value)
         editor.commit()
     }
 

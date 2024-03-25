@@ -185,5 +185,9 @@ class PhotoFragment : Fragment() {
             Log.e("abc_otp", "setUpObserver: ", e)
         }
     }
-
+    override fun onStop() {
+        super.onStop()
+        Log.d("abc_mob", "onStop: ")
+        businessRegisterViewModel.clear()
+    }
 }

@@ -50,29 +50,6 @@ class RegisterViewModel(
         }
     }
 
-    fun getAuthToken() {
-        viewModelScope.launch(NonCancellable) {
-            try {
-                _tokenData.postValue(Resource.loading(null))
-                if (networkHelper.isNetworkConnected()) {
-                    authRepository.verifyMobile(
-                        mob.value.toString()
-                    ).let {
-                        if (it.isSuccessful) {
-                            _tokenData.postValue(Resource.success(it.body()))
-                        } else {
-                            _tokenData.postValue(Resource.error(it.errorBody().toString(), null))
-                        }
-                    }
-                } else {
-                    _tokenData.postValue(Resource.error("No Internet Connection", null))
-                }
-            } catch (e: Exception) {
-                Log.e("abc_otp", "verifyOTP: ", e)
-            }
-        }
-    }
-
     fun clear() {
         _regData.value = null
     }

@@ -66,7 +66,6 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
     ): Response<ItemResponseModel> = apiService.getItemList(
         ItemRequestModel(businessUuid)
     )
-
     override suspend fun getAddItemList(
         businessUuid: String,
         itemName: String,
@@ -77,4 +76,34 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
     ): Response<AddItemResponseModel> = apiService.getAddItemList(
         AddItemRequestModel(businessUuid,itemName,brandUuid,categoryUuid,itemPrice,itemDiscount)
     )
+    override suspend fun getUpdateItemList(
+        ItemUuid: String,
+        itemName: String,
+        brandUuid: String,
+        categoryUuid: String,
+        itemPrice: String,
+        itemDiscount: String,
+    ): Response<AddItemResponseModel> = apiService.getUpdateItemList(
+        UpdateItemRequestModel(ItemUuid,itemName,brandUuid,categoryUuid,itemPrice,itemDiscount)
+    )
+    override suspend fun updateItem(
+        ItemUuid: String,
+    ): Response<StatusItemResponseModel> = apiService.updateItem(
+        StatusItemRequestModel(ItemUuid)
+    )
+    override suspend fun getWorkHrs(
+        businessUuid: String
+    ): Response<WorkHrsResponseModel> = apiService.getWorkHrs(
+        WorkHrsRequestModel(businessUuid)
+    )
+    override suspend fun addWorkHrs(
+        jsonString: String
+    ): Response<WorkHrsResponseModel> = apiService.addWorkHrs(jsonString)
+    override suspend fun addBrand(
+        businessUuid: String,
+        brandName: String,
+    ): Response<AddItemBrandResponse> = apiService.addBrand(
+        AddItemBrandRequest(businessUuid,brandName)
+    )
+
 }

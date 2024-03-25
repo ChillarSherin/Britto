@@ -73,4 +73,10 @@
     <style name="mySpinnerItemSelectedStyle" parent="@android:style/Widget.Holo.TextView.SpinnerItem">
         <item name="android:textColor">@color/app_theme</item>
     </style>
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/custom_spinner_background</item>
+        <item name="android:padding">@dimen/_1sdp</item>
+
+        <!-- Add other styling attributes here -->
+    </style>
 </resources>

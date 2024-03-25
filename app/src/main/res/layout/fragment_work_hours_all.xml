@@ -62,7 +62,7 @@
                                android:id="@+id/daySpinner"
                                style="@style/mySpinnerItemSelectedStyle"
                                android:layout_width="match_parent"
-                               android:layout_height="@dimen/_30sdp"
+                               android:layout_height="@dimen/_40sdp"
                                android:overlapAnchor="false"
                                android:spinnerMode="dropdown"
                                android:background="@android:drawable/btn_dropdown"
@@ -87,9 +87,9 @@
 
                                    android:gravity="center">
                                    <TextView
+                                       android:id="@+id/start_time"
                                        android:layout_width="match_parent"
                                        android:layout_height="wrap_content"
-
                                        android:gravity="center"
                                        android:padding="8dp"
                                        android:text="9.30" />
@@ -115,6 +115,7 @@
                                    android:gravity="center">
 
                                    <TextView
+                                       android:id="@+id/end_time"
                                        android:gravity="center"
                                        android:layout_width="match_parent"
                                        android:layout_height="wrap_content"
@@ -141,6 +142,7 @@
 
                            </LinearLayout>
                            <TextView
+                               android:id="@+id/add_data"
                                android:gravity="center"
                                android:layout_width="match_parent"
                                android:layout_height="wrap_content"
@@ -161,6 +163,23 @@
                        android:clipToPadding="false"
                        android:paddingTop="@dimen/_10sdp"
                        android:paddingBottom="@dimen/_25sdp"/>
+
+                   <com.airbnb.lottie.LottieAnimationView
+                       android:visibility="gone"
+                       android:layout_width="@dimen/_250sdp"
+                       android:layout_height="@dimen/_250sdp"
+                       android:id="@+id/nodata"
+                       app:lottie_rawRes="@raw/ic_nodata"
+                       app:lottie_autoPlay="true"
+                       app:lottie_loop="true"
+                       android:padding="@dimen/_14sdp"
+                       android:orientation="vertical"
+                       android:layout_gravity="center"
+                       android:layout_marginHorizontal="@dimen/_10sdp"
+                       android:layout_marginBottom="@dimen/_15sdp"
+                       tools:ignore="MissingConstraints"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"/>
 
                    <com.google.android.material.button.MaterialButton
                        android:id="@+id/confirm_btn"

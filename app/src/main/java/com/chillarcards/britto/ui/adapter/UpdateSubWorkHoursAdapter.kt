@@ -10,7 +10,7 @@ import android.widget.Spinner
 import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.chillarcards.britto.R
-import com.chillarcards.britto.ui.register.business.WorkSchedule
+import com.chillarcards.britto.data.model.WorkSchedule
 
 class UpdateSubWorkHoursAdapter(
     private val context: Context,

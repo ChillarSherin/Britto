@@ -3,6 +3,8 @@ package com.chillarcards.britto.ui.landing
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
@@ -31,11 +33,19 @@ import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.PrefManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 open class CommonHomeFragment : Fragment(), IAdapterViewUtills {
 
     lateinit var binding: FragmentCommonHomeBinding
     private lateinit var prefManager: PrefManager
+    private var currentPage = 0
+    private val DELAY_MS: Long = 3000 // Delay in milliseconds before changing the image
+    private val PERIOD_MS: Long = 5000 // Time in milliseconds between each scroll
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -139,6 +149,21 @@ open class CommonHomeFragment : Fragment(), IAdapterViewUtills {
         val myCustomPagerAdapter = SliderPagerAdapter( requireContext(), dummyItem)
         binding.viewPager.adapter = myCustomPagerAdapter
         binding.viewPager.setScrollDurationFactor(1.0)
+        // Auto scroll ViewPager
+        val handler = Handler(Looper.getMainLooper())
+        val update = Runnable {
+            if (currentPage == dummyItem.size) {
+                currentPage = 0
+            }
+            binding.viewPager.setCurrentItem(currentPage++, true)
+        }
+
+        GlobalScope.launch(Dispatchers.Main) {
+            while (true) {
+                handler.postDelayed(update, DELAY_MS)
+                delay(PERIOD_MS)
+            }
+        }
 
         val pharmTopPicAdapter = PharmacyAdapter(
             dummyPhar, context,activity,this@CommonHomeFragment)
@@ -175,36 +200,18 @@ open class CommonHomeFragment : Fragment(), IAdapterViewUtills {
 
         popup.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.action_sign -> showLogoutAlert()
+                R.id.action_sign -> {
+                    findNavController().navigate(
+                        CommonHomeFragmentDirections.actionCommonFragmentToMobileFragment(
+                        )
+                    )
+                }
             }
             true
         }
 
     }
-    private fun showLogoutAlert() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle(R.string.logout)
-        builder.setMessage(R.string.logout_alert_message)
-        builder.setIcon(android.R.drawable.ic_lock_power_off)
 
-        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
-
-        }
-
-        builder.setNegativeButton(getString(R.string.no)) { dialogInterface, _ ->
-            dialogInterface.dismiss()
-        }
-        val alertDialog: AlertDialog = builder.create()
-        alertDialog.setOnShowListener {
-            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.primary_red
-                )
-            )
-        }
-        alertDialog.show()
-    }
 
     private fun setBottomSheet() {
 

@@ -16,6 +16,7 @@ import com.chillarcards.britto.ui.DummyItem
 import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.ui.interfaces.OnCallBackListner
 import com.chillarcards.britto.utills.CommonDBaseModel
+import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.Const.Companion.cartItems
 import com.chillarcards.britto.utills.PrefManager
 
@@ -111,21 +112,22 @@ class PharmacyFragment : Fragment(), IAdapterViewUtills, OnCallBackListner {
 
 
     override fun onAddtocartCallback() {
-        if (cartItems.size == 0) {
-            binding.proceedBtn.visibility = View.GONE
-            setDummyUI()
-        }
-        else {
+        if (cartItems.size != 0) {
             binding.proceedBtn.visibility = View.VISIBLE
 
             var total_Price = 0f
             var total_Count = 0
             for (i in 0 until cartItems.size) {
-                total_Price += cartItems[i].prdsellrate.toFloat()
+                total_Price += Const.cartItems[i].cartRate.toFloat()
                 total_Count += i
             }
             binding.CartQtyTV.text = java.lang.String.valueOf(cartItems.size)
-            binding.CartAmountTV.text =    total_Price.toString() + resources.getString(R.string.rupee)
+           // binding.CartAmountTV.text = total_Price.toString() +" "+ resources.getString(R.string.rupee)
+            binding.CartAmountTV.text = String.format("%.2f %s", total_Price, resources.getString(R.string.rupee))
+
+        }else{
+            binding.proceedBtn.visibility = View.GONE
+            setDummyUI()
         }
     }
 

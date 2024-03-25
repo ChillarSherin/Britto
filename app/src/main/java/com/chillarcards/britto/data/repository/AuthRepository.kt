@@ -52,6 +52,21 @@ class AuthRepository(private val apiHelper: ApiHelper) {
            itemPrice: String,
            itemDiscount: String) =
         apiHelper.getAddItemList(businessUuid,itemName,brandUuid,categoryUuid,itemPrice,itemDiscount)
-
+    suspend fun getUpdateItemList(ItemUuid: String,
+           itemName: String,
+           brandUuid: String,
+           categoryUuid: String,
+           itemPrice: String,
+           itemDiscount: String) =
+        apiHelper.getUpdateItemList(ItemUuid,itemName,brandUuid,categoryUuid,itemPrice,itemDiscount)
+    suspend fun updateItem(ItemUuid: String) =
+        apiHelper.updateItem(ItemUuid)
+    suspend fun getWorkHrs(businessUuid: String) =
+        apiHelper.getWorkHrs(businessUuid)
+    suspend fun addWorkHrs(jsonString: String) =
+        apiHelper.addWorkHrs(jsonString)
+    suspend fun addBrand(businessUuid: String,
+                               brandName: String) =
+        apiHelper.addBrand(businessUuid,brandName)
 }
 

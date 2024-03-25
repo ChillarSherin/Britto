@@ -113,6 +113,7 @@
     <string name="retry">try again</string>
     <string name="applyjob">Apply this job</string>
     <string name="no_net">No Internet Connection</string>
+    <string name="add_item">Add Item</string>
 
     <string name="contin">Continue</string>
     <string name="book">View Booking</string>
@@ -156,4 +157,5 @@
     <string name="enter_service">Applicant Name</string>
     <string name="enter_service_rate">Phone Number</string>
     <string name="enter_service_min">min experience</string>
+    <string name="add_brand">Add brand</string>
 </resources>

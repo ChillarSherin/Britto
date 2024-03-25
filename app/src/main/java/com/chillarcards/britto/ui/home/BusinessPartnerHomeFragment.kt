@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuInflater
@@ -37,6 +39,10 @@ import com.chillarcards.britto.utills.PrefManager
 import com.chillarcards.britto.utills.Status
 import com.chillarcards.britto.viewmodel.BusinessRegisterViewModel
 import com.chillarcards.britto.viewmodel.RegisterViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
@@ -45,6 +51,9 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
     private lateinit var prefManager: PrefManager
     private val businessRegisterViewModel by viewModel<BusinessRegisterViewModel>()
     private var businessId: String = ""
+    private var currentPage = 0
+    private val DELAY_MS: Long = 3000 // Delay in milliseconds before changing the image
+    private val PERIOD_MS: Long = 5000 // Time in milliseconds between each scroll
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,7 +143,7 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
         }
 
         if (prefManager.getStatus()==0){ //0 approval 1 Approved 2 suspended
-            Const.shortToast(requireContext(), "Waiting for account approval")
+//            Const.shortToast(requireContext(), "Waiting for account approval")
             binding.newOrder.visibility= View.GONE
             binding.nodata.visibility= View.VISIBLE
         }
@@ -229,6 +238,22 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
         val myCustomPagerAdapter = SliderPagerAdapter( requireContext(), dummyItem)
         binding.viewPager.adapter = myCustomPagerAdapter
         binding.viewPager.setScrollDurationFactor(1.0)
+        // Auto scroll ViewPager
+        val handler = Handler(Looper.getMainLooper())
+        val update = Runnable {
+            if (currentPage == dummyItem.size) {
+                currentPage = 0
+            }
+            binding.viewPager.setCurrentItem(currentPage++, true)
+        }
+
+        GlobalScope.launch(Dispatchers.Main) {
+            while (true) {
+                handler.postDelayed(update, DELAY_MS)
+                delay(PERIOD_MS)
+            }
+        }
+
 
         val orderPicAdapter = OrderAdapter(
             dummyPhar, context,activity,"home",this@BusinessPartnerHomeFragment)
@@ -262,8 +287,8 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
         builder.setIcon(android.R.drawable.ic_lock_power_off)
 
         builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
-            val prefManager = PrefManager(requireContext())
-            prefManager.clearAll()
+            Const.clearCache(requireContext())
+            prefManager.setIsLoggedIn(false)
             val intent = Intent(requireContext(), MainActivity::class.java)
             ActivityCompat.finishAffinity(requireActivity())
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -312,6 +337,12 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
                                     "200" -> {
                                         if (!busslandData.data.isNullOrEmpty()) {
                                             businessId = busslandData.data[0].business_uuid
+                                            prefManager.setBusUUID(busslandData.data[0].business_uuid)
+                                            binding.businessName.text=busslandData.data[0].business_name
+                                            binding.location.text=busslandData.data[0].business_address1+","+
+                                                    busslandData.data[0].business_address2+","+
+                                                    busslandData.data[0].business_city+","+
+                                                    busslandData.data[0].business_zip
                                         } else {
                                             Const.shortToast(requireContext(), "No business data found")
                                         }
@@ -344,5 +375,9 @@ open class BusinessPartnerHomeFragment : Fragment(), IAdapterViewUtills {
     private fun hideProgress() {
         binding.loginProgress.visibility = View.GONE
     }
-
+    override fun onStop() {
+        super.onStop()
+        Log.d("abc_mob", "onStop: ")
+        businessRegisterViewModel.clear()
+    }
 }

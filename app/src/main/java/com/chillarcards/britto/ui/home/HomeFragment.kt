@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuInflater
@@ -32,11 +34,19 @@ import com.chillarcards.britto.ui.interfaces.IAdapterViewUtills
 import com.chillarcards.britto.utills.CommonDBaseModel
 import com.chillarcards.britto.utills.Const
 import com.chillarcards.britto.utills.PrefManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 open class HomeFragment : Fragment(), IAdapterViewUtills {
 
     lateinit var binding: FragmentHomeBinding
     private lateinit var prefManager: PrefManager
+    private var currentPage = 0
+    private val DELAY_MS: Long = 3000 // Delay in milliseconds before changing the image
+    private val PERIOD_MS: Long = 5000 // Time in milliseconds between each scroll
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -171,7 +181,21 @@ open class HomeFragment : Fragment(), IAdapterViewUtills {
         val myCustomPagerAdapter = SliderPagerAdapter( requireContext(), dummyItem)
         binding.viewPager.adapter = myCustomPagerAdapter
         binding.viewPager.setScrollDurationFactor(1.0)
+        // Auto scroll ViewPager
+        val handler = Handler(Looper.getMainLooper())
+        val update = Runnable {
+            if (currentPage == dummyItem.size) {
+                currentPage = 0
+            }
+            binding.viewPager.setCurrentItem(currentPage++, true)
+        }
 
+        GlobalScope.launch(Dispatchers.Main) {
+            while (true) {
+                handler.postDelayed(update, DELAY_MS)
+                delay(PERIOD_MS)
+            }
+        }
         val pharmTopPicAdapter = PharmacyAdapter(
             dummyPhar, context,activity,this@HomeFragment)
         binding.topPicRv.adapter = pharmTopPicAdapter

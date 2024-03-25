@@ -302,8 +302,12 @@ open class OTPFragment : Fragment() {
         }else
             Const.disableButton(binding.confirmBtn)
     }
-
-
+    override fun onStop() {
+        super.onStop()
+        Log.d("abc_mob", "onStop: ")
+        mobileViewModel.clear()
+        otpViewModel.clear()
+    }
 
     companion object {
         private const val TAG = "OTPFragment"

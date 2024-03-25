@@ -59,4 +59,26 @@ interface ApiHelper {
         itemPrice: String,
         itemDiscount: String,
     ): Response<AddItemResponseModel>
+    suspend fun getUpdateItemList(
+        ItemUuid: String,
+        itemName: String,
+        brandUuid: String,
+        categoryUuid: String,
+        itemPrice: String,
+        itemDiscount: String,
+    ): Response<AddItemResponseModel>
+    suspend fun updateItem(
+        ItemUuid: String,
+    ): Response<StatusItemResponseModel>
+
+    suspend fun getWorkHrs(
+        businessUuid: String
+    ): Response<WorkHrsResponseModel>
+    suspend fun addWorkHrs(
+        jsonString: String
+    ): Response<WorkHrsResponseModel>
+    suspend fun addBrand(
+        businessUuid: String,
+        brandName: String,
+    ): Response<AddItemBrandResponse>
 }
